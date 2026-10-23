@@ -3,6 +3,7 @@ name: build
 on:
   push:
     branches: [main]
+    tags: ['v*']
   pull_request:
   workflow_dispatch:
 
@@ -65,3 +66,36 @@ jobs:
             target/release/bundle/msi/*.msi
             target/release/bundle/nsis/*.exe
           if-no-files-found: error
+
+  # On a version tag (v0.1.0, ...): publish the installers as a GitHub release.
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: bundle
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: installers
+          merge-multiple: true
+      - run: find installers -type f
+      - uses: softprops/action-gh-release@v2
+        with:
+          name: Refine ${{ github.ref_name }}
+          generate_release_notes: true
+          fail_on_unmatched_files: true
+          files: |
+            installers/**/*.dmg
+            installers/**/*.msi
+            installers/**/*.exe
+          body: |
+            ## Download
+
+            - **macOS** (Apple Silicon and Intel): `Refine_*_universal.dmg`
+            - **Windows**: `Refine_*_x64-setup.exe` (or the `.msi`)
+
+            The builds aren't signed with a paid certificate yet:
+            - **macOS:** open the `.dmg`, drag Refine to Applications, then right-click it → **Open** the first time
+              (or run `xattr -dr com.apple.quarantine /Applications/Refine.app`).
+            - **Windows:** if SmartScreen warns, click **More info** → **Run anyway**.

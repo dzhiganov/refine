@@ -22,6 +22,16 @@ coming back and helps you get rid of them.
   machine; the model only writes a short summary. Why it works this way:
   [docs/research/stats-system.md](docs/research/stats-system.md) and [docs/decisions.md](docs/decisions.md).
 
+## Download
+
+Installers for macOS (universal `.dmg`) and Windows (`.exe` / `.msi`) are on the
+[latest release](https://github.com/dzhiganov/refine/releases/latest). They aren't signed with a paid
+certificate yet; the release notes say how to open them the first time.
+
+To publish a new version: bump `version` in `package.json`, `src-tauri/tauri.conf.json` and
+`Cargo.toml`, then push a tag (`git tag v0.2.0 && git push origin v0.2.0`). CI builds both
+installers and attaches them to a new release.
+
 ## Stack
 
 | Part | What |
