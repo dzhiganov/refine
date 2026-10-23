@@ -10,11 +10,11 @@ use chrono::{DateTime, FixedOffset, Local, Utc};
 use serde::{Deserialize, Serialize};
 use ts_rs::TS;
 
-use crate::check::run_check;
+use crate::check::{ModelCaps, run_check};
 use crate::error::{Error, Result};
 use crate::export::{ExportBundle, write_export};
 use crate::insights::{Insights, generate_insights};
-use crate::llm::{LlmClient, ModelInfo, OutputMode, http_client};
+use crate::llm::{LlmClient, ModelInfo, http_client};
 use crate::model::Entry;
 use crate::prompt::{CheckContext, KnownPattern, MAX_KNOWN_PATTERNS, WatchedPattern};
 use crate::secrets::SecretStore;
@@ -62,8 +62,8 @@ pub struct Core {
     secrets: Box<dyn SecretStore>,
     http: reqwest::Client,
     last_activity: Mutex<Instant>,
-    /// Output mode that worked per "provider/model", so a fallback isn't retried on every check.
-    modes: Mutex<HashMap<String, OutputMode>>,
+    /// What worked per "provider/model", so a fallback isn't retried on every check.
+    caps: Mutex<HashMap<String, ModelCaps>>,
     /// Set while an insights request is running, so idle ticks don't start a second one.
     insights_busy: AtomicBool,
     /// Checks in progress; background model calls wait until there are none.
@@ -101,7 +101,7 @@ impl Core {
             secrets,
             http: http_client(),
             last_activity: Mutex::new(Instant::now()),
-            modes: Mutex::new(HashMap::new()),
+            caps: Mutex::new(HashMap::new()),
             insights_busy: AtomicBool::new(false),
             checks_in_flight: AtomicUsize::new(0),
         })
@@ -218,13 +218,13 @@ impl Core {
             return Err(Error::Invalid(format!("Add \"{code}\" to your languages first.")));
         }
         let client = self.active_client(&settings)?;
-        let mode_key = format!("{}/{}", client.provider().id, client.provider().model);
-        let mode = self.modes.lock().unwrap().get(&mode_key).copied().unwrap_or(OutputMode::JsonSchema);
+        let caps_key = format!("{}/{}", client.provider().id, client.provider().model);
+        let caps = self.caps.lock().unwrap().get(&caps_key).copied().unwrap_or_default();
 
         let (known, watched) = self.pattern_context()?;
         let ctx = CheckContext { settings: &settings, tone: &tone, language, known_patterns: &known, watched: &watched };
-        let outcome = run_check(&client, &ctx, &req.text, mode).await?;
-        self.modes.lock().unwrap().insert(mode_key, outcome.mode);
+        let outcome = run_check(&client, &ctx, &req.text, caps).await?;
+        self.caps.lock().unwrap().insert(caps_key, outcome.caps);
         self.store.insert_entry(&outcome.entry)?;
         self.touch();
         Ok(outcome.entry)

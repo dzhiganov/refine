@@ -12,6 +12,7 @@ import type { ProviderConfig } from '../../bindings/ProviderConfig';
 import type { Settings } from '../../bindings/Settings';
 import type { ShortForms } from '../../bindings/ShortForms';
 import type { Theme } from '../../bindings/Theme';
+import type { Thinking } from '../../bindings/Thinking';
 import type { Tone } from '../../bindings/Tone';
 import { api, errorMessage } from '../../lib/api';
 import { platform } from '../../lib/platform';
@@ -216,6 +217,18 @@ function ProviderSection() {
       )}
       <Row label="Model">
         <ModelPicker provider={active} onPick={(model) => void update({ model })} />
+      </Row>
+      <Row label="Thinking" hint="For reasoning models. Off is fastest and works well; Low and Model default think first (much slower).">
+        <Segmented<Thinking>
+          label="Thinking"
+          value={active.thinking}
+          onChange={(thinking) => void update({ thinking })}
+          options={[
+            { value: 'off', label: 'Off' },
+            { value: 'low', label: 'Low' },
+            { value: 'modelDefault', label: 'Model default' },
+          ]}
+        />
       </Row>
     </Section>
   );

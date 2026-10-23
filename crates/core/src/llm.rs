@@ -8,7 +8,7 @@ use serde_json::{Value, json};
 use ts_rs::TS;
 
 use crate::error::{Error, Result};
-use crate::settings::{ProviderConfig, ProviderKind};
+use crate::settings::{ProviderConfig, ProviderKind, Thinking};
 
 /// How strictly the answer's shape is enforced by the server.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -70,6 +70,8 @@ pub struct JsonRequest<'a> {
     pub schema: &'a Value,
     pub mode: OutputMode,
     pub temperature: f32,
+    /// Ask the model to skip reasoning (when the provider setting allows it).
+    pub no_thinking: bool,
 }
 
 #[derive(Clone)]
@@ -189,6 +191,20 @@ impl LlmClient {
             "temperature": req.temperature,
             "stream": false,
         });
+        let effort = match self.provider.thinking {
+            Thinking::Off => Some("none"),
+            Thinking::Low => Some("low"),
+            Thinking::ModelDefault => None,
+        };
+        if let Some(effort) = effort.filter(|_| req.no_thinking) {
+            match self.provider.kind {
+                // https://openrouter.ai/docs/use-cases/reasoning-tokens
+                ProviderKind::OpenRouter if effort == "none" => body["reasoning"] = json!({ "enabled": false }),
+                ProviderKind::OpenRouter => body["reasoning"] = json!({ "effort": effort }),
+                // OpenAI-style; LM Studio and Ollama honour it for thinking models.
+                ProviderKind::OpenAiCompatible => body["reasoning_effort"] = json!(effort),
+            }
+        }
         match req.mode {
             OutputMode::JsonSchema => {
                 body["response_format"] = json!({
@@ -223,6 +239,14 @@ pub fn is_unsupported_format(err: &Error) -> bool {
                     .iter()
                     .any(|k| m.contains(k))
         }
+        _ => false,
+    }
+}
+
+/// True when a provider rejected the "don't think" parameter (some models/servers don't know it).
+pub fn is_unsupported_reasoning(err: &Error) -> bool {
+    match err {
+        Error::Provider { status, message, .. } => matches!(status, 400 | 422) && message.to_lowercase().contains("reasoning"),
         _ => false,
     }
 }

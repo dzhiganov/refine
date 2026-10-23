@@ -192,7 +192,11 @@ pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
         .setup(|app| {
-            let data_dir = app.path().app_data_dir()?;
+            // REFINE_DATA_DIR: a separate data folder (tests, trying things out).
+            let data_dir = match std::env::var_os("REFINE_DATA_DIR") {
+                Some(dir) => std::path::PathBuf::from(dir),
+                None => app.path().app_data_dir()?,
+            };
             std::fs::create_dir_all(&data_dir)?;
             tracing::info!(dir = %data_dir.display(), "data directory");
             let core = Arc::new(Core::open(&data_dir, secrets::platform_store(&data_dir))?);

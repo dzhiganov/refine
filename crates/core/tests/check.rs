@@ -1,4 +1,4 @@
-use refine_core::check::run_check;
+use refine_core::check::{ModelCaps, run_check};
 use refine_core::llm::{LlmClient, OutputMode, http_client};
 use refine_core::model::{DiffOp, SuggestionKind};
 use refine_core::prompt::{CheckContext, WatchedPattern, check_schema};
@@ -27,6 +27,7 @@ fn client(server: &MockServer, kind: ProviderKind) -> LlmClient {
         base_url: format!("{}/v1", server.uri()),
         model: "test-model".into(),
         needs_key: true,
+        thinking: refine_core::settings::Thinking::Off,
     };
     LlmClient::new(http_client(), provider, Some("sk-test".into())).unwrap()
 }
@@ -35,12 +36,14 @@ const INPUT: &str = "Yesterday I go to the office and we discussed about the dea
 
 fn good_answer() -> Value {
     json!({
+        "notes": "S1: 'I go' with yesterday → past. 'discussed about' → no 'about'.",
         "language": "en",
         "mistakes": [
             { "original": "I go", "correction": "I went", "explanation": "Use the past tense for yesterday.", "category": "grammar.verb_tense", "pattern": "past simple for finished past", "impedesMeaning": false },
             { "original": "discussed about", "correction": "discussed", "explanation": "'Discuss' takes no 'about'.", "category": "grammar.preposition", "pattern": "discuss takes no about", "impedesMeaning": false }
         ],
         "fixedText": "Yesterday I went to the office and we discussed the deadline.",
+        "review": "ok",
         "suggestions": [
             { "kind": "phrase", "original": "went to the office", "replacement": "went into the office", "explanation": "Common for going to work.", "level": "B1" }
         ]
@@ -62,10 +65,10 @@ async fn happy_path_builds_a_complete_entry() {
     let settings = Settings::default();
     let tone = builtin_tones().into_iter().find(|t| t.id == "slack").unwrap();
     let ctx = CheckContext { settings: &settings, tone: &tone, language: None, known_patterns: &[], watched: &[] };
-    let out = run_check(&client(&server, ProviderKind::OpenAiCompatible), &ctx, INPUT, OutputMode::JsonSchema).await.unwrap();
+    let out = run_check(&client(&server, ProviderKind::OpenAiCompatible), &ctx, INPUT, ModelCaps::default()).await.unwrap();
     let e = out.entry;
 
-    assert_eq!(out.mode, OutputMode::JsonSchema);
+    assert_eq!(out.caps, ModelCaps::default());
     assert_eq!(e.language, "en");
     assert_eq!(e.fixed_text, "Yesterday I went to the office and we discussed the deadline.");
     assert_eq!(e.mistakes.len(), 2);
@@ -106,7 +109,7 @@ async fn bad_answer_gets_one_repair_round() {
     let settings = Settings::default();
     let tone = builtin_tones().remove(0);
     let ctx = CheckContext { settings: &settings, tone: &tone, language: Some("en"), known_patterns: &[], watched: &[] };
-    let e = run_check(&client(&server, ProviderKind::OpenAiCompatible), &ctx, INPUT, OutputMode::JsonSchema).await.unwrap().entry;
+    let e = run_check(&client(&server, ProviderKind::OpenAiCompatible), &ctx, INPUT, ModelCaps::default()).await.unwrap().entry;
     assert_eq!(e.mistakes.len(), 2);
     assert!(e.warnings.is_empty());
 
@@ -133,9 +136,9 @@ async fn falls_back_when_json_schema_is_unsupported() {
     let settings = Settings::default();
     let tone = builtin_tones().remove(0);
     let ctx = CheckContext { settings: &settings, tone: &tone, language: None, known_patterns: &[], watched: &[] };
-    let out = run_check(&client(&server, ProviderKind::OpenRouter), &ctx, INPUT, OutputMode::JsonSchema).await;
+    let out = run_check(&client(&server, ProviderKind::OpenRouter), &ctx, INPUT, ModelCaps::default()).await;
     let out = out.unwrap();
-    assert_eq!(out.mode, OutputMode::JsonObject);
+    assert_eq!(out.caps.mode, OutputMode::JsonObject);
     assert_eq!(out.entry.mistakes.len(), 2);
 
     let reqs = server.received_requests().await.unwrap();
@@ -154,7 +157,7 @@ async fn silent_rewrite_without_mistakes_is_not_shown_as_a_fix() {
     let settings = Settings::default();
     let tone = builtin_tones().remove(0);
     let ctx = CheckContext { settings: &settings, tone: &tone, language: None, known_patterns: &[], watched: &[] };
-    let e = run_check(&client(&server, ProviderKind::OpenAiCompatible), &ctx, INPUT, OutputMode::JsonSchema).await.unwrap().entry;
+    let e = run_check(&client(&server, ProviderKind::OpenAiCompatible), &ctx, INPUT, ModelCaps::default()).await.unwrap().entry;
     assert_eq!(e.fixed_text, INPUT);
     assert!(e.diff.iter().all(|d| d.op == DiffOp::Equal));
     assert_eq!(e.warnings.len(), 1);
@@ -170,7 +173,7 @@ async fn provider_errors_are_readable() {
     let settings = Settings::default();
     let tone = builtin_tones().remove(0);
     let ctx = CheckContext { settings: &settings, tone: &tone, language: None, known_patterns: &[], watched: &[] };
-    let err = run_check(&client(&server, ProviderKind::OpenRouter), &ctx, INPUT, OutputMode::JsonSchema).await.err().unwrap();
+    let err = run_check(&client(&server, ProviderKind::OpenRouter), &ctx, INPUT, ModelCaps::default()).await.err().unwrap();
     assert_eq!(err.to_string(), "Test answered with an error (401): No auth credentials found");
 }
 
@@ -210,7 +213,7 @@ async fn watched_patterns_report_opportunities() {
         label: "past simple for finished past".into(),
     }];
     let ctx = CheckContext { settings: &settings, tone: &tone, language: None, known_patterns: &[], watched: &watched };
-    let e = run_check(&client(&server, ProviderKind::OpenAiCompatible), &ctx, INPUT, OutputMode::JsonSchema).await.unwrap().entry;
+    let e = run_check(&client(&server, ProviderKind::OpenAiCompatible), &ctx, INPUT, ModelCaps::default()).await.unwrap().entry;
     assert_eq!(e.watch.len(), 1);
     assert_eq!(e.watch[0].correct, 2);
     // The model said 0 errors, but one mistake with this pattern is listed: never undercount.
@@ -229,7 +232,7 @@ async fn suggestions_far_above_the_learner_are_dropped() {
     let settings = Settings::default(); // English B2 → ceiling C1
     let tone = builtin_tones().remove(0);
     let ctx = CheckContext { settings: &settings, tone: &tone, language: None, known_patterns: &[], watched: &[] };
-    let e = run_check(&client(&server, ProviderKind::OpenAiCompatible), &ctx, INPUT, OutputMode::JsonSchema).await.unwrap().entry;
+    let e = run_check(&client(&server, ProviderKind::OpenAiCompatible), &ctx, INPUT, ModelCaps::default()).await.unwrap().entry;
     assert!(e.suggestions.is_empty());
 }
 
@@ -241,7 +244,7 @@ async fn unknown_language_is_refused_not_misfiled() {
     let settings = Settings::default();
     let tone = builtin_tones().remove(0);
     let ctx = CheckContext { settings: &settings, tone: &tone, language: None, known_patterns: &[], watched: &[] };
-    let err = run_check(&client(&server, ProviderKind::OpenAiCompatible), &ctx, "Bonjour à tous", OutputMode::JsonSchema)
+    let err = run_check(&client(&server, ProviderKind::OpenAiCompatible), &ctx, "Bonjour à tous", ModelCaps::default())
         .await
         .err()
         .unwrap();
@@ -268,8 +271,69 @@ async fn mistakes_listed_out_of_order_still_map_to_the_right_place() {
     let settings = Settings::default();
     let tone = builtin_tones().remove(0);
     let ctx = CheckContext { settings: &settings, tone: &tone, language: Some("en"), known_patterns: &[], watched: &[] };
-    let e = run_check(&client(&server, ProviderKind::OpenAiCompatible), &ctx, input, OutputMode::JsonSchema).await.unwrap().entry;
+    let e = run_check(&client(&server, ProviderKind::OpenAiCompatible), &ctx, input, ModelCaps::default()).await.unwrap().entry;
     assert_eq!(e.mistakes[0].original, "I go home");
     assert_eq!(e.mistakes[0].span.unwrap().start, 0);
     assert_eq!(e.mistakes[1].span.unwrap().start, 19);
+}
+
+#[tokio::test]
+async fn thinking_is_switched_off_and_falls_back_when_rejected() {
+    let server = MockServer::start().await;
+    Mock::given(method("POST"))
+        .and(body_partial_json(json!({ "reasoning_effort": "none" })))
+        .respond_with(ResponseTemplate::new(400).set_body_json(json!({ "error": { "message": "Unrecognized request argument: reasoning_effort" } })))
+        .mount(&server)
+        .await;
+    Mock::given(method("POST")).respond_with(completion(&good_answer())).mount(&server).await;
+    let settings = Settings::default();
+    let tone = builtin_tones().remove(0);
+    let ctx = CheckContext { settings: &settings, tone: &tone, language: None, known_patterns: &[], watched: &[] };
+    let out = run_check(&client(&server, ProviderKind::OpenAiCompatible), &ctx, INPUT, ModelCaps::default()).await.unwrap();
+    assert!(!out.caps.no_thinking, "remembers that this model doesn't take the parameter");
+    let reqs = server.received_requests().await.unwrap();
+    let first: Value = serde_json::from_slice(&reqs[0].body).unwrap();
+    let second: Value = serde_json::from_slice(&reqs[1].body).unwrap();
+    assert_eq!(first["reasoning_effort"], "none");
+    assert!(second.get("reasoning_effort").is_none());
+}
+
+#[tokio::test]
+async fn unlisted_changes_never_reach_the_fixed_text() {
+    let server = MockServer::start().await;
+    let mut sneaky = good_answer();
+    // Lists two fixes but also rewrites "the deadline" silently.
+    sneaky["fixedText"] = json!("Yesterday I went to the office and we discussed the due date.");
+    Mock::given(method("POST")).respond_with(completion(&sneaky)).expect(2).mount(&server).await;
+    let settings = Settings::default();
+    let tone = builtin_tones().remove(0);
+    let ctx = CheckContext { settings: &settings, tone: &tone, language: None, known_patterns: &[], watched: &[] };
+    let e = run_check(&client(&server, ProviderKind::OpenAiCompatible), &ctx, INPUT, ModelCaps::default()).await.unwrap().entry;
+    assert_eq!(e.fixed_text, "Yesterday I went to the office and we discussed the deadline.");
+    assert_eq!(e.warnings.len(), 1, "{:?}", e.warnings);
+    let reqs = server.received_requests().await.unwrap();
+    let repair: Value = serde_json::from_slice(&reqs[1].body).unwrap();
+    let last = repair["messages"].as_array().unwrap().last().unwrap()["content"].as_str().unwrap().to_string();
+    assert!(last.contains("aren't listed") && last.contains("due date"), "{last}");
+}
+
+#[tokio::test]
+async fn a_failed_self_review_triggers_a_repair() {
+    let server = MockServer::start().await;
+    let mut doubtful = good_answer();
+    doubtful["review"] = json!("'went to the office' is fine, but 'deadline' should be plural");
+    let good = good_answer();
+    Mock::given(method("POST"))
+        .respond_with(move |req: &Request| {
+            let body: Value = serde_json::from_slice(&req.body).unwrap();
+            if body["messages"].as_array().unwrap().len() == 2 { completion(&doubtful) } else { completion(&good) }
+        })
+        .expect(2)
+        .mount(&server)
+        .await;
+    let settings = Settings::default();
+    let tone = builtin_tones().remove(0);
+    let ctx = CheckContext { settings: &settings, tone: &tone, language: None, known_patterns: &[], watched: &[] };
+    let e = run_check(&client(&server, ProviderKind::OpenAiCompatible), &ctx, INPUT, ModelCaps::default()).await.unwrap().entry;
+    assert!(e.warnings.is_empty(), "{:?}", e.warnings);
 }

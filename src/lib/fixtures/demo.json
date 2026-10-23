@@ -8,7 +8,8 @@
         "label": "OpenRouter",
         "baseUrl": "https://openrouter.ai/api/v1",
         "model": "",
-        "needsKey": true
+        "needsKey": true,
+        "thinking": "off"
       },
       {
         "id": "ollama",
@@ -16,7 +17,8 @@
         "label": "Ollama",
         "baseUrl": "http://localhost:11434/v1",
         "model": "",
-        "needsKey": false
+        "needsKey": false,
+        "thinking": "off"
       },
       {
         "id": "lmstudio",
@@ -24,7 +26,8 @@
         "label": "LM Studio",
         "baseUrl": "http://localhost:1234/v1",
         "model": "",
-        "needsKey": false
+        "needsKey": false,
+        "thinking": "off"
       },
       {
         "id": "openai",
@@ -32,7 +35,8 @@
         "label": "OpenAI",
         "baseUrl": "https://api.openai.com/v1",
         "model": "",
-        "needsKey": true
+        "needsKey": true,
+        "thinking": "off"
       }
     ],
     "languages": [
@@ -104,7 +108,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-000",
-      "createdAt": "2026-08-29T23:37:57.731484320Z",
+      "createdAt": "2026-08-30T01:29:29.023261432Z",
       "input": "Ich habe gerade mit dem Kunden telefoniert und er hat gesagt, dass alles passt. Wir können also wie geplant am Montag mit dem Rollout starten.",
       "language": "de",
       "level": "B1",
@@ -160,7 +164,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-001",
-      "createdAt": "2026-08-30T03:37:57.731607188Z",
+      "createdAt": "2026-08-30T05:29:29.023529629Z",
       "input": "Dear Mark, we need to make a final decision until Friday, otherwise we will miss the release window. I will send you the informations about both options tomorrow.",
       "language": "en",
       "level": "B2",
@@ -256,7 +260,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-002",
-      "createdAt": "2026-08-30T23:37:57.731780291Z",
+      "createdAt": "2026-08-31T01:29:29.023786896Z",
       "input": "Ich fahre morgen früh mit den Zug nach Berlin und bleibe bis Sonntag. Hast du Lust, am Samstag zusammen essen zu gehen? Ich kenne da ein gutes Restaurant.",
       "language": "de",
       "level": "B1",
@@ -313,7 +317,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-003",
-      "createdAt": "2026-08-31T03:37:57.731908642Z",
+      "createdAt": "2026-08-31T05:29:29.024120609Z",
       "input": "Dear Anna, thank you for your quick reply. I have attached the updated contract, and I would appreciate it if you could sign it by the end of the week.",
       "language": "en",
       "level": "B2",
@@ -363,7 +367,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-004",
-      "createdAt": "2026-08-31T23:37:57.731959453Z",
+      "createdAt": "2026-09-01T01:29:29.024181712Z",
       "input": "Dear Mark, we need to make a final decision until Friday, otherwise we will miss the release window. I will send you the informations about both options tomorrow.",
       "language": "en",
       "level": "B2",
@@ -459,7 +463,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-005",
-      "createdAt": "2026-09-01T03:37:57.732083743Z",
+      "createdAt": "2026-09-01T05:29:29.024323891Z",
       "input": "Yesterday I have sent the report to the client, but he didn't answer yet. I'll ping him again tomorrow morning if there is still no reply by then.",
       "language": "en",
       "level": "B2",
@@ -550,7 +554,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-006",
-      "createdAt": "2026-09-01T23:37:57.732215971Z",
+      "createdAt": "2026-09-02T01:29:29.024641109Z",
       "input": "Wir treffen uns um 15 Uhr mit dem ganzen Team und dann machen wir eine Entscheidung über das neue Feature. Bitte bringt eure Notizen von letzter Woche mit.",
       "language": "de",
       "level": "B1",
@@ -620,7 +624,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-007",
-      "createdAt": "2026-09-02T03:37:57.732340163Z",
+      "createdAt": "2026-09-02T05:29:29.024778098Z",
       "input": "Hallo zusammen, ich habe gestern mit der Kunde gesprochen und er hat gesagt, dass er braucht mehr Zeit für die Tests. Ich melde mich morgen nochmal.",
       "language": "de",
       "level": "B1",
@@ -732,7 +736,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-008",
-      "createdAt": "2026-09-02T23:37:57.732466128Z",
+      "createdAt": "2026-09-03T01:29:29.025078162Z",
       "input": "Yesterday I have sent the report to the client, but he didn't answer yet. I'll ping him again tomorrow morning if there is still no reply by then.",
       "language": "en",
       "level": "B2",
@@ -823,7 +827,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-009",
-      "createdAt": "2026-09-03T03:37:57.732596428Z",
+      "createdAt": "2026-09-03T05:29:29.025241188Z",
       "input": "Ich fahre morgen früh mit den Zug nach Berlin und bleibe bis Sonntag. Hast du Lust, am Samstag zusammen essen zu gehen? Ich kenne da ein gutes Restaurant.",
       "language": "de",
       "level": "B1",
@@ -880,7 +884,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-010",
-      "createdAt": "2026-09-03T23:37:57.732726134Z",
+      "createdAt": "2026-09-04T01:29:29.025589416Z",
       "input": "Hallo zusammen, ich habe gestern mit der Kunde gesprochen und er hat gesagt, dass er braucht mehr Zeit für die Tests. Ich melde mich morgen nochmal.",
       "language": "de",
       "level": "B1",
@@ -992,7 +996,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-011",
-      "createdAt": "2026-09-04T03:37:57.732903504Z",
+      "createdAt": "2026-09-04T05:29:29.025800541Z",
       "input": "Dear Mark, we need to make a final decision until Friday, otherwise we will miss the release window. I will send you the informations about both options tomorrow.",
       "language": "en",
       "level": "B2",
@@ -1088,7 +1092,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-012",
-      "createdAt": "2026-09-05T23:37:57.733027891Z",
+      "createdAt": "2026-09-06T01:29:29.025977728Z",
       "input": "Ich fahre morgen früh mit den Zug nach Berlin und bleibe bis Sonntag. Hast du Lust, am Samstag zusammen essen zu gehen? Ich kenne da ein gutes Restaurant.",
       "language": "de",
       "level": "B1",
@@ -1145,7 +1149,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-013",
-      "createdAt": "2026-09-06T03:37:57.733160772Z",
+      "createdAt": "2026-09-06T05:29:29.026196983Z",
       "input": "Wir treffen uns um 15 Uhr mit dem ganzen Team und dann machen wir eine Entscheidung über das neue Feature. Bitte bringt eure Notizen von letzter Woche mit.",
       "language": "de",
       "level": "B1",
@@ -1215,7 +1219,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-014",
-      "createdAt": "2026-09-06T23:37:57.733308032Z",
+      "createdAt": "2026-09-07T01:29:29.026375263Z",
       "input": "Dear Mark, we need to make a final decision until Friday, otherwise we will miss the release window. I will send you the informations about both options tomorrow.",
       "language": "en",
       "level": "B2",
@@ -1311,7 +1315,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-015",
-      "createdAt": "2026-09-07T03:37:57.733496760Z",
+      "createdAt": "2026-09-07T05:29:29.026533414Z",
       "input": "Yesterday I have sent the report to the client, but he didn't answer yet. I'll ping him again tomorrow morning if there is still no reply by then.",
       "language": "en",
       "level": "B2",
@@ -1402,7 +1406,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-016",
-      "createdAt": "2026-09-07T23:37:57.733647965Z",
+      "createdAt": "2026-09-08T01:29:29.026727666Z",
       "input": "Ich habe mit der neuen Kollegin gesprochen, weil sie Fragen zum Projekt hatte. Sie fängt nächste Woche an und braucht noch einen Zugang zum Server.",
       "language": "de",
       "level": "B1",
@@ -1458,7 +1462,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-017",
-      "createdAt": "2026-09-08T03:37:57.733700938Z",
+      "createdAt": "2026-09-08T05:29:29.026810474Z",
       "input": "Hallo zusammen, ich habe gestern mit der Kunde gesprochen und er hat gesagt, dass er braucht mehr Zeit für die Tests. Ich melde mich morgen nochmal.",
       "language": "de",
       "level": "B1",
@@ -1570,7 +1574,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-018",
-      "createdAt": "2026-09-08T23:37:57.733828958Z",
+      "createdAt": "2026-09-09T01:29:29.026952515Z",
       "input": "Yesterday I have sent the report to the client, but he didn't answer yet. I'll ping him again tomorrow morning if there is still no reply by then.",
       "language": "en",
       "level": "B2",
@@ -1661,7 +1665,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-019",
-      "createdAt": "2026-09-09T03:37:57.733959424Z",
+      "createdAt": "2026-09-09T05:29:29.027155649Z",
       "input": "Ich bin morgen nicht da, weil ich mit meiner Schwester nach Hamburg fahre. Bei Fragen schreibt mir einfach, ich schaue ab und zu aufs Handy.",
       "language": "de",
       "level": "B1",
@@ -1717,7 +1721,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-020",
-      "createdAt": "2026-09-09T23:37:57.734010644Z",
+      "createdAt": "2026-09-10T01:29:29.027218654Z",
       "input": "Hallo zusammen, ich habe gestern mit der Kunde gesprochen und er hat gesagt, dass er braucht mehr Zeit für die Tests. Ich melde mich morgen nochmal.",
       "language": "de",
       "level": "B1",
@@ -1829,7 +1833,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-021",
-      "createdAt": "2026-09-10T03:37:57.734137213Z",
+      "createdAt": "2026-09-10T05:29:29.027418421Z",
       "input": "Dear Mark, we need to make a final decision until Friday, otherwise we will miss the release window. I will send you the informations about both options tomorrow.",
       "language": "en",
       "level": "B2",
@@ -1925,7 +1929,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-022",
-      "createdAt": "2026-09-10T23:37:57.734257557Z",
+      "createdAt": "2026-09-11T01:29:29.027630733Z",
       "input": "Ich fahre morgen früh mit den Zug nach Berlin und bleibe bis Sonntag. Hast du Lust, am Samstag zusammen essen zu gehen? Ich kenne da ein gutes Restaurant.",
       "language": "de",
       "level": "B1",
@@ -1982,7 +1986,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-023",
-      "createdAt": "2026-09-11T03:37:57.734386873Z",
+      "createdAt": "2026-09-11T05:29:29.027955396Z",
       "input": "Wir treffen uns um 15 Uhr mit dem ganzen Team und dann machen wir eine Entscheidung über das neue Feature. Bitte bringt eure Notizen von letzter Woche mit.",
       "language": "de",
       "level": "B1",
@@ -2052,7 +2056,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-024",
-      "createdAt": "2026-09-12T23:37:57.734524596Z",
+      "createdAt": "2026-09-13T01:29:29.028166793Z",
       "input": "Dear Mark, we need to make a final decision until Friday, otherwise we will miss the release window. I will send you the informations about both options tomorrow.",
       "language": "en",
       "level": "B2",
@@ -2148,7 +2152,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-025",
-      "createdAt": "2026-09-13T03:37:57.734645456Z",
+      "createdAt": "2026-09-13T05:29:29.028337805Z",
       "input": "Yesterday I have sent the report to the client, but he didn't answer yet. I'll ping him again tomorrow morning if there is still no reply by then.",
       "language": "en",
       "level": "B2",
@@ -2239,7 +2243,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-026",
-      "createdAt": "2026-09-13T23:37:57.734779565Z",
+      "createdAt": "2026-09-14T01:29:29.028493662Z",
       "input": "Wir treffen uns um 15 Uhr mit dem ganzen Team und dann machen wir eine Entscheidung über das neue Feature. Bitte bringt eure Notizen von letzter Woche mit.",
       "language": "de",
       "level": "B1",
@@ -2309,7 +2313,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-027",
-      "createdAt": "2026-09-14T03:37:57.734901828Z",
+      "createdAt": "2026-09-14T05:29:29.028635703Z",
       "input": "Hallo zusammen, ich habe gestern mit der Kunde gesprochen und er hat gesagt, dass er braucht mehr Zeit für die Tests. Ich melde mich morgen nochmal.",
       "language": "de",
       "level": "B1",
@@ -2421,7 +2425,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-028",
-      "createdAt": "2026-09-14T23:37:57.735029469Z",
+      "createdAt": "2026-09-15T01:29:29.028789649Z",
       "input": "Yesterday I have sent the report to the client, but he didn't answer yet. I'll ping him again tomorrow morning if there is still no reply by then.",
       "language": "en",
       "level": "B2",
@@ -2512,7 +2516,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-029",
-      "createdAt": "2026-09-15T03:37:57.735158366Z",
+      "createdAt": "2026-09-15T05:29:29.028942522Z",
       "input": "Ich fahre morgen früh mit den Zug nach Berlin und bleibe bis Sonntag. Hast du Lust, am Samstag zusammen essen zu gehen? Ich kenne da ein gutes Restaurant.",
       "language": "de",
       "level": "B1",
@@ -2569,7 +2573,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-030",
-      "createdAt": "2026-09-15T23:37:57.735288627Z",
+      "createdAt": "2026-09-16T01:29:29.029088069Z",
       "input": "Hallo zusammen, ich habe gestern mit der Kunde gesprochen und er hat gesagt, dass er braucht mehr Zeit für die Tests. Ich melde mich morgen nochmal.",
       "language": "de",
       "level": "B1",
@@ -2681,7 +2685,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-031",
-      "createdAt": "2026-09-16T03:37:57.735411991Z",
+      "createdAt": "2026-09-16T05:29:29.029219848Z",
       "input": "Dear Mark, we need to make a final decision until Friday, otherwise we will miss the release window. I will send you the informations about both options tomorrow.",
       "language": "en",
       "level": "B2",
@@ -2777,7 +2781,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-032",
-      "createdAt": "2026-09-16T23:37:57.735565465Z",
+      "createdAt": "2026-09-17T01:29:29.029374641Z",
       "input": "Yesterday we had a long call with the design team and agreed on the new layout. I have to make a decision about the colors by tomorrow, any opinions?",
       "language": "en",
       "level": "B2",
@@ -2820,7 +2824,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-033",
-      "createdAt": "2026-09-17T03:37:57.735622871Z",
+      "createdAt": "2026-09-17T05:29:29.029457203Z",
       "input": "Wir treffen uns um 15 Uhr mit dem ganzen Team und dann machen wir eine Entscheidung über das neue Feature. Bitte bringt eure Notizen von letzter Woche mit.",
       "language": "de",
       "level": "B1",
@@ -2890,7 +2894,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-034",
-      "createdAt": "2026-09-17T23:37:57.735771104Z",
+      "createdAt": "2026-09-18T01:29:29.029620780Z",
       "input": "Dear Mark, we need to make a final decision until Friday, otherwise we will miss the release window. I will send you the informations about both options tomorrow.",
       "language": "en",
       "level": "B2",
@@ -2986,7 +2990,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-035",
-      "createdAt": "2026-09-18T03:37:57.735898911Z",
+      "createdAt": "2026-09-18T05:29:29.029755544Z",
       "input": "Quick update: I sent the slides to the client this morning and they replied within an hour. We need their final feedback by Thursday so we can ship on Monday.",
       "language": "en",
       "level": "B2",
@@ -3042,7 +3046,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-036",
-      "createdAt": "2026-09-19T23:37:57.735951221Z",
+      "createdAt": "2026-09-20T01:29:29.029808661Z",
       "input": "Wir treffen uns um 15 Uhr mit dem ganzen Team und dann machen wir eine Entscheidung über das neue Feature. Bitte bringt eure Notizen von letzter Woche mit.",
       "language": "de",
       "level": "B1",
@@ -3112,7 +3116,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-037",
-      "createdAt": "2026-09-20T03:37:57.736075433Z",
+      "createdAt": "2026-09-20T05:29:29.029937949Z",
       "input": "Hallo zusammen, ich habe gestern mit der Kunde gesprochen und er hat gesagt, dass er braucht mehr Zeit für die Tests. Ich melde mich morgen nochmal.",
       "language": "de",
       "level": "B1",
@@ -3224,7 +3228,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-038",
-      "createdAt": "2026-09-20T23:37:57.736200005Z",
+      "createdAt": "2026-09-21T01:29:29.030163556Z",
       "input": "Yesterday I have sent the report to the client, but he didn't answer yet. I'll ping him again tomorrow morning if there is still no reply by then.",
       "language": "en",
       "level": "B2",
@@ -3315,7 +3319,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-039",
-      "createdAt": "2026-09-21T03:37:57.736328220Z",
+      "createdAt": "2026-09-21T05:29:29.030329507Z",
       "input": "Ich fahre morgen früh mit den Zug nach Berlin und bleibe bis Sonntag. Hast du Lust, am Samstag zusammen essen zu gehen? Ich kenne da ein gutes Restaurant.",
       "language": "de",
       "level": "B1",
@@ -3372,7 +3376,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-040",
-      "createdAt": "2026-09-21T23:37:57.736458549Z",
+      "createdAt": "2026-09-22T01:29:29.030513321Z",
       "input": "Hallo zusammen, ich habe gestern mit der Kunde gesprochen und er hat gesagt, dass er braucht mehr Zeit für die Tests. Ich melde mich morgen nochmal.",
       "language": "de",
       "level": "B1",
@@ -3484,7 +3488,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-041",
-      "createdAt": "2026-09-22T03:37:57.736579361Z",
+      "createdAt": "2026-09-22T05:29:29.030689306Z",
       "input": "Dear Mark, we need to make a final decision until Friday, otherwise we will miss the release window. I will send you the informations about both options tomorrow.",
       "language": "en",
       "level": "B2",
@@ -3580,7 +3584,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-042",
-      "createdAt": "2026-09-22T23:37:57.736697747Z",
+      "createdAt": "2026-09-23T01:29:29.030821853Z",
       "input": "Ich fahre morgen früh mit den Zug nach Berlin und bleibe bis Sonntag. Hast du Lust, am Samstag zusammen essen zu gehen? Ich kenne da ein gutes Restaurant.",
       "language": "de",
       "level": "B1",
@@ -3637,7 +3641,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-043",
-      "createdAt": "2026-09-23T03:37:57.736826537Z",
+      "createdAt": "2026-09-23T05:29:29.030958114Z",
       "input": "Wir treffen uns um 15 Uhr mit dem ganzen Team und dann machen wir eine Entscheidung über das neue Feature. Bitte bringt eure Notizen von letzter Woche mit.",
       "language": "de",
       "level": "B1",
@@ -3707,7 +3711,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-044",
-      "createdAt": "2026-09-23T23:37:57.736946365Z",
+      "createdAt": "2026-09-24T01:29:29.031130081Z",
       "input": "Dear Mark, we need to make a final decision until Friday, otherwise we will miss the release window. I will send you the informations about both options tomorrow.",
       "language": "en",
       "level": "B2",
@@ -3803,7 +3807,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-045",
-      "createdAt": "2026-09-24T03:37:57.737067879Z",
+      "createdAt": "2026-09-24T05:29:29.031281112Z",
       "input": "Yesterday I have sent the report to the client, but he didn't answer yet. I'll ping him again tomorrow morning if there is still no reply by then.",
       "language": "en",
       "level": "B2",
@@ -3894,7 +3898,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-046",
-      "createdAt": "2026-09-24T23:37:57.737196493Z",
+      "createdAt": "2026-09-25T01:29:29.031478358Z",
       "input": "Wir treffen uns um 15 Uhr mit dem ganzen Team und dann machen wir eine Entscheidung über das neue Feature. Bitte bringt eure Notizen von letzter Woche mit.",
       "language": "de",
       "level": "B1",
@@ -3964,7 +3968,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-047",
-      "createdAt": "2026-09-25T03:37:57.737397983Z",
+      "createdAt": "2026-09-25T05:29:29.031659238Z",
       "input": "Hallo zusammen, ich habe gestern mit der Kunde gesprochen und er hat gesagt, dass er braucht mehr Zeit für die Tests. Ich melde mich morgen nochmal.",
       "language": "de",
       "level": "B1",
@@ -4076,7 +4080,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-048",
-      "createdAt": "2026-09-26T23:37:57.737557243Z",
+      "createdAt": "2026-09-27T01:29:29.031803543Z",
       "input": "Quick update: I sent the slides to the client this morning and they replied within an hour. We need their final feedback by Thursday so we can ship on Monday.",
       "language": "en",
       "level": "B2",
@@ -4132,7 +4136,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-049",
-      "createdAt": "2026-09-27T03:37:57.737608882Z",
+      "createdAt": "2026-09-27T05:29:29.031854662Z",
       "input": "Can you please explain me how the deploy pipeline works for the staging environment? I tried to follow the README, but the second step fails with a timeout.",
       "language": "en",
       "level": "B2",
@@ -4198,7 +4202,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-050",
-      "createdAt": "2026-09-27T23:37:57.737733542Z",
+      "createdAt": "2026-09-28T01:29:29.031983714Z",
       "input": "Dear Anna, thank you for your quick reply. I have attached the updated contract, and I would appreciate it if you could sign it by the end of the week.",
       "language": "en",
       "level": "B2",
@@ -4248,7 +4252,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-051",
-      "createdAt": "2026-09-28T03:37:57.737781956Z",
+      "createdAt": "2026-09-28T05:29:29.032033207Z",
       "input": "Quick update: I sent the slides to the client this morning and they replied within an hour. We need their final feedback by Thursday so we can ship on Monday.",
       "language": "en",
       "level": "B2",
@@ -4304,7 +4308,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-052",
-      "createdAt": "2026-09-28T23:37:57.737829689Z",
+      "createdAt": "2026-09-29T01:29:29.032081913Z",
       "input": "Kurzes Update: Wir müssen bald eine Entscheidung treffen, weil der Kunde nächste Woche Bescheid haben möchte. Ich schreibe heute Abend mit dem Team eine Zusammenfassung.",
       "language": "de",
       "level": "B1",
@@ -4347,7 +4351,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-053",
-      "createdAt": "2026-09-29T03:37:57.737876301Z",
+      "createdAt": "2026-09-29T05:29:29.032139167Z",
       "input": "Dear Anna, thank you for your quick reply. I have attached the updated contract, and I would appreciate it if you could sign it by the end of the week.",
       "language": "en",
       "level": "B2",
@@ -4397,7 +4401,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-054",
-      "createdAt": "2026-09-29T23:37:57.737926439Z",
+      "createdAt": "2026-09-30T01:29:29.032208208Z",
       "input": "Ich habe mit der neuen Kollegin gesprochen, weil sie Fragen zum Projekt hatte. Sie fängt nächste Woche an und braucht noch einen Zugang zum Server.",
       "language": "de",
       "level": "B1",
@@ -4453,7 +4457,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-055",
-      "createdAt": "2026-09-30T03:37:57.737969905Z",
+      "createdAt": "2026-09-30T05:29:29.032277643Z",
       "input": "Kurzes Update: Wir müssen bald eine Entscheidung treffen, weil der Kunde nächste Woche Bescheid haben möchte. Ich schreibe heute Abend mit dem Team eine Zusammenfassung.",
       "language": "de",
       "level": "B1",
@@ -4496,7 +4500,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-056",
-      "createdAt": "2026-09-30T23:37:57.738025041Z",
+      "createdAt": "2026-10-01T01:29:29.032346782Z",
       "input": "Thanks for the review! I fixed the race condition you pointed out and added a test for it. Could you take another look when you have a moment?",
       "language": "en",
       "level": "B2",
@@ -4539,7 +4543,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-057",
-      "createdAt": "2026-10-01T03:37:57.738092772Z",
+      "createdAt": "2026-10-01T05:29:29.032394710Z",
       "input": "Ich habe mit der neuen Kollegin gesprochen, weil sie Fragen zum Projekt hatte. Sie fängt nächste Woche an und braucht noch einen Zugang zum Server.",
       "language": "de",
       "level": "B1",
@@ -4595,7 +4599,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-058",
-      "createdAt": "2026-10-01T23:37:57.738157932Z",
+      "createdAt": "2026-10-02T01:29:29.032442480Z",
       "input": "Last night I tried the new build and it crashed twice when I opened the settings. I'll file an issue with the logs, it happens every time on my machine.",
       "language": "en",
       "level": "B2",
@@ -4632,7 +4636,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-059",
-      "createdAt": "2026-10-02T03:37:57.738216789Z",
+      "createdAt": "2026-10-02T05:29:29.032492693Z",
       "input": "Thanks for the review! I fixed the race condition you pointed out and added a test for it. Could you take another look when you have a moment?",
       "language": "en",
       "level": "B2",
@@ -4675,7 +4679,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-060",
-      "createdAt": "2026-10-03T23:37:57.738284715Z",
+      "createdAt": "2026-10-04T01:29:29.032540926Z",
       "input": "Ich bin morgen nicht da, weil ich mit meiner Schwester nach Hamburg fahre. Bei Fragen schreibt mir einfach, ich schaue ab und zu aufs Handy.",
       "language": "de",
       "level": "B1",
@@ -4731,7 +4735,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-061",
-      "createdAt": "2026-10-04T03:37:57.738341673Z",
+      "createdAt": "2026-10-04T05:29:29.032582620Z",
       "input": "Last night I tried the new build and it crashed twice when I opened the settings. I'll file an issue with the logs, it happens every time on my machine.",
       "language": "en",
       "level": "B2",
@@ -4768,7 +4772,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-062",
-      "createdAt": "2026-10-04T23:37:57.738413710Z",
+      "createdAt": "2026-10-05T01:29:29.032635541Z",
       "input": "Yesterday I have sent the report to the client, but he didn't answer yet. I'll ping him again tomorrow morning if there is still no reply by then.",
       "language": "en",
       "level": "B2",
@@ -4859,7 +4863,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-063",
-      "createdAt": "2026-10-05T03:37:57.738625350Z",
+      "createdAt": "2026-10-05T05:29:29.032791142Z",
       "input": "Ich bin morgen nicht da, weil ich mit meiner Schwester nach Hamburg fahre. Bei Fragen schreibt mir einfach, ich schaue ab und zu aufs Handy.",
       "language": "de",
       "level": "B1",
@@ -4915,7 +4919,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-064",
-      "createdAt": "2026-10-05T23:37:57.738690013Z",
+      "createdAt": "2026-10-06T01:29:29.032834481Z",
       "input": "Yesterday we had a long call with the design team and agreed on the new layout. I have to make a decision about the colors by tomorrow, any opinions?",
       "language": "en",
       "level": "B2",
@@ -4958,7 +4962,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-065",
-      "createdAt": "2026-10-06T03:37:57.738785176Z",
+      "createdAt": "2026-10-06T05:29:29.032897525Z",
       "input": "Das Meeting war gut, aber ich denke dass wir mehr Zeit für die Planung brauchen. Kannst du mir dein Hilfe bei der Präsentation geben? Danke dir!",
       "language": "de",
       "level": "B1",
@@ -5050,7 +5054,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-066",
-      "createdAt": "2026-10-06T23:37:57.738957168Z",
+      "createdAt": "2026-10-07T01:29:29.033038128Z",
       "input": "Ich habe gerade mit dem Kunden telefoniert und er hat gesagt, dass alles passt. Wir können also wie geplant am Montag mit dem Rollout starten.",
       "language": "de",
       "level": "B1",
@@ -5106,7 +5110,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-067",
-      "createdAt": "2026-10-07T03:37:57.739001482Z",
+      "createdAt": "2026-10-07T05:29:29.033082441Z",
       "input": "Yesterday we had a long call with the design team and agreed on the new layout. I have to make a decision about the colors by tomorrow, any opinions?",
       "language": "en",
       "level": "B2",
@@ -5149,7 +5153,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-068",
-      "createdAt": "2026-10-07T23:37:57.739047646Z",
+      "createdAt": "2026-10-08T01:29:29.033128804Z",
       "input": "Danke für das Feedback! Ich glaube, dass wir die Seite mit den neuen Farben deutlich übersichtlicher machen. Kannst du dir den Entwurf bis Freitag anschauen?",
       "language": "de",
       "level": "B1",
@@ -5192,7 +5196,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-069",
-      "createdAt": "2026-10-08T03:37:57.739098875Z",
+      "createdAt": "2026-10-08T05:29:29.033182256Z",
       "input": "Ich habe gerade mit dem Kunden telefoniert und er hat gesagt, dass alles passt. Wir können also wie geplant am Montag mit dem Rollout starten.",
       "language": "de",
       "level": "B1",
@@ -5248,7 +5252,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-070",
-      "createdAt": "2026-10-08T23:37:57.739142925Z",
+      "createdAt": "2026-10-09T01:29:29.033236260Z",
       "input": "Quick update: I sent the slides to the client this morning and they replied within an hour. We need their final feedback by Thursday so we can ship on Monday.",
       "language": "en",
       "level": "B2",
@@ -5304,7 +5308,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-071",
-      "createdAt": "2026-10-09T03:37:57.739191983Z",
+      "createdAt": "2026-10-09T05:29:29.033284907Z",
       "input": "Danke für das Feedback! Ich glaube, dass wir die Seite mit den neuen Farben deutlich übersichtlicher machen. Kannst du dir den Entwurf bis Freitag anschauen?",
       "language": "de",
       "level": "B1",
@@ -5347,7 +5351,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-072",
-      "createdAt": "2026-10-10T23:37:57.739236783Z",
+      "createdAt": "2026-10-11T01:29:29.033330442Z",
       "input": "Dear Anna, thank you for your quick reply. I have attached the updated contract, and I would appreciate it if you could sign it by the end of the week.",
       "language": "en",
       "level": "B2",
@@ -5397,7 +5401,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-073",
-      "createdAt": "2026-10-11T03:37:57.739284993Z",
+      "createdAt": "2026-10-11T05:29:29.033407252Z",
       "input": "Quick update: I sent the slides to the client this morning and they replied within an hour. We need their final feedback by Thursday so we can ship on Monday.",
       "language": "en",
       "level": "B2",
@@ -5453,7 +5457,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-074",
-      "createdAt": "2026-10-11T23:37:57.739348487Z",
+      "createdAt": "2026-10-12T01:29:29.033459789Z",
       "input": "Kurzes Update: Wir müssen bald eine Entscheidung treffen, weil der Kunde nächste Woche Bescheid haben möchte. Ich schreibe heute Abend mit dem Team eine Zusammenfassung.",
       "language": "de",
       "level": "B1",
@@ -5496,7 +5500,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-075",
-      "createdAt": "2026-10-12T03:37:57.739403720Z",
+      "createdAt": "2026-10-12T05:29:29.033523542Z",
       "input": "Dear Anna, thank you for your quick reply. I have attached the updated contract, and I would appreciate it if you could sign it by the end of the week.",
       "language": "en",
       "level": "B2",
@@ -5546,7 +5550,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-076",
-      "createdAt": "2026-10-12T23:37:57.739452875Z",
+      "createdAt": "2026-10-13T01:29:29.033583493Z",
       "input": "Ich habe mit der neuen Kollegin gesprochen, weil sie Fragen zum Projekt hatte. Sie fängt nächste Woche an und braucht noch einen Zugang zum Server.",
       "language": "de",
       "level": "B1",
@@ -5602,7 +5606,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-077",
-      "createdAt": "2026-10-13T03:37:57.739499779Z",
+      "createdAt": "2026-10-13T05:29:29.033636719Z",
       "input": "Kurzes Update: Wir müssen bald eine Entscheidung treffen, weil der Kunde nächste Woche Bescheid haben möchte. Ich schreibe heute Abend mit dem Team eine Zusammenfassung.",
       "language": "de",
       "level": "B1",
@@ -5645,7 +5649,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-078",
-      "createdAt": "2026-10-13T23:37:57.739546625Z",
+      "createdAt": "2026-10-14T01:29:29.033689472Z",
       "input": "Ich fahre morgen früh mit den Zug nach Berlin und bleibe bis Sonntag. Hast du Lust, am Samstag zusammen essen zu gehen? Ich kenne da ein gutes Restaurant.",
       "language": "de",
       "level": "B1",
@@ -5702,7 +5706,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-079",
-      "createdAt": "2026-10-14T03:37:57.739687865Z",
+      "createdAt": "2026-10-14T05:29:29.033866945Z",
       "input": "Ich habe mit der neuen Kollegin gesprochen, weil sie Fragen zum Projekt hatte. Sie fängt nächste Woche an und braucht noch einen Zugang zum Server.",
       "language": "de",
       "level": "B1",
@@ -5758,7 +5762,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-080",
-      "createdAt": "2026-10-14T23:37:57.739729937Z",
+      "createdAt": "2026-10-15T01:29:29.033912637Z",
       "input": "Last night I tried the new build and it crashed twice when I opened the settings. I'll file an issue with the logs, it happens every time on my machine.",
       "language": "en",
       "level": "B2",
@@ -5795,7 +5799,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-081",
-      "createdAt": "2026-10-15T03:37:57.739779842Z",
+      "createdAt": "2026-10-15T05:29:29.033970275Z",
       "input": "Sehr geehrte Frau Müller, vielen Dank für Ihre schnelle Antwort. Kannst du mir bitte die Rechnung noch einmal als PDF schicken? Mit freundlichen Grüßen",
       "language": "de",
       "level": "B1",
@@ -5877,7 +5881,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-082",
-      "createdAt": "2026-10-15T23:37:57.739924433Z",
+      "createdAt": "2026-10-16T01:29:29.034157220Z",
       "input": "Ich bin morgen nicht da, weil ich mit meiner Schwester nach Hamburg fahre. Bei Fragen schreibt mir einfach, ich schaue ab und zu aufs Handy.",
       "language": "de",
       "level": "B1",
@@ -5933,7 +5937,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-083",
-      "createdAt": "2026-10-16T03:37:57.739969087Z",
+      "createdAt": "2026-10-16T05:29:29.034221485Z",
       "input": "Last night I tried the new build and it crashed twice when I opened the settings. I'll file an issue with the logs, it happens every time on my machine.",
       "language": "en",
       "level": "B2",
@@ -5970,7 +5974,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-084",
-      "createdAt": "2026-10-17T23:37:57.740014608Z",
+      "createdAt": "2026-10-18T01:29:29.034269314Z",
       "input": "Heute Morgen hat der Build wieder nicht funktioniert, weil ein Test kaputt war. Ich kümmere mich gleich darum und sage euch Bescheid, wenn es läuft.",
       "language": "de",
       "level": "B1",
@@ -6007,7 +6011,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-085",
-      "createdAt": "2026-10-18T03:37:57.740062175Z",
+      "createdAt": "2026-10-18T05:29:29.034326066Z",
       "input": "Ich bin morgen nicht da, weil ich mit meiner Schwester nach Hamburg fahre. Bei Fragen schreibt mir einfach, ich schaue ab und zu aufs Handy.",
       "language": "de",
       "level": "B1",
@@ -6063,7 +6067,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-086",
-      "createdAt": "2026-10-18T23:37:57.740104540Z",
+      "createdAt": "2026-10-19T01:29:29.034369227Z",
       "input": "Yesterday we had a long call with the design team and agreed on the new layout. I have to make a decision about the colors by tomorrow, any opinions?",
       "language": "en",
       "level": "B2",
@@ -6106,7 +6110,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-087",
-      "createdAt": "2026-10-19T03:37:57.740150529Z",
+      "createdAt": "2026-10-19T05:29:29.034432311Z",
       "input": "Heute Morgen hat der Build wieder nicht funktioniert, weil ein Test kaputt war. Ich kümmere mich gleich darum und sage euch Bescheid, wenn es läuft.",
       "language": "de",
       "level": "B1",
@@ -6143,7 +6147,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-088",
-      "createdAt": "2026-10-19T23:37:57.740195329Z",
+      "createdAt": "2026-10-20T01:29:29.034479431Z",
       "input": "Ich habe gerade mit dem Kunden telefoniert und er hat gesagt, dass alles passt. Wir können also wie geplant am Montag mit dem Rollout starten.",
       "language": "de",
       "level": "B1",
@@ -6199,7 +6203,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-089",
-      "createdAt": "2026-10-20T03:37:57.740238824Z",
+      "createdAt": "2026-10-20T05:29:29.034532706Z",
       "input": "Yesterday we had a long call with the design team and agreed on the new layout. I have to make a decision about the colors by tomorrow, any opinions?",
       "language": "en",
       "level": "B2",
@@ -6242,7 +6246,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-090",
-      "createdAt": "2026-10-20T23:37:57.740283838Z",
+      "createdAt": "2026-10-21T01:29:29.034586484Z",
       "input": "Danke für das Feedback! Ich glaube, dass wir die Seite mit den neuen Farben deutlich übersichtlicher machen. Kannst du dir den Entwurf bis Freitag anschauen?",
       "language": "de",
       "level": "B1",
@@ -6285,7 +6289,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-091",
-      "createdAt": "2026-10-21T03:37:57.740331717Z",
+      "createdAt": "2026-10-21T05:29:29.034677061Z",
       "input": "Ich habe gerade mit dem Kunden telefoniert und er hat gesagt, dass alles passt. Wir können also wie geplant am Montag mit dem Rollout starten.",
       "language": "de",
       "level": "B1",
@@ -6341,7 +6345,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-092",
-      "createdAt": "2026-10-21T23:37:57.740375056Z",
+      "createdAt": "2026-10-22T01:29:29.034742252Z",
       "input": "Quick update: I sent the slides to the client this morning and they replied within an hour. We need their final feedback by Thursday so we can ship on Monday.",
       "language": "en",
       "level": "B2",
@@ -6397,7 +6401,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-093",
-      "createdAt": "2026-10-22T03:37:57.740425224Z",
+      "createdAt": "2026-10-22T05:29:29.034801544Z",
       "input": "Danke für das Feedback! Ich glaube, dass wir die Seite mit den neuen Farben deutlich übersichtlicher machen. Kannst du dir den Entwurf bis Freitag anschauen?",
       "language": "de",
       "level": "B1",
@@ -6440,7 +6444,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-094",
-      "createdAt": "2026-10-22T23:37:57.740472508Z",
+      "createdAt": "2026-10-23T01:29:29.034858522Z",
       "input": "Wir treffen uns um 15 Uhr mit dem ganzen Team und dann machen wir eine Entscheidung über das neue Feature. Bitte bringt eure Notizen von letzter Woche mit.",
       "language": "de",
       "level": "B1",
@@ -6510,7 +6514,7 @@
     {
       "schemaVersion": 1,
       "id": "demo-095",
-      "createdAt": "2026-10-23T03:37:57.740599827Z",
+      "createdAt": "2026-10-23T05:29:29.035002552Z",
       "input": "Quick update: I sent the slides to the client this morning and they replied within an hour. We need their final feedback by Thursday so we can ship on Monday.",
       "language": "en",
       "level": "B2",
@@ -6566,7 +6570,7 @@
   ],
   "stats": {
     "schemaVersion": 1,
-    "generatedAt": "2026-10-23T08:37:57.740703037Z",
+    "generatedAt": "2026-10-23T10:29:29.035146306Z",
     "entryCount": 96,
     "dataVersion": 0,
     "thresholds": {
@@ -6606,8 +6610,8 @@
           "words": 1241,
           "ratedWords": 1241,
           "activeWeeks12": 9,
-          "firstAt": "2026-08-30T03:37:57.731607188Z",
-          "lastAt": "2026-10-23T03:37:57.740599827Z"
+          "firstAt": "2026-08-30T05:29:29.023529629Z",
+          "lastAt": "2026-10-23T05:29:29.035002552Z"
         },
         "errorRate": {
           "recent": 0.46,
@@ -6758,9 +6762,9 @@
             "category": "grammar.verb_tense",
             "kind": "rule",
             "state": "recurring",
-            "since": "2026-09-02T23:37:57.732466128Z",
-            "firstSeen": "2026-09-01T03:37:57.732083743Z",
-            "lastErrorAt": "2026-10-04T23:37:57.738413710Z",
+            "since": "2026-09-03T01:29:29.025078162Z",
+            "firstSeen": "2026-09-01T05:29:29.024323891Z",
+            "lastErrorAt": "2026-10-05T01:29:29.032635541Z",
             "textsWithError": 9,
             "daysWithError": 9,
             "daysWithError30d": 2,
@@ -6770,7 +6774,7 @@
             "examples": [
               {
                 "entryId": "demo-062",
-                "at": "2026-10-04T23:37:57.738413710Z",
+                "at": "2026-10-05T01:29:29.032635541Z",
                 "original": "didn't answer yet",
                 "correction": "hasn't answered yet",
                 "sentence": "Yesterday I have sent the report to the client, but he didn't answer yet.",
@@ -6778,7 +6782,7 @@
               },
               {
                 "entryId": "demo-045",
-                "at": "2026-09-24T03:37:57.737067879Z",
+                "at": "2026-09-24T05:29:29.031281112Z",
                 "original": "didn't answer yet",
                 "correction": "hasn't answered yet",
                 "sentence": "Yesterday I have sent the report to the client, but he didn't answer yet.",
@@ -6786,7 +6790,7 @@
               },
               {
                 "entryId": "demo-038",
-                "at": "2026-09-20T23:37:57.736200005Z",
+                "at": "2026-09-21T01:29:29.030163556Z",
                 "original": "didn't answer yet",
                 "correction": "hasn't answered yet",
                 "sentence": "Yesterday I have sent the report to the client, but he didn't answer yet.",
@@ -6795,7 +6799,7 @@
             ],
             "reminder": {
               "step": 0,
-              "nextDue": "2026-10-05T23:37:57.738413710Z",
+              "nextDue": "2026-10-06T01:29:29.032635541Z",
               "due": true
             },
             "onWatchList": true,
@@ -6808,9 +6812,9 @@
             "category": "grammar.preposition",
             "kind": "item",
             "state": "recurring",
-            "since": "2026-08-31T23:37:57.731959453Z",
-            "firstSeen": "2026-08-30T03:37:57.731607188Z",
-            "lastErrorAt": "2026-09-23T23:37:57.736946365Z",
+            "since": "2026-09-01T01:29:29.024181712Z",
+            "firstSeen": "2026-08-30T05:29:29.023529629Z",
+            "lastErrorAt": "2026-09-24T01:29:29.031130081Z",
             "textsWithError": 10,
             "daysWithError": 10,
             "daysWithError30d": 1,
@@ -6820,7 +6824,7 @@
             "examples": [
               {
                 "entryId": "demo-044",
-                "at": "2026-09-23T23:37:57.736946365Z",
+                "at": "2026-09-24T01:29:29.031130081Z",
                 "original": "until Friday",
                 "correction": "by Friday",
                 "sentence": "Dear Mark, we need to make a final decision until Friday, otherwise we will miss the release window.",
@@ -6828,7 +6832,7 @@
               },
               {
                 "entryId": "demo-041",
-                "at": "2026-09-22T03:37:57.736579361Z",
+                "at": "2026-09-22T05:29:29.030689306Z",
                 "original": "until Friday",
                 "correction": "by Friday",
                 "sentence": "Dear Mark, we need to make a final decision until Friday, otherwise we will miss the release window.",
@@ -6836,7 +6840,7 @@
               },
               {
                 "entryId": "demo-034",
-                "at": "2026-09-17T23:37:57.735771104Z",
+                "at": "2026-09-18T01:29:29.029620780Z",
                 "original": "until Friday",
                 "correction": "by Friday",
                 "sentence": "Dear Mark, we need to make a final decision until Friday, otherwise we will miss the release window.",
@@ -6845,7 +6849,7 @@
             ],
             "reminder": {
               "step": 5,
-              "nextDue": "2026-12-22T03:37:57.740599827Z",
+              "nextDue": "2026-12-22T05:29:29.035002552Z",
               "due": false
             },
             "onWatchList": true,
@@ -6858,9 +6862,9 @@
             "category": "grammar.noun_number",
             "kind": "rule",
             "state": "recurring",
-            "since": "2026-08-31T23:37:57.731959453Z",
-            "firstSeen": "2026-08-30T03:37:57.731607188Z",
-            "lastErrorAt": "2026-09-23T23:37:57.736946365Z",
+            "since": "2026-09-01T01:29:29.024181712Z",
+            "firstSeen": "2026-08-30T05:29:29.023529629Z",
+            "lastErrorAt": "2026-09-24T01:29:29.031130081Z",
             "textsWithError": 10,
             "daysWithError": 10,
             "daysWithError30d": 1,
@@ -6870,7 +6874,7 @@
             "examples": [
               {
                 "entryId": "demo-044",
-                "at": "2026-09-23T23:37:57.736946365Z",
+                "at": "2026-09-24T01:29:29.031130081Z",
                 "original": "informations",
                 "correction": "information",
                 "sentence": "I will send you the informations about both options tomorrow.",
@@ -6878,7 +6882,7 @@
               },
               {
                 "entryId": "demo-041",
-                "at": "2026-09-22T03:37:57.736579361Z",
+                "at": "2026-09-22T05:29:29.030689306Z",
                 "original": "informations",
                 "correction": "information",
                 "sentence": "I will send you the informations about both options tomorrow.",
@@ -6886,7 +6890,7 @@
               },
               {
                 "entryId": "demo-034",
-                "at": "2026-09-17T23:37:57.735771104Z",
+                "at": "2026-09-18T01:29:29.029620780Z",
                 "original": "informations",
                 "correction": "information",
                 "sentence": "I will send you the informations about both options tomorrow.",
@@ -6895,7 +6899,7 @@
             ],
             "reminder": {
               "step": 0,
-              "nextDue": "2026-09-24T23:37:57.736946365Z",
+              "nextDue": "2026-09-25T01:29:29.031130081Z",
               "due": true
             },
             "onWatchList": true,
@@ -6908,9 +6912,9 @@
             "category": "grammar.preposition",
             "kind": "item",
             "state": "new",
-            "since": "2026-09-27T03:37:57.737608882Z",
-            "firstSeen": "2026-09-27T03:37:57.737608882Z",
-            "lastErrorAt": "2026-09-27T03:37:57.737608882Z",
+            "since": "2026-09-27T05:29:29.031854662Z",
+            "firstSeen": "2026-09-27T05:29:29.031854662Z",
+            "lastErrorAt": "2026-09-27T05:29:29.031854662Z",
             "textsWithError": 1,
             "daysWithError": 1,
             "daysWithError30d": 1,
@@ -6920,7 +6924,7 @@
             "examples": [
               {
                 "entryId": "demo-049",
-                "at": "2026-09-27T03:37:57.737608882Z",
+                "at": "2026-09-27T05:29:29.031854662Z",
                 "original": "explain me",
                 "correction": "explain to me",
                 "sentence": "Can you please explain me how the deploy pipeline works for the staging environment?",
@@ -6938,9 +6942,9 @@
             "category": "grammar.verb_tense",
             "kind": "rule",
             "state": "mastered",
-            "since": "2026-10-18T23:37:57.740104540Z",
-            "firstSeen": "2026-09-01T03:37:57.732083743Z",
-            "lastErrorAt": "2026-10-04T23:37:57.738413710Z",
+            "since": "2026-10-19T01:29:29.034369227Z",
+            "firstSeen": "2026-09-01T05:29:29.024323891Z",
+            "lastErrorAt": "2026-10-05T01:29:29.032635541Z",
             "textsWithError": 9,
             "daysWithError": 9,
             "daysWithError30d": 2,
@@ -6950,7 +6954,7 @@
             "examples": [
               {
                 "entryId": "demo-062",
-                "at": "2026-10-04T23:37:57.738413710Z",
+                "at": "2026-10-05T01:29:29.032635541Z",
                 "original": "I have sent",
                 "correction": "I sent",
                 "sentence": "Yesterday I have sent the report to the client, but he didn't answer yet.",
@@ -6958,7 +6962,7 @@
               },
               {
                 "entryId": "demo-045",
-                "at": "2026-09-24T03:37:57.737067879Z",
+                "at": "2026-09-24T05:29:29.031281112Z",
                 "original": "I have sent",
                 "correction": "I sent",
                 "sentence": "Yesterday I have sent the report to the client, but he didn't answer yet.",
@@ -6966,7 +6970,7 @@
               },
               {
                 "entryId": "demo-038",
-                "at": "2026-09-20T23:37:57.736200005Z",
+                "at": "2026-09-21T01:29:29.030163556Z",
                 "original": "I have sent",
                 "correction": "I sent",
                 "sentence": "Yesterday I have sent the report to the client, but he didn't answer yet.",
@@ -6988,7 +6992,7 @@
           {
             "key": "en:grammar.verb_tense:past-simple-for-finished-past",
             "label": "past simple for finished past",
-            "masteredAt": "2026-10-18T23:37:57.740104540Z"
+            "masteredAt": "2026-10-19T01:29:29.034369227Z"
           }
         ],
         "suggestions": {
@@ -7021,8 +7025,8 @@
           "words": 1385,
           "ratedWords": 1385,
           "activeWeeks12": 9,
-          "firstAt": "2026-08-29T23:37:57.731484320Z",
-          "lastAt": "2026-10-22T23:37:57.740472508Z"
+          "firstAt": "2026-08-30T01:29:29.023261432Z",
+          "lastAt": "2026-10-23T01:29:29.034858522Z"
         },
         "errorRate": {
           "recent": 1.13,
@@ -7272,9 +7276,9 @@
             "category": "grammar.case",
             "kind": "rule",
             "state": "improving",
-            "since": "2026-10-19T23:37:57.740195329Z",
-            "firstSeen": "2026-08-30T23:37:57.731780291Z",
-            "lastErrorAt": "2026-10-13T23:37:57.739546625Z",
+            "since": "2026-10-20T01:29:29.034479431Z",
+            "firstSeen": "2026-08-31T01:29:29.023786896Z",
+            "lastErrorAt": "2026-10-14T01:29:29.033689472Z",
             "textsWithError": 17,
             "daysWithError": 17,
             "daysWithError30d": 2,
@@ -7284,7 +7288,7 @@
             "examples": [
               {
                 "entryId": "demo-078",
-                "at": "2026-10-13T23:37:57.739546625Z",
+                "at": "2026-10-14T01:29:29.033689472Z",
                 "original": "mit den Zug",
                 "correction": "mit dem Zug",
                 "sentence": "Ich fahre morgen früh mit den Zug nach Berlin und bleibe bis Sonntag.",
@@ -7292,7 +7296,7 @@
               },
               {
                 "entryId": "demo-047",
-                "at": "2026-09-25T03:37:57.737397983Z",
+                "at": "2026-09-25T05:29:29.031659238Z",
                 "original": "mit der Kunde",
                 "correction": "mit dem Kunden",
                 "sentence": "Hallo zusammen, ich habe gestern mit der Kunde gesprochen und er hat gesagt, dass er braucht mehr Zeit für die Tests.",
@@ -7300,7 +7304,7 @@
               },
               {
                 "entryId": "demo-042",
-                "at": "2026-09-22T23:37:57.736697747Z",
+                "at": "2026-09-23T01:29:29.030821853Z",
                 "original": "mit den Zug",
                 "correction": "mit dem Zug",
                 "sentence": "Ich fahre morgen früh mit den Zug nach Berlin und bleibe bis Sonntag.",
@@ -7309,7 +7313,7 @@
             ],
             "reminder": {
               "step": 5,
-              "nextDue": "2026-12-21T03:37:57.740425224Z",
+              "nextDue": "2026-12-21T05:29:29.034801544Z",
               "due": false
             },
             "onWatchList": true,
@@ -7322,9 +7326,9 @@
             "category": "lexis.collocation",
             "kind": "item",
             "state": "recurring",
-            "since": "2026-09-06T03:37:57.733160772Z",
-            "firstSeen": "2026-09-01T23:37:57.732215971Z",
-            "lastErrorAt": "2026-10-22T23:37:57.740472508Z",
+            "since": "2026-09-06T05:29:29.026196983Z",
+            "firstSeen": "2026-09-02T01:29:29.024641109Z",
+            "lastErrorAt": "2026-10-23T01:29:29.034858522Z",
             "textsWithError": 9,
             "daysWithError": 9,
             "daysWithError30d": 2,
@@ -7334,7 +7338,7 @@
             "examples": [
               {
                 "entryId": "demo-094",
-                "at": "2026-10-22T23:37:57.740472508Z",
+                "at": "2026-10-23T01:29:29.034858522Z",
                 "original": "machen wir eine Entscheidung",
                 "correction": "treffen wir eine Entscheidung",
                 "sentence": "Wir treffen uns um 15 Uhr mit dem ganzen Team und dann machen wir eine Entscheidung über das neue Feature.",
@@ -7342,7 +7346,7 @@
               },
               {
                 "entryId": "demo-046",
-                "at": "2026-09-24T23:37:57.737196493Z",
+                "at": "2026-09-25T01:29:29.031478358Z",
                 "original": "machen wir eine Entscheidung",
                 "correction": "treffen wir eine Entscheidung",
                 "sentence": "Wir treffen uns um 15 Uhr mit dem ganzen Team und dann machen wir eine Entscheidung über das neue Feature.",
@@ -7350,7 +7354,7 @@
               },
               {
                 "entryId": "demo-043",
-                "at": "2026-09-23T03:37:57.736826537Z",
+                "at": "2026-09-23T05:29:29.030958114Z",
                 "original": "machen wir eine Entscheidung",
                 "correction": "treffen wir eine Entscheidung",
                 "sentence": "Wir treffen uns um 15 Uhr mit dem ganzen Team und dann machen wir eine Entscheidung über das neue Feature.",
@@ -7359,7 +7363,7 @@
             ],
             "reminder": {
               "step": 0,
-              "nextDue": "2026-10-23T23:37:57.740472508Z",
+              "nextDue": "2026-10-24T01:29:29.034858522Z",
               "due": false
             },
             "onWatchList": true,
@@ -7372,9 +7376,9 @@
             "category": "register.address",
             "kind": "rule",
             "state": "new",
-            "since": "2026-10-15T03:37:57.739779842Z",
-            "firstSeen": "2026-10-15T03:37:57.739779842Z",
-            "lastErrorAt": "2026-10-15T03:37:57.739779842Z",
+            "since": "2026-10-15T05:29:29.033970275Z",
+            "firstSeen": "2026-10-15T05:29:29.033970275Z",
+            "lastErrorAt": "2026-10-15T05:29:29.033970275Z",
             "textsWithError": 1,
             "daysWithError": 1,
             "daysWithError30d": 1,
@@ -7384,41 +7388,11 @@
             "examples": [
               {
                 "entryId": "demo-081",
-                "at": "2026-10-15T03:37:57.739779842Z",
+                "at": "2026-10-15T05:29:29.033970275Z",
                 "original": "Kannst du mir",
                 "correction": "Können Sie mir",
                 "sentence": "Kannst du mir bitte die Rechnung noch einmal als PDF schicken?",
                 "explanation": "You started with 'Sie' (Ihre); keep it: 'Können Sie', not 'Kannst du'."
-              }
-            ],
-            "reminder": null,
-            "onWatchList": false,
-            "pinned": false,
-            "dismissed": false
-          },
-          {
-            "key": "de:orthography.punctuation:comma-before-dass",
-            "label": "comma before dass",
-            "category": "orthography.punctuation",
-            "kind": "rule",
-            "state": "new",
-            "since": "2026-10-06T03:37:57.738785176Z",
-            "firstSeen": "2026-10-06T03:37:57.738785176Z",
-            "lastErrorAt": "2026-10-06T03:37:57.738785176Z",
-            "textsWithError": 1,
-            "daysWithError": 1,
-            "daysWithError30d": 1,
-            "impedesMeaningShare": 0.0,
-            "recentAccuracy": null,
-            "opportunitiesRecent": 0,
-            "examples": [
-              {
-                "entryId": "demo-065",
-                "at": "2026-10-06T03:37:57.738785176Z",
-                "original": "ich denke dass",
-                "correction": "ich denke, dass",
-                "sentence": "Das Meeting war gut, aber ich denke dass wir mehr Zeit für die Planung brauchen.",
-                "explanation": "German always puts a comma before 'dass'."
               }
             ],
             "reminder": null,
@@ -7432,9 +7406,9 @@
             "category": "grammar.gender",
             "kind": "item",
             "state": "new",
-            "since": "2026-10-06T03:37:57.738785176Z",
-            "firstSeen": "2026-10-06T03:37:57.738785176Z",
-            "lastErrorAt": "2026-10-06T03:37:57.738785176Z",
+            "since": "2026-10-06T05:29:29.032897525Z",
+            "firstSeen": "2026-10-06T05:29:29.032897525Z",
+            "lastErrorAt": "2026-10-06T05:29:29.032897525Z",
             "textsWithError": 1,
             "daysWithError": 1,
             "daysWithError30d": 1,
@@ -7444,11 +7418,41 @@
             "examples": [
               {
                 "entryId": "demo-065",
-                "at": "2026-10-06T03:37:57.738785176Z",
+                "at": "2026-10-06T05:29:29.032897525Z",
                 "original": "dein Hilfe",
                 "correction": "deine Hilfe",
                 "sentence": "Kannst du mir dein Hilfe bei der Präsentation geben?",
                 "explanation": "'Hilfe' is feminine (die Hilfe), so it's 'deine'."
+              }
+            ],
+            "reminder": null,
+            "onWatchList": false,
+            "pinned": false,
+            "dismissed": false
+          },
+          {
+            "key": "de:orthography.punctuation:comma-before-dass",
+            "label": "comma before dass",
+            "category": "orthography.punctuation",
+            "kind": "rule",
+            "state": "new",
+            "since": "2026-10-06T05:29:29.032897525Z",
+            "firstSeen": "2026-10-06T05:29:29.032897525Z",
+            "lastErrorAt": "2026-10-06T05:29:29.032897525Z",
+            "textsWithError": 1,
+            "daysWithError": 1,
+            "daysWithError30d": 1,
+            "impedesMeaningShare": 0.0,
+            "recentAccuracy": null,
+            "opportunitiesRecent": 0,
+            "examples": [
+              {
+                "entryId": "demo-065",
+                "at": "2026-10-06T05:29:29.032897525Z",
+                "original": "ich denke dass",
+                "correction": "ich denke, dass",
+                "sentence": "Das Meeting war gut, aber ich denke dass wir mehr Zeit für die Planung brauchen.",
+                "explanation": "German always puts a comma before 'dass'."
               }
             ],
             "reminder": null,
@@ -7462,9 +7466,9 @@
             "category": "grammar.word_order",
             "kind": "rule",
             "state": "mastered",
-            "since": "2026-10-18T03:37:57.740062175Z",
-            "firstSeen": "2026-09-02T03:37:57.732340163Z",
-            "lastErrorAt": "2026-09-25T03:37:57.737397983Z",
+            "since": "2026-10-18T05:29:29.034326066Z",
+            "firstSeen": "2026-09-02T05:29:29.024778098Z",
+            "lastErrorAt": "2026-09-25T05:29:29.031659238Z",
             "textsWithError": 9,
             "daysWithError": 9,
             "daysWithError30d": 1,
@@ -7474,7 +7478,7 @@
             "examples": [
               {
                 "entryId": "demo-047",
-                "at": "2026-09-25T03:37:57.737397983Z",
+                "at": "2026-09-25T05:29:29.031659238Z",
                 "original": "dass er braucht mehr Zeit",
                 "correction": "dass er mehr Zeit braucht",
                 "sentence": "Hallo zusammen, ich habe gestern mit der Kunde gesprochen und er hat gesagt, dass er braucht mehr Zeit für die Tests.",
@@ -7482,7 +7486,7 @@
               },
               {
                 "entryId": "demo-040",
-                "at": "2026-09-21T23:37:57.736458549Z",
+                "at": "2026-09-22T01:29:29.030513321Z",
                 "original": "dass er braucht mehr Zeit",
                 "correction": "dass er mehr Zeit braucht",
                 "sentence": "Hallo zusammen, ich habe gestern mit der Kunde gesprochen und er hat gesagt, dass er braucht mehr Zeit für die Tests.",
@@ -7490,7 +7494,7 @@
               },
               {
                 "entryId": "demo-037",
-                "at": "2026-09-20T03:37:57.736075433Z",
+                "at": "2026-09-20T05:29:29.029937949Z",
                 "original": "dass er braucht mehr Zeit",
                 "correction": "dass er mehr Zeit braucht",
                 "sentence": "Hallo zusammen, ich habe gestern mit der Kunde gesprochen und er hat gesagt, dass er braucht mehr Zeit für die Tests.",
@@ -7511,7 +7515,7 @@
           {
             "key": "de:grammar.word_order:verb-last-in-subordinate-clauses",
             "label": "verb last in subordinate clauses",
-            "masteredAt": "2026-10-18T03:37:57.740062175Z"
+            "masteredAt": "2026-10-18T05:29:29.034326066Z"
           }
         ],
         "suggestions": {
@@ -7539,7 +7543,7 @@
   },
   "insights": {
     "schemaVersion": 1,
-    "generatedAt": "2026-10-23T03:37:57.745606680Z",
+    "generatedAt": "2026-10-23T05:29:29.041524795Z",
     "entryCount": 96,
     "model": {
       "providerId": "openrouter",

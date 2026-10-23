@@ -65,6 +65,35 @@ pub fn find_word_from(haystack: &str, needle: &str, from: usize) -> Option<(usiz
     after.or_else(anywhere).map(|s| (s, s + needle.len())).or_else(|| find_from(haystack, needle, from))
 }
 
+/// Resolves a fragment the model shortened with "..." (German splits phrases: "machen ... eine
+/// Entscheidung"). Finds the parts in order from `from`, and fills the skipped words into the
+/// correction when it is shortened the same way. Returns the byte range, the full original and the
+/// full correction.
+pub fn expand_ellipsis(haystack: &str, original: &str, correction: &str, from: usize) -> Option<((usize, usize), String, String)> {
+    let split = |s: &str| -> Vec<String> {
+        s.replace('…', "...").split("...").map(|p| p.trim().to_string()).filter(|p| !p.is_empty()).collect()
+    };
+    let parts = split(original);
+    let fixes = split(correction);
+    if parts.len() < 2 || fixes.len() != parts.len() {
+        return None;
+    }
+    let first = find_word_from(haystack, &parts[0], from)?;
+    let mut ranges = vec![first];
+    for part in &parts[1..] {
+        let prev_end = ranges.last()?.1;
+        let r = find_word_from(haystack, part, prev_end).filter(|r| r.0 >= prev_end)?;
+        ranges.push(r);
+    }
+    let mut fixed = fixes[0].clone();
+    for (i, fix) in fixes.iter().enumerate().skip(1) {
+        fixed.push_str(&haystack[ranges[i - 1].1..ranges[i].0]);
+        fixed.push_str(fix);
+    }
+    let span = (first.0, ranges.last()?.1);
+    Some((span, haystack[span.0..span.1].to_string(), fixed))
+}
+
 /// Converts a byte range of `text` to UTF-16 offsets for the UI.
 pub fn to_span(text: &str, (start, end): (usize, usize)) -> TextSpan {
     TextSpan { start: utf16_len(&text[..start]), end: utf16_len(&text[..end]) }
@@ -111,6 +140,17 @@ mod tests {
         assert_eq!(find_word_from(text, "an", 0), Some((9, 11)));
         // Falls back to a partial match when there is no whole-word one.
         assert_eq!(find_word_from("banana", "an", 0), Some((1, 3)));
+    }
+
+    #[test]
+    fn expands_split_phrases() {
+        let text = "Wir machen dann am Freitag eine Entscheidung.";
+        let (range, original, fixed) = expand_ellipsis(text, "machen ... eine Entscheidung", "treffen … eine Entscheidung", 0).unwrap();
+        assert_eq!(original, "machen dann am Freitag eine Entscheidung");
+        assert_eq!(fixed, "treffen dann am Freitag eine Entscheidung");
+        assert_eq!(&text[range.0..range.1], original);
+        // A correction that isn't shortened the same way can't be filled in.
+        assert!(expand_ellipsis(text, "machen ... eine Entscheidung", "treffen", 0).is_none());
     }
 
     #[test]

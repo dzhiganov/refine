@@ -27,6 +27,23 @@ pub struct ProviderConfig {
     pub model: String,
     /// Local servers usually don't need a key.
     pub needs_key: bool,
+    /// Whether "thinking" models may reason before answering. Off is much faster and corrections
+    /// don't need it; older saved settings get the default.
+    #[serde(default)]
+    pub thinking: Thinking,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Serialize, Deserialize, TS)]
+#[ts(export)]
+#[serde(rename_all = "camelCase")]
+pub enum Thinking {
+    /// Ask the model not to reason first (`reasoning_effort: "none"`). Fastest.
+    #[default]
+    Off,
+    /// A short think (`reasoning_effort: "low"`): most of the quality at a fraction of the time.
+    Low,
+    /// Whatever the model does by default.
+    ModelDefault,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, TS)]
@@ -96,6 +113,7 @@ impl Default for Settings {
             base_url: base_url.into(),
             model: String::new(),
             needs_key,
+            thinking: Thinking::Off,
         };
         Settings {
             active_provider_id: "openrouter".into(),

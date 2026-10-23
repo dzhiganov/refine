@@ -24,6 +24,32 @@ refer to it). Where the evidence is weak, it says so.
 | Validation in code, one repair round, then drop what's still invalid with a warning. | `original` must be verbatim in the input, corrections must appear in the fixed text, categories must be in the enum, a changed text needs listed mistakes. A silent rewrite is never shown as a fix. |
 | Prompt-injection guard: the text is wrapped and declared as data. | A pasted text can contain instructions; the smoke test covers it. |
 
+## Local models
+
+Measured with Qwen3.6-35B-A3B (Q4_K_M) in LM Studio on an RTX 4070 Ti SUPER, using the smoke test
+(`crates/core/examples/smoke.rs`: register, German case and word order, untouched correct text,
+prompt injection, du/Sie, a split collocation).
+
+| Thinking | Time per check | Result |
+|---|---|---|
+| Model default | 14–136 s | 8/8, best explanations |
+| Low | 16–51 s | 8/8, catches the split collocation |
+| Off, plain prompt | 1–6 s | 6/8: a wrong word-order fix, a wrong "?" → "." |
+| **Off + scratchpad + self-review + rebuilt text** | **2–10 s** | **8/9 per run; misses vary (a collocation, a capital after "Dear X,")** |
+
+What made "Off" good enough to be the default:
+- **`notes` scratchpad first** in the schema: under 80 words of sentence-by-sentence findings
+  before any correction. A cheap, visible think instead of thousands of hidden reasoning tokens.
+- **`review` after `fixedText`:** the model re-reads its own result; anything but "ok" triggers the
+  repair round. Caught "Thx" → "Thank" (missing "you").
+- **The fixed text is rebuilt in code** from the input and the listed corrections. Nothing the model
+  didn't list and explain can change; unlisted edits trigger a repair round.
+- **Split phrases** ("machen ... eine Entscheidung") are expanded to the full fragment in code.
+
+Trade-off: pushing the fast mode to find more (e.g. "check every verb–noun pair") also raises false
+fixes (it once "corrected" *Bescheid* to *bescheid*). A wrong correction teaches wrong German, so the
+prompt stays conservative; switch Thinking to Low for more thorough checks.
+
 ## Stats
 
 | Decision | Why |

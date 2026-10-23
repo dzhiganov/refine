@@ -7,7 +7,7 @@ use serde_json::{Value, json};
 use ts_rs::TS;
 
 use crate::error::{Error, Result};
-use crate::llm::{JsonRequest, LlmClient, Message, OutputMode, extract_json, is_unsupported_format};
+use crate::llm::{JsonRequest, LlmClient, Message, OutputMode, extract_json, is_unsupported_format, is_unsupported_reasoning};
 use crate::model::{ModelRef, SCHEMA_VERSION};
 use crate::settings::Settings;
 use crate::stats::{LanguageStats, Stats};
@@ -129,7 +129,7 @@ For each language in the data, return:
 - tip: for that pattern, one concrete, memorable line. For kind "rule", state the rule in everyday words with a tiny example. For kind "item", give the exact word or phrase to remember. You may reuse the learner's own example sentence. Empty string if there is no focus pattern.
 
 Rules:
-- Use only numbers that appear in the JSON, written exactly as they appear there. Never compute new numbers, totals or percentages.
+- Use only numbers that appear in the JSON. Write shares (0–1) as percentages (0.25 → 25%); write everything else exactly as it appears. Never compute new numbers or totals.
 - Never mention total mistake counts, scores, grades, CEFR level estimates, comparisons with other people, or streaks.
 - Warm and matter-of-fact. No exclamation marks, no emoji.
 
@@ -202,14 +202,19 @@ pub async fn generate_insights(client: &LlmClient, settings: &Settings, stats: &
     let mut messages = vec![Message::system(system.clone()), Message::user(format!("<stats>\n{data_json}\n</stats>"))];
 
     let mut mode = OutputMode::JsonSchema;
+    let mut no_thinking = true;
     let mut attempt = 0;
     loop {
         if mode != OutputMode::JsonSchema {
             messages[0] = Message::system(format!("{system}{}", crate::prompt::schema_instructions(&schema)));
         }
-        let req = JsonRequest { messages: &messages, schema_name: "refine_insights", schema: &schema, mode, temperature: 0.4 };
+        let req = JsonRequest { messages: &messages, schema_name: "refine_insights", schema: &schema, mode, temperature: 0.4, no_thinking };
         let text = match client.complete_json(&req).await {
             Ok(t) => t,
+            Err(e) if no_thinking && is_unsupported_reasoning(&e) => {
+                no_thinking = false;
+                continue;
+            }
             Err(e) if is_unsupported_format(&e) && mode.weaker().is_some() => {
                 mode = mode.weaker().unwrap();
                 continue;

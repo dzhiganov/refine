@@ -69,16 +69,17 @@ impl CheckContext<'_> {
 }
 
 /// Strict-mode compatible (OpenAI structured outputs): every property required, no extras.
-/// Key order is generation order: mistakes come before `fixedText` so the model commits to each
-/// correction before writing the whole text.
+/// Key order is generation order: short `notes` first (a cheap think, for models running without
+/// reasoning), then mistakes before `fixedText`, so each correction is decided before the text.
 pub fn check_schema(ctx: &CheckContext) -> Value {
     let categories: Vec<&str> = ctx.categories().iter().map(|c| c.id()).collect();
     let levels: Vec<&str> = Cefr::ALL.iter().map(|c| c.as_str()).collect();
     let mut schema = json!({
         "type": "object",
         "additionalProperties": false,
-        "required": ["language", "mistakes", "fixedText", "suggestions"],
+        "required": ["notes", "language", "mistakes", "fixedText", "review", "suggestions"],
         "properties": {
+            "notes": { "type": "string" },
             "language": { "type": "string", "enum": ctx.language_enum() },
             "mistakes": {
                 "type": "array",
@@ -97,6 +98,7 @@ pub fn check_schema(ctx: &CheckContext) -> Value {
                 }
             },
             "fixedText": { "type": "string" },
+            "review": { "type": "string" },
             "suggestions": {
                 "type": "array",
                 "items": {
@@ -242,12 +244,18 @@ Fix only:
 Never change: style you merely prefer, repetition, sentence length, correct-but-informal phrasing, British vs American spelling (keep the writer's), typography (quote and dash styles), names, code, URLs, @mentions, emoji, markdown, line breaks. Never rephrase a correct sentence. Never translate.
 Common English loanwords in German workplace or tech writing (Meeting, Deadline, Feature) are fine.
 
+## notes
+Scratch space, not shown to the learner. Before anything else, go through the text sentence by sentence (under 80 words in total): note each grammar problem, and check every verb–noun pair (would a native combine these words?). Check that every fix you plan is itself correct, e.g. that a moved verb lands in the right place.
+
 ## fixedText
 The input with exactly the corrections from `mistakes` applied and nothing else changed: same formatting, line breaks, spacing and punctuation style. With no mistakes, `fixedText` equals the input character for character.
 
+## review
+After writing `fixedText`, re-read it as a native speaker. Write "ok" if every sentence is now correct and nothing was changed that didn't need it. Otherwise name what is still wrong (a correction that broke something, a missed error); your answer will be sent back for fixing.
+
 ## Each mistake
-- original: the wrong fragment copied verbatim from the input. Keep it short (the wrong word(s) plus just enough context to be unique, at most about 6 words).
-- correction: what replaces `original` in `fixedText`.
+- original: the wrong fragment copied verbatim from the input, as one continuous piece. Keep it short (the wrong word(s) plus just enough context to be unique, at most about 6 words). Never skip words with "..."; if the error spans words that are apart (German "machen ... eine Entscheidung"), include everything in between.
+- correction: what replaces `original` in `fixedText`. Make `original` long enough that the correction is complete on its own (for word order, include every word that moves). Keep the surrounding capitalization: after "Dear Mr. Weber," the next word stays lowercase.
 - explanation: why, in 1–2 short sentences. Say the rule in everyday words; avoid grammar jargon or explain it in passing (e.g. "after 'mit' always use the dative: 'dem', not 'den'").
 - category: one id from the list below.
 - pattern: a short reusable name for the underlying rule or item, in English, lowercase, at most 6 words, e.g. "dative after mit", "past simple for finished past", "discuss takes no about". For a misspelling use the correct word itself, e.g. "definitely".
@@ -263,7 +271,7 @@ Telling close categories apart:
 {known_block}{watch_block}
 ## Suggestions
 Not mistakes, and never a repeat of a mistake. Optional ideas that refer to fragments of `fixedText`:
-- collocation: correct, but natives usually combine these words differently.
+- collocation: correct or at least understandable, but natives usually combine these words differently (e.g. "make a photo" → "take a photo"). Watch for verb–noun pairs carried over from another language; these are worth a suggestion even when they're understandable.
 - phrase: correct, but a native speaker would usually say it another way (idiom or construction).
 - synonym: already good; a synonym or richer alternative that fits the tone, to widen the learner's range.
 Pitch suggestions around {next_levels}, never more than one level above the learner. At most 3, best first. Zero is fine for a short or already natural text. `original` must be copied verbatim from `fixedText`. `level` is the CEFR level of the replacement. Suggestions must fit the tone: no formal vocabulary for a casual chat message.

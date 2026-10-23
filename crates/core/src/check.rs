@@ -6,11 +6,11 @@ use chrono::Utc;
 use serde::Deserialize;
 
 use crate::error::{Error, Result};
-use crate::llm::{JsonRequest, LlmClient, Message, OutputMode, extract_json, is_unsupported_format};
+use crate::llm::{JsonRequest, LlmClient, Message, OutputMode, extract_json, is_unsupported_format, is_unsupported_reasoning};
 use crate::model::{Cefr, Entry, Mistake, ModelRef, PatternCheck, SCHEMA_VERSION, Suggestion, SuggestionKind, ToneRef, pattern_key};
 use crate::prompt::{CHECK_SCHEMA_NAME, CheckContext, check_schema, check_system_prompt, check_user_prompt, schema_instructions};
 use crate::taxonomy::ErrorCategory;
-use crate::text::{find_from, find_word_from, to_span, word_count, word_diff};
+use crate::text::{expand_ellipsis, find_from, find_word_from, to_span, word_count, word_diff};
 
 pub const MAX_INPUT_CHARS: usize = 20_000;
 
@@ -28,6 +28,9 @@ struct RawOutput {
     suggestions: Vec<RawSuggestion>,
     #[serde(default)]
     watch: Vec<RawWatch>,
+    /// The model's re-read of its own fixed text: "ok" or what's still wrong.
+    #[serde(default)]
+    review: String,
 }
 
 #[derive(Debug, Clone, Deserialize)]
@@ -66,13 +69,27 @@ struct RawSuggestion {
     level: String,
 }
 
-pub struct CheckOutcome {
-    pub entry: Entry,
-    /// The output mode that worked, to remember for this model.
+/// What a model turned out to support, remembered per model so fallbacks aren't repeated.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct ModelCaps {
     pub mode: OutputMode,
+    /// The model accepts the "don't think" parameter.
+    pub no_thinking: bool,
 }
 
-pub async fn run_check(client: &LlmClient, ctx: &CheckContext<'_>, text: &str, mode: OutputMode) -> Result<CheckOutcome> {
+impl Default for ModelCaps {
+    fn default() -> Self {
+        ModelCaps { mode: OutputMode::JsonSchema, no_thinking: true }
+    }
+}
+
+pub struct CheckOutcome {
+    pub entry: Entry,
+    /// What worked, to remember for this model.
+    pub caps: ModelCaps,
+}
+
+pub async fn run_check(client: &LlmClient, ctx: &CheckContext<'_>, text: &str, caps: ModelCaps) -> Result<CheckOutcome> {
     let input = text.trim_end();
     if input.trim().is_empty() {
         return Err(Error::Invalid("Paste some text first.".into()));
@@ -84,7 +101,7 @@ pub async fn run_check(client: &LlmClient, ctx: &CheckContext<'_>, text: &str, m
     let schema = check_schema(ctx);
     let base_system = check_system_prompt(ctx);
     let mut messages = vec![Message::system(String::new()), Message::user(check_user_prompt(input))];
-    let mut mode = mode;
+    let ModelCaps { mut mode, mut no_thinking } = caps;
 
     let mut attempt = 0;
     let mut warnings = Vec::new();
@@ -93,9 +110,14 @@ pub async fn run_check(client: &LlmClient, ctx: &CheckContext<'_>, text: &str, m
             OutputMode::JsonSchema => base_system.clone(),
             _ => format!("{base_system}{}", schema_instructions(&schema)),
         });
-        let req = JsonRequest { messages: &messages, schema_name: CHECK_SCHEMA_NAME, schema: &schema, mode, temperature: 0.2 };
+        let req = JsonRequest { messages: &messages, schema_name: CHECK_SCHEMA_NAME, schema: &schema, mode, temperature: 0.2, no_thinking };
         let raw_text = match client.complete_json(&req).await {
             Ok(t) => t,
+            Err(e) if no_thinking && is_unsupported_reasoning(&e) => {
+                tracing::info!(error = %e, "model rejects the reasoning parameter; retrying without it");
+                no_thinking = false;
+                continue;
+            }
             Err(e) if is_unsupported_format(&e) && mode.weaker().is_some() => {
                 tracing::info!(?mode, error = %e, "output mode unsupported, falling back");
                 mode = mode.weaker().unwrap();
@@ -123,7 +145,7 @@ pub async fn run_check(client: &LlmClient, ctx: &CheckContext<'_>, text: &str, m
                     let mut validated = validated;
                     warnings.extend(std::mem::take(&mut validated.problems));
                     let entry = build_entry(client, ctx, input, validated, warnings, started);
-                    return Ok(CheckOutcome { entry, mode });
+                    return Ok(CheckOutcome { entry, caps: ModelCaps { mode, no_thinking } });
                 }
                 validated.problems
             }
@@ -170,10 +192,9 @@ fn validate(raw: RawOutput, input: &str, ctx: &CheckContext) -> Validated {
         codes[0].to_string()
     };
 
-    let mut fixed_text = raw.fixed_text.trim_end().to_string();
-    if fixed_text.trim().is_empty() {
+    let model_fixed = raw.fixed_text.trim_end().to_string();
+    if model_fixed.trim().is_empty() {
         problems.push("`fixedText` is empty".into());
-        fixed_text = input.to_string();
     }
 
     let allowed = ctx.categories();
@@ -181,8 +202,18 @@ fn validate(raw: RawOutput, input: &str, ctx: &CheckContext) -> Validated {
     // Locate in text order even if the model listed them out of order.
     let mut raw_mistakes: Vec<RawMistake> =
         raw.mistakes.into_iter().filter(|m| !m.original.trim().is_empty() && m.original != m.correction).collect();
+    // "machen ... eine Entscheidung": expand to the full fragment if it's not verbatim.
+    for m in raw_mistakes.iter_mut() {
+        if find_word_from(input, &m.original, 0).is_none()
+            && let Some((_, original, correction)) = expand_ellipsis(input, &m.original, &m.correction, 0)
+        {
+            m.original = original;
+            m.correction = correction;
+        }
+    }
     raw_mistakes.sort_by_key(|m| find_word_from(input, &m.original, 0).map_or(usize::MAX, |r| r.0));
     let mut cursor = 0;
+    let mut ranges = Vec::new();
     for m in raw_mistakes {
         let Some(range) = find_word_from(input, &m.original, cursor) else {
             problems.push(format!("mistake `original` \"{}\" is not copied verbatim from the text", m.original));
@@ -193,6 +224,7 @@ fn validate(raw: RawOutput, input: &str, ctx: &CheckContext) -> Validated {
             continue;
         }
         cursor = range.1;
+        ranges.push(range);
         let category = match ErrorCategory::parse(&m.category) {
             Some(c) if allowed.contains(&c) => c,
             _ => {
@@ -217,15 +249,26 @@ fn validate(raw: RawOutput, input: &str, ctx: &CheckContext) -> Validated {
             span: Some(to_span(input, range)),
         });
     }
-    if mistakes.is_empty() && fixed_text != input {
-        problems.push("`fixedText` differs from the input but no mistakes are listed; list every change, or return the input unchanged".into());
-        // A rewrite with no listed mistakes is never shown as a correction.
-        fixed_text = input.to_string();
+    let review = raw.review.trim();
+    let review_ok = review.is_empty() || review.trim_matches(|c: char| !c.is_alphanumeric()).eq_ignore_ascii_case("ok");
+    if !review_ok {
+        problems.push(format!("your review of fixedText found a problem: \"{review}\". Fix the `mistakes` (and corrections) so the fixed text is fully correct"));
     }
-    for m in &mistakes {
-        if !m.correction.is_empty() && !fixed_text.contains(&m.correction) {
-            problems.push(format!("the correction \"{}\" doesn't appear in `fixedText`", m.correction));
-        }
+
+    // The fixed text is rebuilt from the input and the listed corrections, so nothing the model
+    // didn't list (and explain) can change. Its own version only tells us what it forgot to list.
+    let fixed_text = apply_corrections(input, &ranges, &mistakes);
+    if !model_fixed.trim().is_empty() && crate::text::normalize(&model_fixed) != crate::text::normalize(&fixed_text) {
+        let extra: Vec<String> = word_diff(&fixed_text, &model_fixed)
+            .into_iter()
+            .filter(|p| p.op != crate::model::DiffOp::Equal && !p.text.trim().is_empty())
+            .take(6)
+            .map(|p| format!("{} \"{}\"", if p.op == crate::model::DiffOp::Insert { "added" } else { "removed" }, p.text.trim()))
+            .collect();
+        problems.push(format!(
+            "`fixedText` has changes that aren't listed in `mistakes` ({}). List each real error as a mistake, and leave everything else exactly as written",
+            extra.join(", ")
+        ));
     }
 
     // Suggestions at most one CEFR level above the learner (§3.7).
@@ -273,6 +316,20 @@ fn validate(raw: RawOutput, input: &str, ctx: &CheckContext) -> Validated {
     }
 
     Validated { language, unknown_language, fixed_text, mistakes, suggestions, watch, problems }
+}
+
+/// The input with each mistake's byte range replaced by its correction (ranges are sorted and
+/// don't overlap; `validate` guarantees both).
+fn apply_corrections(input: &str, ranges: &[(usize, usize)], mistakes: &[Mistake]) -> String {
+    let mut out = String::with_capacity(input.len());
+    let mut last = 0;
+    for ((start, end), m) in ranges.iter().zip(mistakes) {
+        out.push_str(&input[last..*start]);
+        out.push_str(&m.correction);
+        last = *end;
+    }
+    out.push_str(&input[last..]);
+    out
 }
 
 fn build_entry(
