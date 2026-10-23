@@ -1,0 +1,28 @@
+[package]
+name = "refine-core"
+description = "Everything Refine does except the window: LLM calls, storage, stats."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+tokio.workspace = true
+thiserror.workspace = true
+chrono.workspace = true
+reqwest = { version = "0.13", default-features = false, features = ["json", "rustls", "http2"] }
+rusqlite = { version = "0.40", features = ["bundled"] }
+uuid = { version = "1", features = ["v7"] }
+similar = { version = "3", features = ["unicode"] }
+ts-rs = { version = "12", features = ["serde-json-impl", "chrono-impl", "no-serde-warnings"] }
+tracing = "0.1"
+
+# API keys: Keychain on macOS, Credential Manager on Windows (a file store elsewhere, for dev only).
+[target.'cfg(any(target_os = "macos", target_os = "windows"))'.dependencies]
+keyring = { version = "3", features = ["apple-native", "windows-native"] }
+
+[dev-dependencies]
+wiremock = "0.6"
+jsonschema = { version = "0.60", default-features = false }
+tempfile = "3"

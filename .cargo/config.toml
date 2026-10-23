@@ -1,0 +1,3 @@
+[env]
+# `cargo test` writes the TypeScript twins of the core types here (ts-rs).
+TS_RS_EXPORT_DIR = { value = "src/bindings", relative = true }

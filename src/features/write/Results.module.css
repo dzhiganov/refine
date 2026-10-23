@@ -1,0 +1,243 @@
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-left: calc(-1 * var(--space-3));
+}
+
+.context {
+  flex: 1;
+  color: var(--color-muted);
+  font-size: var(--text-xs);
+  text-align: right;
+}
+
+.block {
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-5) var(--space-6) var(--space-6);
+  min-width: 0;
+}
+
+.blockHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: 36px;
+  margin-bottom: var(--space-4);
+}
+
+.blockTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.blockTitle h2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: var(--color-text-strong);
+}
+
+.count {
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.allGood {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--color-success);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+.blockActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.text {
+  color: var(--color-text-strong);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.del,
+.ins {
+  border-radius: 4px;
+  padding: 1px 2px;
+  transition:
+    background-color var(--duration) var(--ease),
+    box-shadow var(--duration) var(--ease);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.del {
+  color: var(--color-del);
+  background: var(--color-del-bg);
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+.ins {
+  color: var(--color-ins);
+  background: var(--color-ins-bg);
+  text-decoration: none;
+  box-shadow: inset 0 -1.5px 0 var(--color-ins-line);
+}
+
+.del[data-lit],
+.ins[data-lit] {
+  box-shadow: 0 0 0 2px var(--color-accent);
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg);
+  border: 1px solid transparent;
+  outline: none;
+  transition:
+    border-color var(--duration-fast) var(--ease),
+    background-color var(--duration-fast) var(--ease);
+}
+
+.card:hover,
+.card:focus-visible {
+  border-color: var(--color-border);
+}
+
+.change {
+  font-size: var(--text-md);
+  line-height: 1.5;
+}
+
+.arrow {
+  margin: 0 6px;
+}
+
+.from {
+  color: var(--color-del);
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+.to {
+  color: var(--color-text-strong);
+  font-weight: 600;
+}
+
+.arrow {
+  color: var(--color-muted);
+}
+
+.explanation {
+  margin: var(--space-1) 0 var(--space-2);
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  line-height: 1.55;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.meaning {
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+}
+
+.idea .ideaFrom {
+  color: var(--color-muted);
+}
+
+.idea .ideaTo {
+  color: var(--color-idea);
+  font-weight: 600;
+}
+
+.ideaChip {
+  background: var(--color-idea-soft);
+  color: var(--color-idea);
+}
+
+.sparkle {
+  color: var(--color-idea);
+}
+
+.empty {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+}
+
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  margin-top: var(--space-5);
+}
+
+.shimmer {
+  border-radius: var(--radius-card);
+  background: linear-gradient(
+    100deg,
+    var(--color-surface) 30%,
+    var(--color-surface-hover) 50%,
+    var(--color-surface) 70%
+  );
+  background-size: 300% 100%;
+  animation: shimmer 1.4s var(--ease) infinite;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}

@@ -1,0 +1,118 @@
+/*
+ * Design tokens, carried over from Mind (mind-clone). Dark is the default; light via
+ * <html data-theme="light">. Use these variables everywhere instead of raw values.
+ */
+:root,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-bg: #14161c;
+  --color-surface: #1c1f27;
+  --color-surface-2: #232733;
+  --color-surface-hover: #262a36;
+  --color-border: #2b303c;
+  --color-text: #c9ccd6;
+  --color-text-strong: #eef0f5;
+  --color-muted: #7d8290;
+  --color-placeholder: #5d6270;
+  /* One warm accent, only for primary actions and what needs the eye. */
+  --color-accent: #ff5a2c;
+  --color-accent-hover: #ff7047;
+  --color-accent-contrast: #ffffff;
+  --color-accent-soft: rgb(255 90 44 / 14%);
+  --color-danger: #ff5c5c;
+  --color-success: #4cc38a;
+  --color-focus: rgb(255 90 44 / 55%);
+  --color-backdrop: rgb(8 9 12 / 72%);
+
+  /* Corrections and suggestions. */
+  --color-del: #ff8a7a;
+  --color-del-bg: rgb(255 92 92 / 12%);
+  --color-ins: #eef0f5;
+  --color-ins-bg: rgb(76 195 138 / 18%);
+  --color-ins-line: #4cc38a;
+  --color-idea: #9b8cff;
+  --color-idea-soft: rgb(155 140 255 / 14%);
+
+  --shadow-hover: 0 8px 24px rgb(0 0 0 / 35%);
+  --shadow-modal: 0 24px 80px rgb(0 0 0 / 55%);
+  --shadow-card: 0 1px 0 rgb(255 255 255 / 3%) inset, 0 12px 40px rgb(0 0 0 / 22%);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --color-bg: #f2f3f6;
+  --color-surface: #ffffff;
+  --color-surface-2: #eceef2;
+  --color-surface-hover: #f7f8fa;
+  --color-border: #dfe2e8;
+  --color-text: #1b1d22;
+  --color-text-strong: #0d0e11;
+  --color-muted: #6b7080;
+  --color-placeholder: #a0a5b1;
+  --color-accent: #ff5a2c;
+  --color-accent-hover: #f04a1c;
+  --color-accent-contrast: #ffffff;
+  --color-accent-soft: rgb(255 90 44 / 12%);
+  --color-danger: #e5484d;
+  --color-success: #2f9e6b;
+  --color-focus: rgb(255 90 44 / 50%);
+  --color-backdrop: rgb(20 22 28 / 45%);
+
+  --color-del: #c8372d;
+  --color-del-bg: rgb(229 72 77 / 10%);
+  --color-ins: #0d0e11;
+  --color-ins-bg: rgb(47 158 107 / 16%);
+  --color-ins-line: #2f9e6b;
+  --color-idea: #6a55e8;
+  --color-idea-soft: rgb(106 85 232 / 10%);
+
+  --shadow-hover: 0 8px 24px rgb(20 22 28 / 12%);
+  --shadow-modal: 0 24px 80px rgb(20 22 28 / 25%);
+  --shadow-card: 0 1px 2px rgb(20 22 28 / 4%), 0 12px 40px rgb(20 22 28 / 6%);
+}
+
+:root {
+  --font-serif: 'Instrument Serif', 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Inter Variable', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, Consolas, monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-md: 0.9375rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2.25rem;
+  --text-display: clamp(2rem, 4vw, 3.25rem);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  --radius-sm: 6px;
+  --radius-tile: 8px;
+  --radius-lg: 10px;
+  --radius-card: 14px;
+  --radius-modal: 16px;
+  --radius-pill: 999px;
+
+  --duration-fast: 150ms;
+  --duration: 200ms;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+
+  --rail-width: 64px;
+  --content-max: 880px;
+  /* Room for the macOS traffic lights (set on <html data-platform="macos">). */
+  --titlebar-height: 0px;
+}
+
+:root[data-platform='macos'] {
+  --titlebar-height: 28px;
+}

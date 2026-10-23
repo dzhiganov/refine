@@ -1,0 +1,76 @@
+.rail {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(var(--space-5) + var(--titlebar-height)) 0 var(--space-5);
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.wordmark {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--color-text-strong);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  letter-spacing: 0.02em;
+  pointer-events: none;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.button {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-muted);
+  transition: color var(--duration-fast) var(--ease);
+}
+
+.button:hover,
+.button[aria-current='page'] {
+  color: var(--color-text-strong);
+}
+
+.button:hover:not([aria-current='page'])::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  opacity: 0.6;
+}
+
+.active {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.icon {
+  position: relative;
+  display: grid;
+}

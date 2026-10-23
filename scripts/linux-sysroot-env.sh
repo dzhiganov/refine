@@ -1,0 +1,11 @@
+# Source to build Tauri on this machine without system -dev packages (see refine/docs/dev-linux.md).
+SR="$HOME/.local/share/refine-sysroot"
+export PATH="$SR/usr/bin:$HOME/.cargo/bin:$PATH"
+export PKG_CONFIG_PATH="$SR/usr/lib/x86_64-linux-gnu/pkgconfig:$SR/usr/share/pkgconfig:/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/share/pkgconfig"
+export PKG_CONFIG_SYSROOT_DIR="$SR"
+export PKG_CONFIG_LIBDIR="$PKG_CONFIG_PATH"
+export LIBRARY_PATH="$SR/usr/lib/x86_64-linux-gnu:$SR/usr/lib"
+export LD_LIBRARY_PATH="$SR/usr/lib/x86_64-linux-gnu:$SR/usr/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+export C_INCLUDE_PATH="$SR/usr/include"
+export GIO_MODULE_DIR="$SR/usr/lib/x86_64-linux-gnu/gio/modules"
+export WEBKIT_EXEC_PATH="$SR/usr/lib/x86_64-linux-gnu/webkit2gtk-4.1"

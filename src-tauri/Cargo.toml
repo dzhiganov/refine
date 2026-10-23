@@ -1,0 +1,24 @@
+[package]
+name = "refine-app"
+description = "Refine desktop app (Tauri shell over refine-core)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+name = "refine_app_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+refine-core.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tokio.workspace = true
+chrono.workspace = true
+tauri = { version = "2", features = [] }
+tauri-plugin-opener = "2"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }

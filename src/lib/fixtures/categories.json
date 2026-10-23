@@ -1,0 +1,242 @@
+[
+  {
+    "id": "grammar.article",
+    "area": "grammar",
+    "kind": "rule",
+    "label": "Articles",
+    "description": "a/an/the/zero article; der/ein/kein presence and choice",
+    "languages": []
+  },
+  {
+    "id": "grammar.preposition",
+    "area": "grammar",
+    "kind": "item",
+    "label": "Prepositions",
+    "description": "a single wrong, missing or extra preposition, incl. prepositional verbs",
+    "languages": []
+  },
+  {
+    "id": "grammar.verb_tense",
+    "area": "grammar",
+    "kind": "rule",
+    "label": "Tense",
+    "description": "wrong tense, aspect, mood or modal choice for the meaning (went vs have gone; Perfekt vs Präteritum; Konjunktiv II)",
+    "languages": []
+  },
+  {
+    "id": "grammar.verb_form",
+    "area": "grammar",
+    "kind": "rule",
+    "label": "Verb forms",
+    "description": "right tense, wrongly built: conjugation, irregular forms, participles, infinitive vs gerund, haben/sein auxiliary",
+    "languages": []
+  },
+  {
+    "id": "grammar.agreement",
+    "area": "grammar",
+    "kind": "rule",
+    "label": "Agreement",
+    "description": "subject–verb agreement",
+    "languages": []
+  },
+  {
+    "id": "grammar.noun_number",
+    "area": "grammar",
+    "kind": "rule",
+    "label": "Plurals & countability",
+    "description": "singular/plural, plural formation, countable vs uncountable (informations)",
+    "languages": []
+  },
+  {
+    "id": "grammar.pronoun",
+    "area": "grammar",
+    "kind": "rule",
+    "label": "Pronouns",
+    "description": "pronoun form, reflexives, relative pronouns (in German, a pronoun in the wrong case is grammar.case)",
+    "languages": []
+  },
+  {
+    "id": "grammar.adj_adv",
+    "area": "grammar",
+    "kind": "rule",
+    "label": "Adjectives & adverbs",
+    "description": "comparative/superlative forms, adjective vs adverb (quick vs quickly)",
+    "languages": [
+      "en"
+    ]
+  },
+  {
+    "id": "grammar.word_order",
+    "area": "grammar",
+    "kind": "rule",
+    "label": "Word order",
+    "description": "constituent order: German V2 and verb-final, separable prefixes; English question order, adverb placement",
+    "languages": []
+  },
+  {
+    "id": "grammar.sentence_structure",
+    "area": "grammar",
+    "kind": "rule",
+    "label": "Sentence structure",
+    "description": "fragments, run-ons, missing subject or finite verb, broken conditionals or clause linkage",
+    "languages": []
+  },
+  {
+    "id": "grammar.case",
+    "area": "grammar",
+    "kind": "rule",
+    "label": "Case",
+    "description": "wrong case of an article, pronoun or noun for its role or preposition (mit der Mann → mit dem Mann)",
+    "languages": [
+      "de"
+    ]
+  },
+  {
+    "id": "grammar.gender",
+    "area": "grammar",
+    "kind": "item",
+    "label": "Noun gender",
+    "description": "wrong noun gender: the form would be wrong in every case for this noun (das Tisch → der Tisch)",
+    "languages": [
+      "de"
+    ]
+  },
+  {
+    "id": "grammar.adjective_ending",
+    "area": "grammar",
+    "kind": "rule",
+    "label": "Adjective endings",
+    "description": "adjective declension endings",
+    "languages": [
+      "de"
+    ]
+  },
+  {
+    "id": "grammar.valency",
+    "area": "grammar",
+    "kind": "item",
+    "label": "Verb complements",
+    "description": "missing or extra object or reflexive pronoun for the verb",
+    "languages": [
+      "de"
+    ]
+  },
+  {
+    "id": "grammar.negation",
+    "area": "grammar",
+    "kind": "rule",
+    "label": "Negation",
+    "description": "nicht vs kein, position of nicht",
+    "languages": [
+      "de"
+    ]
+  },
+  {
+    "id": "grammar.other",
+    "area": "grammar",
+    "kind": null,
+    "label": "Other grammar",
+    "description": "a grammar error that fits no other grammar category",
+    "languages": []
+  },
+  {
+    "id": "lexis.word_choice",
+    "area": "lexis",
+    "kind": "item",
+    "label": "Word choice",
+    "description": "the word itself has the wrong meaning here, incl. false friends",
+    "languages": []
+  },
+  {
+    "id": "lexis.collocation",
+    "area": "lexis",
+    "kind": "item",
+    "label": "Collocations",
+    "description": "each word is fine but they don't go together, or a fixed phrase is broken (make a photo; eine Entscheidung machen)",
+    "languages": []
+  },
+  {
+    "id": "lexis.word_form",
+    "area": "lexis",
+    "kind": "rule",
+    "label": "Word formation",
+    "description": "wrong derived form or compound (success vs successful)",
+    "languages": []
+  },
+  {
+    "id": "orthography.spelling",
+    "area": "orthography",
+    "kind": "item",
+    "label": "Spelling",
+    "description": "a misspelled word, incl. umlauts and ß",
+    "languages": []
+  },
+  {
+    "id": "orthography.capitalization",
+    "area": "orthography",
+    "kind": "rule",
+    "label": "Capitalization",
+    "description": "German noun capitalization, Sie/Ihnen, English I, proper names",
+    "languages": []
+  },
+  {
+    "id": "orthography.punctuation",
+    "area": "orthography",
+    "kind": "rule",
+    "label": "Punctuation",
+    "description": "punctuation that is clearly wrong or changes the reading (required German comma before a subordinate clause)",
+    "languages": []
+  },
+  {
+    "id": "orthography.word_boundary",
+    "area": "orthography",
+    "kind": "rule",
+    "label": "Word boundaries",
+    "description": "joined vs separate vs hyphenated (alot; everyday vs every day)",
+    "languages": []
+  },
+  {
+    "id": "register.formality",
+    "area": "register",
+    "kind": "rule",
+    "label": "Formality",
+    "description": "too informal or too formal for the chosen tone, incl. shorthand where it doesn't fit",
+    "languages": []
+  },
+  {
+    "id": "register.address",
+    "area": "register",
+    "kind": "rule",
+    "label": "du / Sie",
+    "description": "mixed or wrong form of address, wrong greeting or closing for the tone",
+    "languages": [
+      "de"
+    ]
+  },
+  {
+    "id": "discourse.connector",
+    "area": "discourse",
+    "kind": "rule",
+    "label": "Connectors",
+    "description": "a linking word that changes the logic (therefore vs however; deshalb vs trotzdem)",
+    "languages": []
+  },
+  {
+    "id": "discourse.reference",
+    "area": "discourse",
+    "kind": "rule",
+    "label": "Reference",
+    "description": "unclear or wrong reference to something mentioned earlier",
+    "languages": [
+      "en"
+    ]
+  },
+  {
+    "id": "other",
+    "area": "other",
+    "kind": null,
+    "label": "Other",
+    "description": "an error that fits nowhere else",
+    "languages": []
+  }
+]
