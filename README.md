@@ -65,7 +65,8 @@ builds the installers. Needs Rust (MSVC) and Visual Studio Build Tools on Window
 
 **macOS:** `pnpm tauri dev`, or `pnpm tauri build` for a `.dmg`. CI builds a universal `.dmg` on every
 push to `main` (`.github/workflows/build.yml`). The build is ad-hoc signed, not notarized: on first
-launch, right-click → Open (or `xattr -dr com.apple.quarantine /Applications/Refine.app`).
+launch macOS blocks it; go to System Settings → Privacy & Security and click Open Anyway (or run
+`xattr -dr com.apple.quarantine /Applications/Refine.app`).
 
 **Linux dev box without sudo:** the Tauri system libraries can live in a local sysroot; see
 `docs/dev-linux.md`.

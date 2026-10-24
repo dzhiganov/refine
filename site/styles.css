@@ -32,7 +32,8 @@
   --muted: #8a8f9c;
   --accent: #ff5a2c;
   --accent-hover: #ff7047;
-  --on-accent: #ffffff;
+  /* Dark text on the bright accent passes WCAG AA (5.8:1); white would not. */
+  --on-accent: #14161c;
   --del: #ff8a7a;
   --del-bg: rgb(255 92 92 / 13%);
   --ins: #eef0f5;
@@ -52,18 +53,20 @@
     --bg: #f2f3f6;
     --surface: #ffffff;
     --surface-2: #eceef2;
-    --border: #dfe2e8;
+    --border: #d3d7df;
     --text: #2a2d34;
     --text-strong: #0d0e11;
     --muted: #686d7b;
-    --accent: #e8491d;
-    --accent-hover: #d43f15;
-    --del: #c8372d;
+    /* Darker accent in light mode so white button text passes AA (5:1). */
+    --accent: #c93c12;
+    --accent-hover: #b3340f;
+    --on-accent: #ffffff;
+    --del: #b32d24;
     --del-bg: rgb(229 72 77 / 10%);
     --ins: #0d0e11;
     --ins-bg: rgb(47 158 107 / 15%);
     --ins-line: #2f9e6b;
-    --shadow: 0 1px 2px rgb(20 22 28 / 4%), 0 20px 60px rgb(20 22 28 / 9%);
+    --shadow: 0 1px 2px rgb(20 22 28 / 8%), 0 24px 60px rgb(20 22 28 / 12%);
   }
 }
 
@@ -224,7 +227,6 @@ a:focus-visible {
 
 .size {
   font-weight: 400;
-  opacity: 0.8;
   font-size: 14px;
 }
 
@@ -242,6 +244,15 @@ a:focus-visible {
   margin: 16px 0 0;
   color: var(--muted);
   font-size: 14px;
+}
+
+.meta a {
+  color: var(--muted);
+  text-underline-offset: 3px;
+}
+
+.meta a:hover {
+  color: var(--text-strong);
 }
 
 /* ---- the animated example ---------------------------------------------------------------- */
@@ -270,7 +281,8 @@ a:focus-visible {
 }
 
 .demo-text {
-  min-height: 7.6em;
+  /* Room for four lines, so inserting a fix doesn't move anything below. */
+  min-height: 7em;
   margin: 0;
   color: var(--text-strong);
   font-size: 19px;
@@ -280,6 +292,7 @@ a:focus-visible {
 /* A fragment being corrected: the wrong part, then the fix. */
 .fix .was,
 .fix .now {
+  white-space: nowrap;
   border-radius: 4px;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
@@ -343,12 +356,30 @@ a:focus-visible {
 }
 
 .demo-why {
-  min-height: 3.4em;
-  margin: 18px 4px 0;
-  color: var(--muted);
-  font-size: 15px;
+  min-height: 4.8em;
+  margin: 20px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  color: var(--text);
+  font-size: 16px;
   line-height: 1.55;
   transition: opacity 0.3s var(--ease);
+}
+
+.demo-pause {
+  display: block;
+  margin: 12px 2px 0 auto;
+  padding: 4px 2px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.demo-pause:hover {
+  color: var(--text-strong);
 }
 
 .demo-why strong {
@@ -375,6 +406,12 @@ a:focus-visible {
   width: 100%;
 }
 
+.film video {
+  aspect-ratio: 1400 / 1248;
+  height: auto;
+  cursor: pointer;
+}
+
 .caption {
   margin: 16px 2px 0;
   color: var(--muted);
@@ -382,14 +419,14 @@ a:focus-visible {
 }
 
 .film {
-  padding-bottom: 112px;
+  padding-bottom: 96px;
 }
 
 /* ---- points -------------------------------------------------------------------------------- */
 
 .points {
   display: grid;
-  gap: 0;
+  gap: 40px;
   padding-bottom: 112px;
 }
 
@@ -397,12 +434,6 @@ a:focus-visible {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
   gap: 48px;
-  padding: 26px 0;
-  border-top: 1px solid var(--border);
-}
-
-.point:last-child {
-  border-bottom: 1px solid var(--border);
 }
 
 .point h2 {
@@ -429,7 +460,7 @@ a:focus-visible {
 }
 
 .download-meta {
-  margin: 12px 0 32px;
+  margin: 12px 0 28px;
   color: var(--muted);
   font-size: 15px;
 }
@@ -489,35 +520,56 @@ a:focus-visible {
 }
 
 .needs {
-  margin: 24px 2px 0;
-  color: var(--muted);
-  font-size: 15px;
+  margin: 0 0 24px;
+  max-width: 44em;
+  color: var(--text);
+  font-size: 16px;
 }
 
 .beta {
-  margin-top: 40px;
-  padding: 24px 28px;
+  margin: 0 0 24px;
+  padding: 20px 24px;
   border-radius: 14px;
   border: 1px solid var(--border);
-  border-left: 3px solid var(--accent);
 }
 
 .beta h3 {
-  margin: 0 0 8px;
-  font-size: 17px;
+  margin: 0 0 6px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--text-strong);
 }
 
 .beta p {
   margin: 0;
-  font-size: 15px;
   max-width: 46em;
+  font-size: 15px;
 }
 
-.beta p + p {
-  margin-top: 12px;
+.first-run {
+  margin-top: 24px;
+  max-width: 46em;
   color: var(--muted);
+  font-size: 14px;
+}
+
+.first-run p {
+  margin: 0 0 8px;
+}
+
+.first-run strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.first-run a {
+  color: var(--muted);
+  text-underline-offset: 3px;
+}
+
+.foot-links {
+  display: flex;
+  gap: 20px;
 }
 
 /* ---- small screens ------------------------------------------------------------------------------ */
@@ -542,6 +594,17 @@ a:focus-visible {
   .points,
   .shot {
     padding-bottom: 80px;
+  }
+}
+
+/* A desktop app's recording is unreadable at phone width; the hero example tells the story. */
+@media (max-width: 600px) {
+  .film {
+    display: none;
+  }
+
+  .demo-text {
+    min-height: 9em;
   }
 }
 
@@ -575,5 +638,6 @@ a:focus-visible {
   *::before,
   *::after {
     transition-duration: 0s !important;
+    animation: none !important;
   }
 }

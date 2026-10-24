@@ -109,10 +109,20 @@ await page.evaluate(() => document.querySelector('main')?.scrollTo(0, 0));
 await page.waitForTimeout(500);
 await snap(`${dir}/result.png`);
 
+// Progress: the stat tiles and the watch list (taller viewport so the cards aren't cut off).
+await page.setViewportSize({ width: 1200, height: 1000 });
 await page.click('[aria-label="Progress"]');
 await page.waitForSelector('text=Watching');
 await page.waitForTimeout(900);
-await snap(`${dir}/progress.png`);
+{
+  const tiles = await page.locator('[class*="tiles"]').first().boundingBox();
+  const watch = await page.locator('section:has(h2:text("Watching"))').first().boundingBox();
+  const pad = 28;
+  const clip = { x: tiles.x - pad, y: tiles.y - pad, width: tiles.width + pad * 2, height: watch.y + watch.height - tiles.y + pad * 2 };
+  const { data } = await cdp.send('Page.captureScreenshot', { format: 'png', clip: { ...clip, scale: 1 } });
+  writeFileSync(`${dir}/progress.png`, Buffer.from(data, 'base64'));
+}
+await page.setViewportSize({ width: 1200, height: 760 });
 
 await page.click('[aria-label="History"]');
 await page.waitForTimeout(900);

@@ -29,6 +29,7 @@ if (os) {
   primary.textContent = FILES[os].label;
   secondary.href = '#download';
   secondary.textContent = other === 'mac' ? 'Also for macOS' : 'Also for Windows';
+  secondary.hidden = false;
   // In the download section, the visitor's platform goes first; the other one is quieter.
   const list = document.querySelector('.platforms');
   const mine = list.querySelector(`[data-os="${os}"]`);
@@ -51,9 +52,9 @@ fetch('https://api.github.com/repos/dzhiganov/refine/releases/latest', {
   .then((release) => {
     const version = release.tag_name;
     const date = dateFmt.format(new Date(release.published_at));
-    document.getElementById('version-line').textContent = `${version} · Free beta for macOS and Windows`;
+    document.getElementById('version-line').textContent = `${version} · Free beta`;
     const line = document.getElementById('release-line');
-    line.textContent = `${version}, released ${date}. `;
+    line.textContent = `${version}, released ${date}. The app is free. `;
     const notes = document.createElement('a');
     notes.href = release.html_url;
     notes.textContent = "What's new";
@@ -69,32 +70,49 @@ fetch('https://api.github.com/repos/dzhiganov/refine/releases/latest', {
   });
 
 // ---- the recording: match the theme, play only while visible ---------------------------------
+// Sources are set here (not in the HTML) so a light-mode visitor doesn't download the dark video.
 
 const film = document.getElementById('film');
 const light = matchMedia('(prefers-color-scheme: light)');
+let filmVisible = false;
 
 function setFilm() {
   const t = light.matches ? 'light' : 'dark';
   film.poster = `/media/poster-${t}.webp`;
   film.innerHTML = `<source src="/media/demo-${t}.webm" type="video/webm"><source src="/media/demo-${t}.mp4" type="video/mp4">`;
   film.load();
+  if (filmVisible && !reducedMotion) film.play().catch(() => {});
 }
 
 setFilm();
 light.addEventListener('change', setFilm);
 
 if (reducedMotion) {
-  film.removeAttribute('autoplay');
   film.controls = true;
-  film.pause();
 } else {
-  new IntersectionObserver(([e]) => (e.isIntersecting ? film.play().catch(() => {}) : film.pause()), {
-    threshold: 0.25,
-  }).observe(film);
+  new IntersectionObserver(
+    ([e]) => {
+      filmVisible = e.isIntersecting;
+      if (filmVisible) film.play().catch(() => {});
+      else film.pause();
+    },
+    { threshold: 0.25 },
+  ).observe(film);
+  // Click (or Enter/Space when focused) pauses and resumes.
+  film.tabIndex = 0;
+  const toggle = () => (film.paused ? film.play().catch(() => {}) : film.pause());
+  film.addEventListener('click', toggle);
+  film.addEventListener('keydown', (e) => {
+    if (e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      toggle();
+    }
+  });
 }
 
 // ---- the animated example ------------------------------------------------------------------------
-// Real corrections from Qwen 3.6 (LM Studio): the fixes and explanations are the model's own words.
+// Real corrections from Qwen 3.6 (LM Studio). The explanations are the model's own words; the
+// highlighted fragments are trimmed to the words that change.
 
 const EXAMPLES = [
   {
@@ -115,9 +133,9 @@ const EXAMPLES = [
     tone: 'Slack',
     parts: [
       'Hallo zusammen, ich habe gestern mit ',
-      ['der Kunde', 'dem Kunden', "After 'mit' you must use the dative case. The dative form is 'dem Kunden'."],
+      ['der Kunde', 'dem Kunden', "The noun 'Kunde' is masculine. After the preposition 'mit', you must use the dative case. The dative form is 'dem Kunden'."],
       ' gesprochen und er hat gesagt, dass er ',
-      ['braucht mehr Zeit', 'mehr Zeit braucht', "In a clause starting with 'dass', the conjugated verb goes to the very end."],
+      ['braucht mehr Zeit', 'mehr Zeit braucht', "In a subordinate clause starting with 'dass', the conjugated verb must go to the very end."],
       ' für die Tests.',
     ],
   },
@@ -158,12 +176,18 @@ function explain(fix) {
   whyEl.append(fix.why);
 }
 
-// Pause the loop while the hero is off screen or the tab is hidden.
+// Pause the loop while the hero is off screen, the tab is hidden, or the visitor paused it.
 let visible = true;
+let paused = false;
 new IntersectionObserver(([e]) => (visible = e.isIntersecting)).observe(textEl);
 const whenVisible = async () => {
-  while (!visible || document.hidden) await wait(400);
+  while (!visible || document.hidden || paused) await wait(300);
 };
+const pauseButton = document.getElementById('demo-pause');
+pauseButton.addEventListener('click', () => {
+  paused = !paused;
+  pauseButton.textContent = paused ? 'Play' : 'Pause';
+});
 
 async function play() {
   for (let i = 0; ; i = (i + 1) % EXAMPLES.length) {
@@ -178,7 +202,8 @@ async function play() {
       await wait(650);
       fix.span.classList.add('struck');
       countEl.textContent = `${n + 1} ${n === 0 ? 'fix' : 'fixes'}`;
-      await wait(1700);
+      // Longer explanations stay up longer.
+      await wait(1300 + fix.why.length * 12);
     }
     // The clean result, ready to copy.
     whyEl.classList.add('hidden');
@@ -196,5 +221,6 @@ if (reducedMotion) {
   countEl.textContent = `${fixes.length} fixes`;
   explain(fixes[3]);
 } else {
+  pauseButton.hidden = false;
   play();
 }

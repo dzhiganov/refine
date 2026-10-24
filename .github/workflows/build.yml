@@ -91,6 +91,9 @@ jobs:
       - uses: softprops/action-gh-release@v2
         with:
           name: Refine ${{ github.ref_name }}
+          # Draft first, published below once every file is attached, so latest/download/<name>
+          # never points at a release that's still missing its files.
+          draft: true
           generate_release_notes: true
           fail_on_unmatched_files: true
           files: |
@@ -103,7 +106,14 @@ jobs:
             - **macOS** (Apple Silicon and Intel): `Refine-macOS.dmg`
             - **Windows**: `Refine-Windows-setup.exe` (or `Refine-Windows.msi`)
 
-            The builds aren't signed with a paid certificate yet:
-            - **macOS:** open the `.dmg`, drag Refine to Applications, then right-click it → **Open** the first time
-              (or run `xattr -dr com.apple.quarantine /Applications/Refine.app`).
-            - **Windows:** if SmartScreen warns, click **More info** → **Run anyway**.
+            Refine is beta software: it may not work, may crash, and could harm your computer or lose your data.
+            It comes as is, with no warranty, and you use it at your own risk.
+
+            Refine isn't registered with Apple or Microsoft yet, so your computer will warn you the first time:
+            - **macOS:** open the `.dmg`, drag Refine into Applications and open it. When macOS says it can't check
+              the app, go to System Settings → Privacy & Security and click **Open Anyway**.
+            - **Windows:** if you see "Windows protected your PC", choose **More info**, then **Run anyway**.
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release edit "${{ github.ref_name }}" --repo "${{ github.repository }}" --draft=false --latest
