@@ -76,7 +76,6 @@ fn compact(l: &LanguageStats) -> Value {
     json!({
         "language": l.language,
         "languageName": l.language_name,
-        "declaredLevel": l.declared_level,
         "texts": l.totals.texts,
         "words": l.totals.words,
         "activeWeeksOfLast12": l.totals.active_weeks_12,

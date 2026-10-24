@@ -6,7 +6,7 @@
 use chrono::{Duration, Utc};
 use refine_core::insights::{Insights, LanguageInsight};
 use refine_core::model::{
-    Cefr, Entry, Mistake, ModelRef, PatternCheck, SCHEMA_VERSION, Suggestion, SuggestionKind, ToneRef, pattern_key,
+    Entry, Mistake, ModelRef, PatternCheck, SCHEMA_VERSION, Suggestion, SuggestionKind, ToneRef, pattern_key,
 };
 use refine_core::settings::{ProviderKind, Settings};
 use refine_core::stats::{PatternPrefs, compute_stats};
@@ -16,7 +16,7 @@ use refine_core::tone::builtin_tones;
 use serde_json::json;
 
 struct M(&'static str, &'static str, C, &'static str, &'static str, bool);
-struct S(SuggestionKind, &'static str, &'static str, &'static str, Cefr);
+struct S(SuggestionKind, &'static str, &'static str, &'static str);
 
 struct T {
     lang: &'static str,
@@ -60,7 +60,6 @@ fn entry(i: usize, t: &T, days_ago: i64, hour: i64) -> Entry {
             original: s.1.into(),
             replacement: s.2.into(),
             explanation: s.3.into(),
-            level: s.4,
             span: find_from(&fixed, s.1, 0).map(|r| to_span(&fixed, r)),
         })
         .collect();
@@ -80,7 +79,6 @@ fn entry(i: usize, t: &T, days_ago: i64, hour: i64) -> Entry {
         created_at: at,
         input: t.input.into(),
         language: t.lang.into(),
-        level: if t.lang == "de" { Cefr::B1 } else { Cefr::B2 },
         tone: ToneRef { id: tone.id.clone(), name: tone.name.clone() },
         model: ModelRef { provider_id: "openrouter".into(), provider_kind: ProviderKind::OpenRouter, model: "anthropic/claude-sonnet-4.5".into() },
         diff: word_diff(t.input, &fixed),
@@ -110,7 +108,7 @@ fn texts() -> (Vec<T>, Vec<T>) {
                 M("mit der Kunde", "mit dem Kunden", C::Case, MIT, "After 'mit' always use the dative: 'dem Kunden', not 'der Kunde'.", false),
                 M("dass er braucht mehr Zeit", "dass er mehr Zeit braucht", C::WordOrder, VERB_LAST, "After 'dass' the conjugated verb goes to the end of the clause.", false),
             ],
-            suggestions: vec![S(Phrase, "Ich melde mich morgen nochmal.", "Ich melde mich morgen wieder.", "'Wieder' sounds a bit more natural for getting back to someone.", Cefr::B1)],
+            suggestions: vec![S(Phrase, "Ich melde mich morgen nochmal.", "Ich melde mich morgen wieder.", "'Wieder' sounds a bit more natural for getting back to someone.")],
             watch: vec![],
         },
         T {
@@ -126,7 +124,7 @@ fn texts() -> (Vec<T>, Vec<T>) {
             tone: "slack",
             input: "Wir treffen uns um 15 Uhr mit dem ganzen Team und dann machen wir eine Entscheidung über das neue Feature. Bitte bringt eure Notizen von letzter Woche mit.",
             mistakes: vec![M("machen wir eine Entscheidung", "treffen wir eine Entscheidung", C::Collocation, "eine Entscheidung treffen", "In German you 'treffen' a decision, you don't 'machen' it.", false)],
-            suggestions: vec![S(Synonym, "Notizen", "Unterlagen", "'Unterlagen' covers notes, documents and slides. Common at work.", Cefr::B2)],
+            suggestions: vec![S(Synonym, "Notizen", "Unterlagen", "'Unterlagen' covers notes, documents and slides. Common at work.")],
             watch: vec![],
         },
         T {
@@ -134,7 +132,7 @@ fn texts() -> (Vec<T>, Vec<T>) {
             tone: "email",
             input: "Sehr geehrte Frau Müller, vielen Dank für Ihre schnelle Antwort. Kannst du mir bitte die Rechnung noch einmal als PDF schicken? Mit freundlichen Grüßen",
             mistakes: vec![M("Kannst du mir", "Können Sie mir", C::Address, "Sie in formal emails", "You started with 'Sie' (Ihre); keep it: 'Können Sie', not 'Kannst du'.", false)],
-            suggestions: vec![S(Phrase, "noch einmal als PDF schicken", "erneut als PDF zusenden", "'Zusenden' and 'erneut' fit the formal tone of an email.", Cefr::B2)],
+            suggestions: vec![S(Phrase, "noch einmal als PDF schicken", "erneut als PDF zusenden", "'Zusenden' and 'erneut' fit the formal tone of an email.")],
             watch: vec![],
         },
         T {
@@ -153,7 +151,7 @@ fn texts() -> (Vec<T>, Vec<T>) {
                 M("ich denke dass", "ich denke, dass", C::Punctuation, "comma before dass", "German always puts a comma before 'dass'.", false),
                 M("dein Hilfe", "deine Hilfe", C::Gender, "die Hilfe", "'Hilfe' is feminine (die Hilfe), so it's 'deine'.", false),
             ],
-            suggestions: vec![S(Collocation, "Hilfe bei der Präsentation geben", "bei der Präsentation helfen", "Shorter and more natural: 'Kannst du mir bei der Präsentation helfen?'", Cefr::B1)],
+            suggestions: vec![S(Collocation, "Hilfe bei der Präsentation geben", "bei der Präsentation helfen", "Shorter and more natural: 'Kannst du mir bei der Präsentation helfen?'")],
             watch: vec![],
         },
         T {
@@ -172,7 +170,7 @@ fn texts() -> (Vec<T>, Vec<T>) {
             tone: "github",
             input: "Can you please explain me how the deploy pipeline works for the staging environment? I tried to follow the README, but the second step fails with a timeout.",
             mistakes: vec![M("explain me", "explain to me", C::Preposition, "explain to someone", "You explain something 'to' someone: 'explain to me'.", false)],
-            suggestions: vec![S(Phrase, "the second step fails with a timeout", "the second step times out", "'Times out' is the usual way to say it in dev talk.", Cefr::B2)],
+            suggestions: vec![S(Phrase, "the second step fails with a timeout", "the second step times out", "'Times out' is the usual way to say it in dev talk.")],
             watch: vec![],
         },
         T {
@@ -183,7 +181,7 @@ fn texts() -> (Vec<T>, Vec<T>) {
                 M("until Friday", "by Friday", C::Preposition, BY, "For deadlines use 'by': 'by Friday'. 'Until' means a state continues up to then.", true),
                 M("informations", "information", C::NounNumber, "information is uncountable", "'Information' has no plural in English.", false),
             ],
-            suggestions: vec![S(Synonym, "make a final decision", "reach a final decision", "'Reach a decision' sounds a bit more polished in emails.", Cefr::C1)],
+            suggestions: vec![S(Synonym, "make a final decision", "reach a final decision", "'Reach a decision' sounds a bit more polished in emails.")],
             watch: vec![],
         },
         T {
@@ -204,7 +202,7 @@ fn texts() -> (Vec<T>, Vec<T>) {
             tone: "slack",
             input: "Ich habe gerade mit dem Kunden telefoniert und er hat gesagt, dass alles passt. Wir können also wie geplant am Montag mit dem Rollout starten.",
             mistakes: vec![],
-            suggestions: vec![S(Synonym, "wie geplant", "planmäßig", "'Planmäßig' is a compact, common alternative at work.", Cefr::B2)],
+            suggestions: vec![S(Synonym, "wie geplant", "planmäßig", "'Planmäßig' is a compact, common alternative at work.")],
             watch: vec![(MIT, C::Case, 2), (VERB_LAST, C::WordOrder, 1)],
         },
         T {
@@ -220,7 +218,7 @@ fn texts() -> (Vec<T>, Vec<T>) {
             tone: "slack",
             input: "Ich bin morgen nicht da, weil ich mit meiner Schwester nach Hamburg fahre. Bei Fragen schreibt mir einfach, ich schaue ab und zu aufs Handy.",
             mistakes: vec![],
-            suggestions: vec![S(Phrase, "schaue ab und zu aufs Handy", "schaue zwischendurch aufs Handy", "'Zwischendurch' is the everyday word for 'now and then' here.", Cefr::B1)],
+            suggestions: vec![S(Phrase, "schaue ab und zu aufs Handy", "schaue zwischendurch aufs Handy", "'Zwischendurch' is the everyday word for 'now and then' here.")],
             watch: vec![(MIT, C::Case, 1), (VERB_LAST, C::WordOrder, 1)],
         },
         T {
@@ -236,7 +234,7 @@ fn texts() -> (Vec<T>, Vec<T>) {
             tone: "slack",
             input: "Ich habe mit der neuen Kollegin gesprochen, weil sie Fragen zum Projekt hatte. Sie fängt nächste Woche an und braucht noch einen Zugang zum Server.",
             mistakes: vec![],
-            suggestions: vec![S(Collocation, "braucht noch einen Zugang zum Server", "braucht noch Zugriff auf den Server", "'Zugriff auf' is the usual pairing for systems and servers.", Cefr::B2)],
+            suggestions: vec![S(Collocation, "braucht noch einen Zugang zum Server", "braucht noch Zugriff auf den Server", "'Zugriff auf' is the usual pairing for systems and servers.")],
             watch: vec![(MIT, C::Case, 1), (VERB_LAST, C::WordOrder, 1)],
         },
         T {
@@ -252,7 +250,7 @@ fn texts() -> (Vec<T>, Vec<T>) {
             tone: "slack",
             input: "Quick update: I sent the slides to the client this morning and they replied within an hour. We need their final feedback by Thursday so we can ship on Monday.",
             mistakes: vec![],
-            suggestions: vec![S(Collocation, "final feedback", "final sign-off", "'Sign-off' is the common term for final approval.", Cefr::B2)],
+            suggestions: vec![S(Collocation, "final feedback", "final sign-off", "'Sign-off' is the common term for final approval.")],
             watch: vec![(PAST, C::VerbTense, 1), (BY, C::Preposition, 1)],
         },
         T {
@@ -276,7 +274,7 @@ fn texts() -> (Vec<T>, Vec<T>) {
             tone: "email",
             input: "Dear Anna, thank you for your quick reply. I have attached the updated contract, and I would appreciate it if you could sign it by the end of the week.",
             mistakes: vec![],
-            suggestions: vec![S(Synonym, "I would appreciate it if you could", "I'd be grateful if you could", "A warm, still formal alternative.", Cefr::B2)],
+            suggestions: vec![S(Synonym, "I would appreciate it if you could", "I'd be grateful if you could", "A warm, still formal alternative.")],
             watch: vec![(BY, C::Preposition, 1)],
         },
         T {

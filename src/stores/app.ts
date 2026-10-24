@@ -24,7 +24,8 @@ interface AppState {
 
   view: View;
   draft: string;
-  /** The result being shown on the Write page (fresh or opened from History). */
+  /** The last result, shown under the editor (fresh or opened from History). It stays while the
+   *  text is edited; the page marks it out of date until the next check. */
   entry: Entry | null;
   checking: boolean;
   checkError: CheckError | null;
@@ -34,8 +35,7 @@ interface AppState {
   setDraft(text: string): void;
   check(): Promise<void>;
   openEntry(entry: Entry): void;
-  /** Back to editing: keeps the text, drops the result. */
-  editAgain(): void;
+  /** Clears the editor and the result. */
   newText(): void;
   saveSettings(next: Settings): Promise<void>;
   setTones(tones: Tone[]): void;
@@ -91,8 +91,6 @@ export const useApp = create<AppState>((set, get) => ({
   },
 
   openEntry: (entry) => set({ entry, draft: entry.input, view: 'write', checkError: null }),
-
-  editAgain: () => set({ entry: null }),
 
   newText: () => set({ entry: null, draft: '', checkError: null }),
 

@@ -94,10 +94,26 @@
   min-width: 0 !important;
 }
 
+/* Native select with our own chevron, so the arrow sits inside the padding on every platform. */
 .select {
-  font-size: var(--text-sm);
   width: auto;
-  min-width: 180px;
+  min-width: 200px;
+  padding-right: 40px;
+  font-size: var(--text-sm);
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237d8290' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  cursor: pointer;
+}
+
+.select:hover {
+  border-color: var(--color-muted);
+}
+
+.end {
+  justify-content: flex-end;
 }
 
 .number {

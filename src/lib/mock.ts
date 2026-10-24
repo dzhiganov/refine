@@ -69,7 +69,6 @@ function simulateCheck(text: string, language: string | null, tone: Tone): Entry
     createdAt: new Date().toISOString(),
     input: text,
     language: lang,
-    level: lang === 'de' ? 'B1' : 'B2',
     tone: { id: tone.id, name: tone.name },
     model: { providerId: 'openrouter', providerKind: 'openRouter', model: 'mock/model' },
     fixedText: fixed,
@@ -83,7 +82,6 @@ function simulateCheck(text: string, language: string | null, tone: Tone): Entry
               original: fixed.split(/\s+/).slice(0, 2).join(' '),
               replacement: lang === 'de' ? 'Kurz gesagt' : 'In short',
               explanation: 'A smoother way to open (sample suggestion from the mock).',
-              level: 'B2',
               span: null,
             },
           ]

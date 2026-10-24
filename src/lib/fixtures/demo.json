@@ -42,13 +42,11 @@
     "languages": [
       {
         "code": "en",
-        "name": "English",
-        "level": "B2"
+        "name": "English"
       },
       {
         "code": "de",
-        "name": "German",
-        "level": "B1"
+        "name": "German"
       }
     ],
     "explanationLanguage": "en",
@@ -108,10 +106,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-000",
-      "createdAt": "2026-08-30T01:29:29.023261432Z",
+      "createdAt": "2026-08-30T20:49:33.280224700Z",
       "input": "Ich habe gerade mit dem Kunden telefoniert und er hat gesagt, dass alles passt. Wir können also wie geplant am Montag mit dem Rollout starten.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -130,7 +127,6 @@
           "original": "wie geplant",
           "replacement": "planmäßig",
           "explanation": "'Planmäßig' is a compact, common alternative at work.",
-          "level": "B2",
           "span": {
             "start": 96,
             "end": 107
@@ -164,10 +160,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-001",
-      "createdAt": "2026-08-30T05:29:29.023529629Z",
+      "createdAt": "2026-08-31T00:49:33.280333102Z",
       "input": "Dear Mark, we need to make a final decision until Friday, otherwise we will miss the release window. I will send you the informations about both options tomorrow.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "email",
         "name": "Formal email"
@@ -215,7 +210,6 @@
           "original": "make a final decision",
           "replacement": "reach a final decision",
           "explanation": "'Reach a decision' sounds a bit more polished in emails.",
-          "level": "C1",
           "span": {
             "start": 22,
             "end": 43
@@ -260,10 +254,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-002",
-      "createdAt": "2026-08-31T01:29:29.023786896Z",
+      "createdAt": "2026-08-31T20:49:33.280518175Z",
       "input": "Ich fahre morgen früh mit den Zug nach Berlin und bleibe bis Sonntag. Hast du Lust, am Samstag zusammen essen zu gehen? Ich kenne da ein gutes Restaurant.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "friends",
         "name": "Friends"
@@ -317,10 +310,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-003",
-      "createdAt": "2026-08-31T05:29:29.024120609Z",
+      "createdAt": "2026-09-01T00:49:33.280680607Z",
       "input": "Dear Anna, thank you for your quick reply. I have attached the updated contract, and I would appreciate it if you could sign it by the end of the week.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "email",
         "name": "Formal email"
@@ -339,7 +331,6 @@
           "original": "I would appreciate it if you could",
           "replacement": "I'd be grateful if you could",
           "explanation": "A warm, still formal alternative.",
-          "level": "B2",
           "span": {
             "start": 85,
             "end": 119
@@ -367,10 +358,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-004",
-      "createdAt": "2026-09-01T01:29:29.024181712Z",
+      "createdAt": "2026-09-01T20:49:33.280737199Z",
       "input": "Dear Mark, we need to make a final decision until Friday, otherwise we will miss the release window. I will send you the informations about both options tomorrow.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "email",
         "name": "Formal email"
@@ -418,7 +408,6 @@
           "original": "make a final decision",
           "replacement": "reach a final decision",
           "explanation": "'Reach a decision' sounds a bit more polished in emails.",
-          "level": "C1",
           "span": {
             "start": 22,
             "end": 43
@@ -463,10 +452,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-005",
-      "createdAt": "2026-09-01T05:29:29.024323891Z",
+      "createdAt": "2026-09-02T00:49:33.280942996Z",
       "input": "Yesterday I have sent the report to the client, but he didn't answer yet. I'll ping him again tomorrow morning if there is still no reply by then.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -554,10 +542,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-006",
-      "createdAt": "2026-09-02T01:29:29.024641109Z",
+      "createdAt": "2026-09-02T20:49:33.281111572Z",
       "input": "Wir treffen uns um 15 Uhr mit dem ganzen Team und dann machen wir eine Entscheidung über das neue Feature. Bitte bringt eure Notizen von letzter Woche mit.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -591,7 +578,6 @@
           "original": "Notizen",
           "replacement": "Unterlagen",
           "explanation": "'Unterlagen' covers notes, documents and slides. Common at work.",
-          "level": "B2",
           "span": {
             "start": 126,
             "end": 133
@@ -624,10 +610,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-007",
-      "createdAt": "2026-09-02T05:29:29.024778098Z",
+      "createdAt": "2026-09-03T00:49:33.281243504Z",
       "input": "Hallo zusammen, ich habe gestern mit der Kunde gesprochen und er hat gesagt, dass er braucht mehr Zeit für die Tests. Ich melde mich morgen nochmal.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -675,7 +660,6 @@
           "original": "Ich melde mich morgen nochmal.",
           "replacement": "Ich melde mich morgen wieder.",
           "explanation": "'Wieder' sounds a bit more natural for getting back to someone.",
-          "level": "B1",
           "span": {
             "start": 119,
             "end": 149
@@ -736,10 +720,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-008",
-      "createdAt": "2026-09-03T01:29:29.025078162Z",
+      "createdAt": "2026-09-03T20:49:33.281377231Z",
       "input": "Yesterday I have sent the report to the client, but he didn't answer yet. I'll ping him again tomorrow morning if there is still no reply by then.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -827,10 +810,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-009",
-      "createdAt": "2026-09-03T05:29:29.025241188Z",
+      "createdAt": "2026-09-04T00:49:33.281512794Z",
       "input": "Ich fahre morgen früh mit den Zug nach Berlin und bleibe bis Sonntag. Hast du Lust, am Samstag zusammen essen zu gehen? Ich kenne da ein gutes Restaurant.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "friends",
         "name": "Friends"
@@ -884,10 +866,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-010",
-      "createdAt": "2026-09-04T01:29:29.025589416Z",
+      "createdAt": "2026-09-04T20:49:33.281648479Z",
       "input": "Hallo zusammen, ich habe gestern mit der Kunde gesprochen und er hat gesagt, dass er braucht mehr Zeit für die Tests. Ich melde mich morgen nochmal.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -935,7 +916,6 @@
           "original": "Ich melde mich morgen nochmal.",
           "replacement": "Ich melde mich morgen wieder.",
           "explanation": "'Wieder' sounds a bit more natural for getting back to someone.",
-          "level": "B1",
           "span": {
             "start": 119,
             "end": 149
@@ -996,10 +976,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-011",
-      "createdAt": "2026-09-04T05:29:29.025800541Z",
+      "createdAt": "2026-09-05T00:49:33.281834218Z",
       "input": "Dear Mark, we need to make a final decision until Friday, otherwise we will miss the release window. I will send you the informations about both options tomorrow.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "email",
         "name": "Formal email"
@@ -1047,7 +1026,6 @@
           "original": "make a final decision",
           "replacement": "reach a final decision",
           "explanation": "'Reach a decision' sounds a bit more polished in emails.",
-          "level": "C1",
           "span": {
             "start": 22,
             "end": 43
@@ -1092,10 +1070,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-012",
-      "createdAt": "2026-09-06T01:29:29.025977728Z",
+      "createdAt": "2026-09-06T20:49:33.281969398Z",
       "input": "Ich fahre morgen früh mit den Zug nach Berlin und bleibe bis Sonntag. Hast du Lust, am Samstag zusammen essen zu gehen? Ich kenne da ein gutes Restaurant.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "friends",
         "name": "Friends"
@@ -1149,10 +1126,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-013",
-      "createdAt": "2026-09-06T05:29:29.026196983Z",
+      "createdAt": "2026-09-07T00:49:33.282102176Z",
       "input": "Wir treffen uns um 15 Uhr mit dem ganzen Team und dann machen wir eine Entscheidung über das neue Feature. Bitte bringt eure Notizen von letzter Woche mit.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -1186,7 +1162,6 @@
           "original": "Notizen",
           "replacement": "Unterlagen",
           "explanation": "'Unterlagen' covers notes, documents and slides. Common at work.",
-          "level": "B2",
           "span": {
             "start": 126,
             "end": 133
@@ -1219,10 +1194,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-014",
-      "createdAt": "2026-09-07T01:29:29.026375263Z",
+      "createdAt": "2026-09-07T20:49:33.282229083Z",
       "input": "Dear Mark, we need to make a final decision until Friday, otherwise we will miss the release window. I will send you the informations about both options tomorrow.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "email",
         "name": "Formal email"
@@ -1270,7 +1244,6 @@
           "original": "make a final decision",
           "replacement": "reach a final decision",
           "explanation": "'Reach a decision' sounds a bit more polished in emails.",
-          "level": "C1",
           "span": {
             "start": 22,
             "end": 43
@@ -1315,10 +1288,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-015",
-      "createdAt": "2026-09-07T05:29:29.026533414Z",
+      "createdAt": "2026-09-08T00:49:33.282359501Z",
       "input": "Yesterday I have sent the report to the client, but he didn't answer yet. I'll ping him again tomorrow morning if there is still no reply by then.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -1406,10 +1378,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-016",
-      "createdAt": "2026-09-08T01:29:29.026727666Z",
+      "createdAt": "2026-09-08T20:49:33.282514083Z",
       "input": "Ich habe mit der neuen Kollegin gesprochen, weil sie Fragen zum Projekt hatte. Sie fängt nächste Woche an und braucht noch einen Zugang zum Server.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -1428,7 +1399,6 @@
           "original": "braucht noch einen Zugang zum Server",
           "replacement": "braucht noch Zugriff auf den Server",
           "explanation": "'Zugriff auf' is the usual pairing for systems and servers.",
-          "level": "B2",
           "span": {
             "start": 110,
             "end": 146
@@ -1462,10 +1432,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-017",
-      "createdAt": "2026-09-08T05:29:29.026810474Z",
+      "createdAt": "2026-09-09T00:49:33.282572794Z",
       "input": "Hallo zusammen, ich habe gestern mit der Kunde gesprochen und er hat gesagt, dass er braucht mehr Zeit für die Tests. Ich melde mich morgen nochmal.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -1513,7 +1482,6 @@
           "original": "Ich melde mich morgen nochmal.",
           "replacement": "Ich melde mich morgen wieder.",
           "explanation": "'Wieder' sounds a bit more natural for getting back to someone.",
-          "level": "B1",
           "span": {
             "start": 119,
             "end": 149
@@ -1574,10 +1542,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-018",
-      "createdAt": "2026-09-09T01:29:29.026952515Z",
+      "createdAt": "2026-09-09T20:49:33.282749372Z",
       "input": "Yesterday I have sent the report to the client, but he didn't answer yet. I'll ping him again tomorrow morning if there is still no reply by then.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -1665,10 +1632,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-019",
-      "createdAt": "2026-09-09T05:29:29.027155649Z",
+      "createdAt": "2026-09-10T00:49:33.282928210Z",
       "input": "Ich bin morgen nicht da, weil ich mit meiner Schwester nach Hamburg fahre. Bei Fragen schreibt mir einfach, ich schaue ab und zu aufs Handy.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -1687,7 +1653,6 @@
           "original": "schaue ab und zu aufs Handy",
           "replacement": "schaue zwischendurch aufs Handy",
           "explanation": "'Zwischendurch' is the everyday word for 'now and then' here.",
-          "level": "B1",
           "span": {
             "start": 112,
             "end": 139
@@ -1721,10 +1686,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-020",
-      "createdAt": "2026-09-10T01:29:29.027218654Z",
+      "createdAt": "2026-09-10T20:49:33.282985155Z",
       "input": "Hallo zusammen, ich habe gestern mit der Kunde gesprochen und er hat gesagt, dass er braucht mehr Zeit für die Tests. Ich melde mich morgen nochmal.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -1772,7 +1736,6 @@
           "original": "Ich melde mich morgen nochmal.",
           "replacement": "Ich melde mich morgen wieder.",
           "explanation": "'Wieder' sounds a bit more natural for getting back to someone.",
-          "level": "B1",
           "span": {
             "start": 119,
             "end": 149
@@ -1833,10 +1796,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-021",
-      "createdAt": "2026-09-10T05:29:29.027418421Z",
+      "createdAt": "2026-09-11T00:49:33.283132130Z",
       "input": "Dear Mark, we need to make a final decision until Friday, otherwise we will miss the release window. I will send you the informations about both options tomorrow.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "email",
         "name": "Formal email"
@@ -1884,7 +1846,6 @@
           "original": "make a final decision",
           "replacement": "reach a final decision",
           "explanation": "'Reach a decision' sounds a bit more polished in emails.",
-          "level": "C1",
           "span": {
             "start": 22,
             "end": 43
@@ -1929,10 +1890,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-022",
-      "createdAt": "2026-09-11T01:29:29.027630733Z",
+      "createdAt": "2026-09-11T20:49:33.283257463Z",
       "input": "Ich fahre morgen früh mit den Zug nach Berlin und bleibe bis Sonntag. Hast du Lust, am Samstag zusammen essen zu gehen? Ich kenne da ein gutes Restaurant.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "friends",
         "name": "Friends"
@@ -1986,10 +1946,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-023",
-      "createdAt": "2026-09-11T05:29:29.027955396Z",
+      "createdAt": "2026-09-12T00:49:33.283394741Z",
       "input": "Wir treffen uns um 15 Uhr mit dem ganzen Team und dann machen wir eine Entscheidung über das neue Feature. Bitte bringt eure Notizen von letzter Woche mit.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -2023,7 +1982,6 @@
           "original": "Notizen",
           "replacement": "Unterlagen",
           "explanation": "'Unterlagen' covers notes, documents and slides. Common at work.",
-          "level": "B2",
           "span": {
             "start": 126,
             "end": 133
@@ -2056,10 +2014,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-024",
-      "createdAt": "2026-09-13T01:29:29.028166793Z",
+      "createdAt": "2026-09-13T20:49:33.283531112Z",
       "input": "Dear Mark, we need to make a final decision until Friday, otherwise we will miss the release window. I will send you the informations about both options tomorrow.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "email",
         "name": "Formal email"
@@ -2107,7 +2064,6 @@
           "original": "make a final decision",
           "replacement": "reach a final decision",
           "explanation": "'Reach a decision' sounds a bit more polished in emails.",
-          "level": "C1",
           "span": {
             "start": 22,
             "end": 43
@@ -2152,10 +2108,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-025",
-      "createdAt": "2026-09-13T05:29:29.028337805Z",
+      "createdAt": "2026-09-14T00:49:33.283655435Z",
       "input": "Yesterday I have sent the report to the client, but he didn't answer yet. I'll ping him again tomorrow morning if there is still no reply by then.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -2243,10 +2198,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-026",
-      "createdAt": "2026-09-14T01:29:29.028493662Z",
+      "createdAt": "2026-09-14T20:49:33.283792230Z",
       "input": "Wir treffen uns um 15 Uhr mit dem ganzen Team und dann machen wir eine Entscheidung über das neue Feature. Bitte bringt eure Notizen von letzter Woche mit.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -2280,7 +2234,6 @@
           "original": "Notizen",
           "replacement": "Unterlagen",
           "explanation": "'Unterlagen' covers notes, documents and slides. Common at work.",
-          "level": "B2",
           "span": {
             "start": 126,
             "end": 133
@@ -2313,10 +2266,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-027",
-      "createdAt": "2026-09-14T05:29:29.028635703Z",
+      "createdAt": "2026-09-15T00:49:33.283948315Z",
       "input": "Hallo zusammen, ich habe gestern mit der Kunde gesprochen und er hat gesagt, dass er braucht mehr Zeit für die Tests. Ich melde mich morgen nochmal.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -2364,7 +2316,6 @@
           "original": "Ich melde mich morgen nochmal.",
           "replacement": "Ich melde mich morgen wieder.",
           "explanation": "'Wieder' sounds a bit more natural for getting back to someone.",
-          "level": "B1",
           "span": {
             "start": 119,
             "end": 149
@@ -2425,10 +2376,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-028",
-      "createdAt": "2026-09-15T01:29:29.028789649Z",
+      "createdAt": "2026-09-15T20:49:33.284097631Z",
       "input": "Yesterday I have sent the report to the client, but he didn't answer yet. I'll ping him again tomorrow morning if there is still no reply by then.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -2516,10 +2466,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-029",
-      "createdAt": "2026-09-15T05:29:29.028942522Z",
+      "createdAt": "2026-09-16T00:49:33.284231550Z",
       "input": "Ich fahre morgen früh mit den Zug nach Berlin und bleibe bis Sonntag. Hast du Lust, am Samstag zusammen essen zu gehen? Ich kenne da ein gutes Restaurant.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "friends",
         "name": "Friends"
@@ -2573,10 +2522,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-030",
-      "createdAt": "2026-09-16T01:29:29.029088069Z",
+      "createdAt": "2026-09-16T20:49:33.284371119Z",
       "input": "Hallo zusammen, ich habe gestern mit der Kunde gesprochen und er hat gesagt, dass er braucht mehr Zeit für die Tests. Ich melde mich morgen nochmal.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -2624,7 +2572,6 @@
           "original": "Ich melde mich morgen nochmal.",
           "replacement": "Ich melde mich morgen wieder.",
           "explanation": "'Wieder' sounds a bit more natural for getting back to someone.",
-          "level": "B1",
           "span": {
             "start": 119,
             "end": 149
@@ -2685,10 +2632,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-031",
-      "createdAt": "2026-09-16T05:29:29.029219848Z",
+      "createdAt": "2026-09-17T00:49:33.284499670Z",
       "input": "Dear Mark, we need to make a final decision until Friday, otherwise we will miss the release window. I will send you the informations about both options tomorrow.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "email",
         "name": "Formal email"
@@ -2736,7 +2682,6 @@
           "original": "make a final decision",
           "replacement": "reach a final decision",
           "explanation": "'Reach a decision' sounds a bit more polished in emails.",
-          "level": "C1",
           "span": {
             "start": 22,
             "end": 43
@@ -2781,10 +2726,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-032",
-      "createdAt": "2026-09-17T01:29:29.029374641Z",
+      "createdAt": "2026-09-17T20:49:33.284622349Z",
       "input": "Yesterday we had a long call with the design team and agreed on the new layout. I have to make a decision about the colors by tomorrow, any opinions?",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -2824,10 +2768,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-033",
-      "createdAt": "2026-09-17T05:29:29.029457203Z",
+      "createdAt": "2026-09-18T00:49:33.284676843Z",
       "input": "Wir treffen uns um 15 Uhr mit dem ganzen Team und dann machen wir eine Entscheidung über das neue Feature. Bitte bringt eure Notizen von letzter Woche mit.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -2861,7 +2804,6 @@
           "original": "Notizen",
           "replacement": "Unterlagen",
           "explanation": "'Unterlagen' covers notes, documents and slides. Common at work.",
-          "level": "B2",
           "span": {
             "start": 126,
             "end": 133
@@ -2894,10 +2836,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-034",
-      "createdAt": "2026-09-18T01:29:29.029620780Z",
+      "createdAt": "2026-09-18T20:49:33.284800864Z",
       "input": "Dear Mark, we need to make a final decision until Friday, otherwise we will miss the release window. I will send you the informations about both options tomorrow.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "email",
         "name": "Formal email"
@@ -2945,7 +2886,6 @@
           "original": "make a final decision",
           "replacement": "reach a final decision",
           "explanation": "'Reach a decision' sounds a bit more polished in emails.",
-          "level": "C1",
           "span": {
             "start": 22,
             "end": 43
@@ -2990,10 +2930,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-035",
-      "createdAt": "2026-09-18T05:29:29.029755544Z",
+      "createdAt": "2026-09-19T00:49:33.284949554Z",
       "input": "Quick update: I sent the slides to the client this morning and they replied within an hour. We need their final feedback by Thursday so we can ship on Monday.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -3012,7 +2951,6 @@
           "original": "final feedback",
           "replacement": "final sign-off",
           "explanation": "'Sign-off' is the common term for final approval.",
-          "level": "B2",
           "span": {
             "start": 106,
             "end": 120
@@ -3046,10 +2984,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-036",
-      "createdAt": "2026-09-20T01:29:29.029808661Z",
+      "createdAt": "2026-09-20T20:49:33.285009718Z",
       "input": "Wir treffen uns um 15 Uhr mit dem ganzen Team und dann machen wir eine Entscheidung über das neue Feature. Bitte bringt eure Notizen von letzter Woche mit.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -3083,7 +3020,6 @@
           "original": "Notizen",
           "replacement": "Unterlagen",
           "explanation": "'Unterlagen' covers notes, documents and slides. Common at work.",
-          "level": "B2",
           "span": {
             "start": 126,
             "end": 133
@@ -3116,10 +3052,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-037",
-      "createdAt": "2026-09-20T05:29:29.029937949Z",
+      "createdAt": "2026-09-21T00:49:33.285149660Z",
       "input": "Hallo zusammen, ich habe gestern mit der Kunde gesprochen und er hat gesagt, dass er braucht mehr Zeit für die Tests. Ich melde mich morgen nochmal.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -3167,7 +3102,6 @@
           "original": "Ich melde mich morgen nochmal.",
           "replacement": "Ich melde mich morgen wieder.",
           "explanation": "'Wieder' sounds a bit more natural for getting back to someone.",
-          "level": "B1",
           "span": {
             "start": 119,
             "end": 149
@@ -3228,10 +3162,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-038",
-      "createdAt": "2026-09-21T01:29:29.030163556Z",
+      "createdAt": "2026-09-21T20:49:33.285279351Z",
       "input": "Yesterday I have sent the report to the client, but he didn't answer yet. I'll ping him again tomorrow morning if there is still no reply by then.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -3319,10 +3252,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-039",
-      "createdAt": "2026-09-21T05:29:29.030329507Z",
+      "createdAt": "2026-09-22T00:49:33.285412968Z",
       "input": "Ich fahre morgen früh mit den Zug nach Berlin und bleibe bis Sonntag. Hast du Lust, am Samstag zusammen essen zu gehen? Ich kenne da ein gutes Restaurant.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "friends",
         "name": "Friends"
@@ -3376,10 +3308,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-040",
-      "createdAt": "2026-09-22T01:29:29.030513321Z",
+      "createdAt": "2026-09-22T20:49:33.285603428Z",
       "input": "Hallo zusammen, ich habe gestern mit der Kunde gesprochen und er hat gesagt, dass er braucht mehr Zeit für die Tests. Ich melde mich morgen nochmal.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -3427,7 +3358,6 @@
           "original": "Ich melde mich morgen nochmal.",
           "replacement": "Ich melde mich morgen wieder.",
           "explanation": "'Wieder' sounds a bit more natural for getting back to someone.",
-          "level": "B1",
           "span": {
             "start": 119,
             "end": 149
@@ -3488,10 +3418,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-041",
-      "createdAt": "2026-09-22T05:29:29.030689306Z",
+      "createdAt": "2026-09-23T00:49:33.285732767Z",
       "input": "Dear Mark, we need to make a final decision until Friday, otherwise we will miss the release window. I will send you the informations about both options tomorrow.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "email",
         "name": "Formal email"
@@ -3539,7 +3468,6 @@
           "original": "make a final decision",
           "replacement": "reach a final decision",
           "explanation": "'Reach a decision' sounds a bit more polished in emails.",
-          "level": "C1",
           "span": {
             "start": 22,
             "end": 43
@@ -3584,10 +3512,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-042",
-      "createdAt": "2026-09-23T01:29:29.030821853Z",
+      "createdAt": "2026-09-23T20:49:33.285927707Z",
       "input": "Ich fahre morgen früh mit den Zug nach Berlin und bleibe bis Sonntag. Hast du Lust, am Samstag zusammen essen zu gehen? Ich kenne da ein gutes Restaurant.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "friends",
         "name": "Friends"
@@ -3641,10 +3568,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-043",
-      "createdAt": "2026-09-23T05:29:29.030958114Z",
+      "createdAt": "2026-09-24T00:49:33.286064199Z",
       "input": "Wir treffen uns um 15 Uhr mit dem ganzen Team und dann machen wir eine Entscheidung über das neue Feature. Bitte bringt eure Notizen von letzter Woche mit.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -3678,7 +3604,6 @@
           "original": "Notizen",
           "replacement": "Unterlagen",
           "explanation": "'Unterlagen' covers notes, documents and slides. Common at work.",
-          "level": "B2",
           "span": {
             "start": 126,
             "end": 133
@@ -3711,10 +3636,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-044",
-      "createdAt": "2026-09-24T01:29:29.031130081Z",
+      "createdAt": "2026-09-24T20:49:33.286234127Z",
       "input": "Dear Mark, we need to make a final decision until Friday, otherwise we will miss the release window. I will send you the informations about both options tomorrow.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "email",
         "name": "Formal email"
@@ -3762,7 +3686,6 @@
           "original": "make a final decision",
           "replacement": "reach a final decision",
           "explanation": "'Reach a decision' sounds a bit more polished in emails.",
-          "level": "C1",
           "span": {
             "start": 22,
             "end": 43
@@ -3807,10 +3730,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-045",
-      "createdAt": "2026-09-24T05:29:29.031281112Z",
+      "createdAt": "2026-09-25T00:49:33.286420007Z",
       "input": "Yesterday I have sent the report to the client, but he didn't answer yet. I'll ping him again tomorrow morning if there is still no reply by then.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -3898,10 +3820,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-046",
-      "createdAt": "2026-09-25T01:29:29.031478358Z",
+      "createdAt": "2026-09-25T20:49:33.286628771Z",
       "input": "Wir treffen uns um 15 Uhr mit dem ganzen Team und dann machen wir eine Entscheidung über das neue Feature. Bitte bringt eure Notizen von letzter Woche mit.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -3935,7 +3856,6 @@
           "original": "Notizen",
           "replacement": "Unterlagen",
           "explanation": "'Unterlagen' covers notes, documents and slides. Common at work.",
-          "level": "B2",
           "span": {
             "start": 126,
             "end": 133
@@ -3968,10 +3888,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-047",
-      "createdAt": "2026-09-25T05:29:29.031659238Z",
+      "createdAt": "2026-09-26T00:49:33.286784826Z",
       "input": "Hallo zusammen, ich habe gestern mit der Kunde gesprochen und er hat gesagt, dass er braucht mehr Zeit für die Tests. Ich melde mich morgen nochmal.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -4019,7 +3938,6 @@
           "original": "Ich melde mich morgen nochmal.",
           "replacement": "Ich melde mich morgen wieder.",
           "explanation": "'Wieder' sounds a bit more natural for getting back to someone.",
-          "level": "B1",
           "span": {
             "start": 119,
             "end": 149
@@ -4080,10 +3998,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-048",
-      "createdAt": "2026-09-27T01:29:29.031803543Z",
+      "createdAt": "2026-09-27T20:49:33.286914588Z",
       "input": "Quick update: I sent the slides to the client this morning and they replied within an hour. We need their final feedback by Thursday so we can ship on Monday.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -4102,7 +4019,6 @@
           "original": "final feedback",
           "replacement": "final sign-off",
           "explanation": "'Sign-off' is the common term for final approval.",
-          "level": "B2",
           "span": {
             "start": 106,
             "end": 120
@@ -4136,10 +4052,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-049",
-      "createdAt": "2026-09-27T05:29:29.031854662Z",
+      "createdAt": "2026-09-28T00:49:33.286965712Z",
       "input": "Can you please explain me how the deploy pipeline works for the staging environment? I tried to follow the README, but the second step fails with a timeout.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "github",
         "name": "GitHub"
@@ -4173,7 +4088,6 @@
           "original": "the second step fails with a timeout",
           "replacement": "the second step times out",
           "explanation": "'Times out' is the usual way to say it in dev talk.",
-          "level": "B2",
           "span": {
             "start": 122,
             "end": 158
@@ -4202,10 +4116,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-050",
-      "createdAt": "2026-09-28T01:29:29.031983714Z",
+      "createdAt": "2026-09-28T20:49:33.287093042Z",
       "input": "Dear Anna, thank you for your quick reply. I have attached the updated contract, and I would appreciate it if you could sign it by the end of the week.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "email",
         "name": "Formal email"
@@ -4224,7 +4137,6 @@
           "original": "I would appreciate it if you could",
           "replacement": "I'd be grateful if you could",
           "explanation": "A warm, still formal alternative.",
-          "level": "B2",
           "span": {
             "start": 85,
             "end": 119
@@ -4252,10 +4164,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-051",
-      "createdAt": "2026-09-28T05:29:29.032033207Z",
+      "createdAt": "2026-09-29T00:49:33.287142986Z",
       "input": "Quick update: I sent the slides to the client this morning and they replied within an hour. We need their final feedback by Thursday so we can ship on Monday.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -4274,7 +4185,6 @@
           "original": "final feedback",
           "replacement": "final sign-off",
           "explanation": "'Sign-off' is the common term for final approval.",
-          "level": "B2",
           "span": {
             "start": 106,
             "end": 120
@@ -4308,10 +4218,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-052",
-      "createdAt": "2026-09-29T01:29:29.032081913Z",
+      "createdAt": "2026-09-29T20:49:33.287196107Z",
       "input": "Kurzes Update: Wir müssen bald eine Entscheidung treffen, weil der Kunde nächste Woche Bescheid haben möchte. Ich schreibe heute Abend mit dem Team eine Zusammenfassung.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -4351,10 +4260,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-053",
-      "createdAt": "2026-09-29T05:29:29.032139167Z",
+      "createdAt": "2026-09-30T00:49:33.287256271Z",
       "input": "Dear Anna, thank you for your quick reply. I have attached the updated contract, and I would appreciate it if you could sign it by the end of the week.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "email",
         "name": "Formal email"
@@ -4373,7 +4281,6 @@
           "original": "I would appreciate it if you could",
           "replacement": "I'd be grateful if you could",
           "explanation": "A warm, still formal alternative.",
-          "level": "B2",
           "span": {
             "start": 85,
             "end": 119
@@ -4401,10 +4308,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-054",
-      "createdAt": "2026-09-30T01:29:29.032208208Z",
+      "createdAt": "2026-09-30T20:49:33.287309050Z",
       "input": "Ich habe mit der neuen Kollegin gesprochen, weil sie Fragen zum Projekt hatte. Sie fängt nächste Woche an und braucht noch einen Zugang zum Server.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -4423,7 +4329,6 @@
           "original": "braucht noch einen Zugang zum Server",
           "replacement": "braucht noch Zugriff auf den Server",
           "explanation": "'Zugriff auf' is the usual pairing for systems and servers.",
-          "level": "B2",
           "span": {
             "start": 110,
             "end": 146
@@ -4457,10 +4362,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-055",
-      "createdAt": "2026-09-30T05:29:29.032277643Z",
+      "createdAt": "2026-10-01T00:49:33.287353313Z",
       "input": "Kurzes Update: Wir müssen bald eine Entscheidung treffen, weil der Kunde nächste Woche Bescheid haben möchte. Ich schreibe heute Abend mit dem Team eine Zusammenfassung.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -4500,10 +4404,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-056",
-      "createdAt": "2026-10-01T01:29:29.032346782Z",
+      "createdAt": "2026-10-01T20:49:33.287403165Z",
       "input": "Thanks for the review! I fixed the race condition you pointed out and added a test for it. Could you take another look when you have a moment?",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "github",
         "name": "GitHub"
@@ -4543,10 +4446,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-057",
-      "createdAt": "2026-10-01T05:29:29.032394710Z",
+      "createdAt": "2026-10-02T00:49:33.287449961Z",
       "input": "Ich habe mit der neuen Kollegin gesprochen, weil sie Fragen zum Projekt hatte. Sie fängt nächste Woche an und braucht noch einen Zugang zum Server.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -4565,7 +4467,6 @@
           "original": "braucht noch einen Zugang zum Server",
           "replacement": "braucht noch Zugriff auf den Server",
           "explanation": "'Zugriff auf' is the usual pairing for systems and servers.",
-          "level": "B2",
           "span": {
             "start": 110,
             "end": 146
@@ -4599,10 +4500,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-058",
-      "createdAt": "2026-10-02T01:29:29.032442480Z",
+      "createdAt": "2026-10-02T20:49:33.287536892Z",
       "input": "Last night I tried the new build and it crashed twice when I opened the settings. I'll file an issue with the logs, it happens every time on my machine.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -4636,10 +4536,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-059",
-      "createdAt": "2026-10-02T05:29:29.032492693Z",
+      "createdAt": "2026-10-03T00:49:33.287585625Z",
       "input": "Thanks for the review! I fixed the race condition you pointed out and added a test for it. Could you take another look when you have a moment?",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "github",
         "name": "GitHub"
@@ -4679,10 +4578,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-060",
-      "createdAt": "2026-10-04T01:29:29.032540926Z",
+      "createdAt": "2026-10-04T20:49:33.287636335Z",
       "input": "Ich bin morgen nicht da, weil ich mit meiner Schwester nach Hamburg fahre. Bei Fragen schreibt mir einfach, ich schaue ab und zu aufs Handy.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -4701,7 +4599,6 @@
           "original": "schaue ab und zu aufs Handy",
           "replacement": "schaue zwischendurch aufs Handy",
           "explanation": "'Zwischendurch' is the everyday word for 'now and then' here.",
-          "level": "B1",
           "span": {
             "start": 112,
             "end": 139
@@ -4735,10 +4632,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-061",
-      "createdAt": "2026-10-04T05:29:29.032582620Z",
+      "createdAt": "2026-10-05T00:49:33.287678530Z",
       "input": "Last night I tried the new build and it crashed twice when I opened the settings. I'll file an issue with the logs, it happens every time on my machine.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -4772,10 +4668,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-062",
-      "createdAt": "2026-10-05T01:29:29.032635541Z",
+      "createdAt": "2026-10-05T20:49:33.287731571Z",
       "input": "Yesterday I have sent the report to the client, but he didn't answer yet. I'll ping him again tomorrow morning if there is still no reply by then.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -4863,10 +4758,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-063",
-      "createdAt": "2026-10-05T05:29:29.032791142Z",
+      "createdAt": "2026-10-06T00:49:33.287880099Z",
       "input": "Ich bin morgen nicht da, weil ich mit meiner Schwester nach Hamburg fahre. Bei Fragen schreibt mir einfach, ich schaue ab und zu aufs Handy.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -4885,7 +4779,6 @@
           "original": "schaue ab und zu aufs Handy",
           "replacement": "schaue zwischendurch aufs Handy",
           "explanation": "'Zwischendurch' is the everyday word for 'now and then' here.",
-          "level": "B1",
           "span": {
             "start": 112,
             "end": 139
@@ -4919,10 +4812,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-064",
-      "createdAt": "2026-10-06T01:29:29.032834481Z",
+      "createdAt": "2026-10-06T20:49:33.287923858Z",
       "input": "Yesterday we had a long call with the design team and agreed on the new layout. I have to make a decision about the colors by tomorrow, any opinions?",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -4962,10 +4854,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-065",
-      "createdAt": "2026-10-06T05:29:29.032897525Z",
+      "createdAt": "2026-10-07T00:49:33.287992013Z",
       "input": "Das Meeting war gut, aber ich denke dass wir mehr Zeit für die Planung brauchen. Kannst du mir dein Hilfe bei der Präsentation geben? Danke dir!",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -5013,7 +4904,6 @@
           "original": "Hilfe bei der Präsentation geben",
           "replacement": "bei der Präsentation helfen",
           "explanation": "Shorter and more natural: 'Kannst du mir bei der Präsentation helfen?'",
-          "level": "B1",
           "span": {
             "start": 102,
             "end": 134
@@ -5054,10 +4944,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-066",
-      "createdAt": "2026-10-07T01:29:29.033038128Z",
+      "createdAt": "2026-10-07T20:49:33.288127283Z",
       "input": "Ich habe gerade mit dem Kunden telefoniert und er hat gesagt, dass alles passt. Wir können also wie geplant am Montag mit dem Rollout starten.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -5076,7 +4965,6 @@
           "original": "wie geplant",
           "replacement": "planmäßig",
           "explanation": "'Planmäßig' is a compact, common alternative at work.",
-          "level": "B2",
           "span": {
             "start": 96,
             "end": 107
@@ -5110,10 +4998,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-067",
-      "createdAt": "2026-10-07T05:29:29.033082441Z",
+      "createdAt": "2026-10-08T00:49:33.288171546Z",
       "input": "Yesterday we had a long call with the design team and agreed on the new layout. I have to make a decision about the colors by tomorrow, any opinions?",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -5153,10 +5040,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-068",
-      "createdAt": "2026-10-08T01:29:29.033128804Z",
+      "createdAt": "2026-10-08T20:49:33.288217908Z",
       "input": "Danke für das Feedback! Ich glaube, dass wir die Seite mit den neuen Farben deutlich übersichtlicher machen. Kannst du dir den Entwurf bis Freitag anschauen?",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -5196,10 +5082,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-069",
-      "createdAt": "2026-10-08T05:29:29.033182256Z",
+      "createdAt": "2026-10-09T00:49:33.288267781Z",
       "input": "Ich habe gerade mit dem Kunden telefoniert und er hat gesagt, dass alles passt. Wir können also wie geplant am Montag mit dem Rollout starten.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -5218,7 +5103,6 @@
           "original": "wie geplant",
           "replacement": "planmäßig",
           "explanation": "'Planmäßig' is a compact, common alternative at work.",
-          "level": "B2",
           "span": {
             "start": 96,
             "end": 107
@@ -5252,10 +5136,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-070",
-      "createdAt": "2026-10-09T01:29:29.033236260Z",
+      "createdAt": "2026-10-09T20:49:33.288313103Z",
       "input": "Quick update: I sent the slides to the client this morning and they replied within an hour. We need their final feedback by Thursday so we can ship on Monday.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -5274,7 +5157,6 @@
           "original": "final feedback",
           "replacement": "final sign-off",
           "explanation": "'Sign-off' is the common term for final approval.",
-          "level": "B2",
           "span": {
             "start": 106,
             "end": 120
@@ -5308,10 +5190,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-071",
-      "createdAt": "2026-10-09T05:29:29.033284907Z",
+      "createdAt": "2026-10-10T00:49:33.288366023Z",
       "input": "Danke für das Feedback! Ich glaube, dass wir die Seite mit den neuen Farben deutlich übersichtlicher machen. Kannst du dir den Entwurf bis Freitag anschauen?",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -5351,10 +5232,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-072",
-      "createdAt": "2026-10-11T01:29:29.033330442Z",
+      "createdAt": "2026-10-11T20:49:33.288412415Z",
       "input": "Dear Anna, thank you for your quick reply. I have attached the updated contract, and I would appreciate it if you could sign it by the end of the week.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "email",
         "name": "Formal email"
@@ -5373,7 +5253,6 @@
           "original": "I would appreciate it if you could",
           "replacement": "I'd be grateful if you could",
           "explanation": "A warm, still formal alternative.",
-          "level": "B2",
           "span": {
             "start": 85,
             "end": 119
@@ -5401,10 +5280,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-073",
-      "createdAt": "2026-10-11T05:29:29.033407252Z",
+      "createdAt": "2026-10-12T00:49:33.288479964Z",
       "input": "Quick update: I sent the slides to the client this morning and they replied within an hour. We need their final feedback by Thursday so we can ship on Monday.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -5423,7 +5301,6 @@
           "original": "final feedback",
           "replacement": "final sign-off",
           "explanation": "'Sign-off' is the common term for final approval.",
-          "level": "B2",
           "span": {
             "start": 106,
             "end": 120
@@ -5457,10 +5334,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-074",
-      "createdAt": "2026-10-12T01:29:29.033459789Z",
+      "createdAt": "2026-10-12T20:49:33.288537435Z",
       "input": "Kurzes Update: Wir müssen bald eine Entscheidung treffen, weil der Kunde nächste Woche Bescheid haben möchte. Ich schreibe heute Abend mit dem Team eine Zusammenfassung.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -5500,10 +5376,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-075",
-      "createdAt": "2026-10-12T05:29:29.033523542Z",
+      "createdAt": "2026-10-13T00:49:33.288587368Z",
       "input": "Dear Anna, thank you for your quick reply. I have attached the updated contract, and I would appreciate it if you could sign it by the end of the week.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "email",
         "name": "Formal email"
@@ -5522,7 +5397,6 @@
           "original": "I would appreciate it if you could",
           "replacement": "I'd be grateful if you could",
           "explanation": "A warm, still formal alternative.",
-          "level": "B2",
           "span": {
             "start": 85,
             "end": 119
@@ -5550,10 +5424,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-076",
-      "createdAt": "2026-10-13T01:29:29.033583493Z",
+      "createdAt": "2026-10-13T20:49:33.288637523Z",
       "input": "Ich habe mit der neuen Kollegin gesprochen, weil sie Fragen zum Projekt hatte. Sie fängt nächste Woche an und braucht noch einen Zugang zum Server.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -5572,7 +5445,6 @@
           "original": "braucht noch einen Zugang zum Server",
           "replacement": "braucht noch Zugriff auf den Server",
           "explanation": "'Zugriff auf' is the usual pairing for systems and servers.",
-          "level": "B2",
           "span": {
             "start": 110,
             "end": 146
@@ -5606,10 +5478,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-077",
-      "createdAt": "2026-10-13T05:29:29.033636719Z",
+      "createdAt": "2026-10-14T00:49:33.288685670Z",
       "input": "Kurzes Update: Wir müssen bald eine Entscheidung treffen, weil der Kunde nächste Woche Bescheid haben möchte. Ich schreibe heute Abend mit dem Team eine Zusammenfassung.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -5649,10 +5520,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-078",
-      "createdAt": "2026-10-14T01:29:29.033689472Z",
+      "createdAt": "2026-10-14T20:49:33.288734090Z",
       "input": "Ich fahre morgen früh mit den Zug nach Berlin und bleibe bis Sonntag. Hast du Lust, am Samstag zusammen essen zu gehen? Ich kenne da ein gutes Restaurant.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "friends",
         "name": "Friends"
@@ -5706,10 +5576,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-079",
-      "createdAt": "2026-10-14T05:29:29.033866945Z",
+      "createdAt": "2026-10-15T00:49:33.288880783Z",
       "input": "Ich habe mit der neuen Kollegin gesprochen, weil sie Fragen zum Projekt hatte. Sie fängt nächste Woche an und braucht noch einen Zugang zum Server.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -5728,7 +5597,6 @@
           "original": "braucht noch einen Zugang zum Server",
           "replacement": "braucht noch Zugriff auf den Server",
           "explanation": "'Zugriff auf' is the usual pairing for systems and servers.",
-          "level": "B2",
           "span": {
             "start": 110,
             "end": 146
@@ -5762,10 +5630,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-080",
-      "createdAt": "2026-10-15T01:29:29.033912637Z",
+      "createdAt": "2026-10-15T20:49:33.288924400Z",
       "input": "Last night I tried the new build and it crashed twice when I opened the settings. I'll file an issue with the logs, it happens every time on my machine.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -5799,10 +5666,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-081",
-      "createdAt": "2026-10-15T05:29:29.033970275Z",
+      "createdAt": "2026-10-16T00:49:33.288976119Z",
       "input": "Sehr geehrte Frau Müller, vielen Dank für Ihre schnelle Antwort. Kannst du mir bitte die Rechnung noch einmal als PDF schicken? Mit freundlichen Grüßen",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "email",
         "name": "Formal email"
@@ -5836,7 +5702,6 @@
           "original": "noch einmal als PDF schicken",
           "replacement": "erneut als PDF zusenden",
           "explanation": "'Zusenden' and 'erneut' fit the formal tone of an email.",
-          "level": "B2",
           "span": {
             "start": 99,
             "end": 127
@@ -5881,10 +5746,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-082",
-      "createdAt": "2026-10-16T01:29:29.034157220Z",
+      "createdAt": "2026-10-16T20:49:33.289098364Z",
       "input": "Ich bin morgen nicht da, weil ich mit meiner Schwester nach Hamburg fahre. Bei Fragen schreibt mir einfach, ich schaue ab und zu aufs Handy.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -5903,7 +5767,6 @@
           "original": "schaue ab und zu aufs Handy",
           "replacement": "schaue zwischendurch aufs Handy",
           "explanation": "'Zwischendurch' is the everyday word for 'now and then' here.",
-          "level": "B1",
           "span": {
             "start": 112,
             "end": 139
@@ -5937,10 +5800,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-083",
-      "createdAt": "2026-10-16T05:29:29.034221485Z",
+      "createdAt": "2026-10-17T00:49:33.289141255Z",
       "input": "Last night I tried the new build and it crashed twice when I opened the settings. I'll file an issue with the logs, it happens every time on my machine.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -5974,10 +5836,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-084",
-      "createdAt": "2026-10-18T01:29:29.034269314Z",
+      "createdAt": "2026-10-18T20:49:33.289188111Z",
       "input": "Heute Morgen hat der Build wieder nicht funktioniert, weil ein Test kaputt war. Ich kümmere mich gleich darum und sage euch Bescheid, wenn es läuft.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -6011,10 +5872,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-085",
-      "createdAt": "2026-10-18T05:29:29.034326066Z",
+      "createdAt": "2026-10-19T00:49:33.289236561Z",
       "input": "Ich bin morgen nicht da, weil ich mit meiner Schwester nach Hamburg fahre. Bei Fragen schreibt mir einfach, ich schaue ab und zu aufs Handy.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -6033,7 +5893,6 @@
           "original": "schaue ab und zu aufs Handy",
           "replacement": "schaue zwischendurch aufs Handy",
           "explanation": "'Zwischendurch' is the everyday word for 'now and then' here.",
-          "level": "B1",
           "span": {
             "start": 112,
             "end": 139
@@ -6067,10 +5926,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-086",
-      "createdAt": "2026-10-19T01:29:29.034369227Z",
+      "createdAt": "2026-10-19T20:49:33.289279946Z",
       "input": "Yesterday we had a long call with the design team and agreed on the new layout. I have to make a decision about the colors by tomorrow, any opinions?",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -6110,10 +5968,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-087",
-      "createdAt": "2026-10-19T05:29:29.034432311Z",
+      "createdAt": "2026-10-20T00:49:33.289327004Z",
       "input": "Heute Morgen hat der Build wieder nicht funktioniert, weil ein Test kaputt war. Ich kümmere mich gleich darum und sage euch Bescheid, wenn es läuft.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -6147,10 +6004,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-088",
-      "createdAt": "2026-10-20T01:29:29.034479431Z",
+      "createdAt": "2026-10-20T20:49:33.289373476Z",
       "input": "Ich habe gerade mit dem Kunden telefoniert und er hat gesagt, dass alles passt. Wir können also wie geplant am Montag mit dem Rollout starten.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -6169,7 +6025,6 @@
           "original": "wie geplant",
           "replacement": "planmäßig",
           "explanation": "'Planmäßig' is a compact, common alternative at work.",
-          "level": "B2",
           "span": {
             "start": 96,
             "end": 107
@@ -6203,10 +6058,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-089",
-      "createdAt": "2026-10-20T05:29:29.034532706Z",
+      "createdAt": "2026-10-21T00:49:33.289422623Z",
       "input": "Yesterday we had a long call with the design team and agreed on the new layout. I have to make a decision about the colors by tomorrow, any opinions?",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -6246,10 +6100,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-090",
-      "createdAt": "2026-10-21T01:29:29.034586484Z",
+      "createdAt": "2026-10-21T20:49:33.289488780Z",
       "input": "Danke für das Feedback! Ich glaube, dass wir die Seite mit den neuen Farben deutlich übersichtlicher machen. Kannst du dir den Entwurf bis Freitag anschauen?",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -6289,10 +6142,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-091",
-      "createdAt": "2026-10-21T05:29:29.034677061Z",
+      "createdAt": "2026-10-22T00:49:33.289550811Z",
       "input": "Ich habe gerade mit dem Kunden telefoniert und er hat gesagt, dass alles passt. Wir können also wie geplant am Montag mit dem Rollout starten.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -6311,7 +6163,6 @@
           "original": "wie geplant",
           "replacement": "planmäßig",
           "explanation": "'Planmäßig' is a compact, common alternative at work.",
-          "level": "B2",
           "span": {
             "start": 96,
             "end": 107
@@ -6345,10 +6196,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-092",
-      "createdAt": "2026-10-22T01:29:29.034742252Z",
+      "createdAt": "2026-10-22T20:49:33.289596839Z",
       "input": "Quick update: I sent the slides to the client this morning and they replied within an hour. We need their final feedback by Thursday so we can ship on Monday.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -6367,7 +6217,6 @@
           "original": "final feedback",
           "replacement": "final sign-off",
           "explanation": "'Sign-off' is the common term for final approval.",
-          "level": "B2",
           "span": {
             "start": 106,
             "end": 120
@@ -6401,10 +6250,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-093",
-      "createdAt": "2026-10-22T05:29:29.034801544Z",
+      "createdAt": "2026-10-23T00:49:33.289651868Z",
       "input": "Danke für das Feedback! Ich glaube, dass wir die Seite mit den neuen Farben deutlich übersichtlicher machen. Kannst du dir den Entwurf bis Freitag anschauen?",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -6444,10 +6292,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-094",
-      "createdAt": "2026-10-23T01:29:29.034858522Z",
+      "createdAt": "2026-10-23T20:49:33.289701115Z",
       "input": "Wir treffen uns um 15 Uhr mit dem ganzen Team und dann machen wir eine Entscheidung über das neue Feature. Bitte bringt eure Notizen von letzter Woche mit.",
       "language": "de",
-      "level": "B1",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -6481,7 +6328,6 @@
           "original": "Notizen",
           "replacement": "Unterlagen",
           "explanation": "'Unterlagen' covers notes, documents and slides. Common at work.",
-          "level": "B2",
           "span": {
             "start": 126,
             "end": 133
@@ -6514,10 +6360,9 @@
     {
       "schemaVersion": 1,
       "id": "demo-095",
-      "createdAt": "2026-10-23T05:29:29.035002552Z",
+      "createdAt": "2026-10-24T00:49:33.289875049Z",
       "input": "Quick update: I sent the slides to the client this morning and they replied within an hour. We need their final feedback by Thursday so we can ship on Monday.",
       "language": "en",
-      "level": "B2",
       "tone": {
         "id": "slack",
         "name": "Slack"
@@ -6536,7 +6381,6 @@
           "original": "final feedback",
           "replacement": "final sign-off",
           "explanation": "'Sign-off' is the common term for final approval.",
-          "level": "B2",
           "span": {
             "start": 106,
             "end": 120
@@ -6570,7 +6414,7 @@
   ],
   "stats": {
     "schemaVersion": 1,
-    "generatedAt": "2026-10-23T10:29:29.035146306Z",
+    "generatedAt": "2026-10-24T05:49:33.289978306Z",
     "entryCount": 96,
     "dataVersion": 0,
     "thresholds": {
@@ -6604,14 +6448,13 @@
       {
         "language": "en",
         "languageName": "English",
-        "declaredLevel": "B2",
         "totals": {
           "texts": 43,
           "words": 1241,
           "ratedWords": 1241,
-          "activeWeeks12": 9,
-          "firstAt": "2026-08-30T05:29:29.023529629Z",
-          "lastAt": "2026-10-23T05:29:29.035002552Z"
+          "activeWeeks12": 8,
+          "firstAt": "2026-08-31T00:49:33.280333102Z",
+          "lastAt": "2026-10-24T00:49:33.289875049Z"
         },
         "errorRate": {
           "recent": 0.46,
@@ -6762,9 +6605,9 @@
             "category": "grammar.verb_tense",
             "kind": "rule",
             "state": "recurring",
-            "since": "2026-09-03T01:29:29.025078162Z",
-            "firstSeen": "2026-09-01T05:29:29.024323891Z",
-            "lastErrorAt": "2026-10-05T01:29:29.032635541Z",
+            "since": "2026-09-03T20:49:33.281377231Z",
+            "firstSeen": "2026-09-02T00:49:33.280942996Z",
+            "lastErrorAt": "2026-10-05T20:49:33.287731571Z",
             "textsWithError": 9,
             "daysWithError": 9,
             "daysWithError30d": 2,
@@ -6774,7 +6617,7 @@
             "examples": [
               {
                 "entryId": "demo-062",
-                "at": "2026-10-05T01:29:29.032635541Z",
+                "at": "2026-10-05T20:49:33.287731571Z",
                 "original": "didn't answer yet",
                 "correction": "hasn't answered yet",
                 "sentence": "Yesterday I have sent the report to the client, but he didn't answer yet.",
@@ -6782,7 +6625,7 @@
               },
               {
                 "entryId": "demo-045",
-                "at": "2026-09-24T05:29:29.031281112Z",
+                "at": "2026-09-25T00:49:33.286420007Z",
                 "original": "didn't answer yet",
                 "correction": "hasn't answered yet",
                 "sentence": "Yesterday I have sent the report to the client, but he didn't answer yet.",
@@ -6790,7 +6633,7 @@
               },
               {
                 "entryId": "demo-038",
-                "at": "2026-09-21T01:29:29.030163556Z",
+                "at": "2026-09-21T20:49:33.285279351Z",
                 "original": "didn't answer yet",
                 "correction": "hasn't answered yet",
                 "sentence": "Yesterday I have sent the report to the client, but he didn't answer yet.",
@@ -6799,7 +6642,7 @@
             ],
             "reminder": {
               "step": 0,
-              "nextDue": "2026-10-06T01:29:29.032635541Z",
+              "nextDue": "2026-10-06T20:49:33.287731571Z",
               "due": true
             },
             "onWatchList": true,
@@ -6812,9 +6655,9 @@
             "category": "grammar.preposition",
             "kind": "item",
             "state": "recurring",
-            "since": "2026-09-01T01:29:29.024181712Z",
-            "firstSeen": "2026-08-30T05:29:29.023529629Z",
-            "lastErrorAt": "2026-09-24T01:29:29.031130081Z",
+            "since": "2026-09-01T20:49:33.280737199Z",
+            "firstSeen": "2026-08-31T00:49:33.280333102Z",
+            "lastErrorAt": "2026-09-24T20:49:33.286234127Z",
             "textsWithError": 10,
             "daysWithError": 10,
             "daysWithError30d": 1,
@@ -6824,7 +6667,7 @@
             "examples": [
               {
                 "entryId": "demo-044",
-                "at": "2026-09-24T01:29:29.031130081Z",
+                "at": "2026-09-24T20:49:33.286234127Z",
                 "original": "until Friday",
                 "correction": "by Friday",
                 "sentence": "Dear Mark, we need to make a final decision until Friday, otherwise we will miss the release window.",
@@ -6832,7 +6675,7 @@
               },
               {
                 "entryId": "demo-041",
-                "at": "2026-09-22T05:29:29.030689306Z",
+                "at": "2026-09-23T00:49:33.285732767Z",
                 "original": "until Friday",
                 "correction": "by Friday",
                 "sentence": "Dear Mark, we need to make a final decision until Friday, otherwise we will miss the release window.",
@@ -6840,7 +6683,7 @@
               },
               {
                 "entryId": "demo-034",
-                "at": "2026-09-18T01:29:29.029620780Z",
+                "at": "2026-09-18T20:49:33.284800864Z",
                 "original": "until Friday",
                 "correction": "by Friday",
                 "sentence": "Dear Mark, we need to make a final decision until Friday, otherwise we will miss the release window.",
@@ -6849,7 +6692,7 @@
             ],
             "reminder": {
               "step": 5,
-              "nextDue": "2026-12-22T05:29:29.035002552Z",
+              "nextDue": "2026-12-23T00:49:33.289875049Z",
               "due": false
             },
             "onWatchList": true,
@@ -6862,9 +6705,9 @@
             "category": "grammar.noun_number",
             "kind": "rule",
             "state": "recurring",
-            "since": "2026-09-01T01:29:29.024181712Z",
-            "firstSeen": "2026-08-30T05:29:29.023529629Z",
-            "lastErrorAt": "2026-09-24T01:29:29.031130081Z",
+            "since": "2026-09-01T20:49:33.280737199Z",
+            "firstSeen": "2026-08-31T00:49:33.280333102Z",
+            "lastErrorAt": "2026-09-24T20:49:33.286234127Z",
             "textsWithError": 10,
             "daysWithError": 10,
             "daysWithError30d": 1,
@@ -6874,7 +6717,7 @@
             "examples": [
               {
                 "entryId": "demo-044",
-                "at": "2026-09-24T01:29:29.031130081Z",
+                "at": "2026-09-24T20:49:33.286234127Z",
                 "original": "informations",
                 "correction": "information",
                 "sentence": "I will send you the informations about both options tomorrow.",
@@ -6882,7 +6725,7 @@
               },
               {
                 "entryId": "demo-041",
-                "at": "2026-09-22T05:29:29.030689306Z",
+                "at": "2026-09-23T00:49:33.285732767Z",
                 "original": "informations",
                 "correction": "information",
                 "sentence": "I will send you the informations about both options tomorrow.",
@@ -6890,7 +6733,7 @@
               },
               {
                 "entryId": "demo-034",
-                "at": "2026-09-18T01:29:29.029620780Z",
+                "at": "2026-09-18T20:49:33.284800864Z",
                 "original": "informations",
                 "correction": "information",
                 "sentence": "I will send you the informations about both options tomorrow.",
@@ -6899,7 +6742,7 @@
             ],
             "reminder": {
               "step": 0,
-              "nextDue": "2026-09-25T01:29:29.031130081Z",
+              "nextDue": "2026-09-25T20:49:33.286234127Z",
               "due": true
             },
             "onWatchList": true,
@@ -6912,9 +6755,9 @@
             "category": "grammar.preposition",
             "kind": "item",
             "state": "new",
-            "since": "2026-09-27T05:29:29.031854662Z",
-            "firstSeen": "2026-09-27T05:29:29.031854662Z",
-            "lastErrorAt": "2026-09-27T05:29:29.031854662Z",
+            "since": "2026-09-28T00:49:33.286965712Z",
+            "firstSeen": "2026-09-28T00:49:33.286965712Z",
+            "lastErrorAt": "2026-09-28T00:49:33.286965712Z",
             "textsWithError": 1,
             "daysWithError": 1,
             "daysWithError30d": 1,
@@ -6924,7 +6767,7 @@
             "examples": [
               {
                 "entryId": "demo-049",
-                "at": "2026-09-27T05:29:29.031854662Z",
+                "at": "2026-09-28T00:49:33.286965712Z",
                 "original": "explain me",
                 "correction": "explain to me",
                 "sentence": "Can you please explain me how the deploy pipeline works for the staging environment?",
@@ -6942,9 +6785,9 @@
             "category": "grammar.verb_tense",
             "kind": "rule",
             "state": "mastered",
-            "since": "2026-10-19T01:29:29.034369227Z",
-            "firstSeen": "2026-09-01T05:29:29.024323891Z",
-            "lastErrorAt": "2026-10-05T01:29:29.032635541Z",
+            "since": "2026-10-19T20:49:33.289279946Z",
+            "firstSeen": "2026-09-02T00:49:33.280942996Z",
+            "lastErrorAt": "2026-10-05T20:49:33.287731571Z",
             "textsWithError": 9,
             "daysWithError": 9,
             "daysWithError30d": 2,
@@ -6954,7 +6797,7 @@
             "examples": [
               {
                 "entryId": "demo-062",
-                "at": "2026-10-05T01:29:29.032635541Z",
+                "at": "2026-10-05T20:49:33.287731571Z",
                 "original": "I have sent",
                 "correction": "I sent",
                 "sentence": "Yesterday I have sent the report to the client, but he didn't answer yet.",
@@ -6962,7 +6805,7 @@
               },
               {
                 "entryId": "demo-045",
-                "at": "2026-09-24T05:29:29.031281112Z",
+                "at": "2026-09-25T00:49:33.286420007Z",
                 "original": "I have sent",
                 "correction": "I sent",
                 "sentence": "Yesterday I have sent the report to the client, but he didn't answer yet.",
@@ -6970,7 +6813,7 @@
               },
               {
                 "entryId": "demo-038",
-                "at": "2026-09-21T01:29:29.030163556Z",
+                "at": "2026-09-21T20:49:33.285279351Z",
                 "original": "I have sent",
                 "correction": "I sent",
                 "sentence": "Yesterday I have sent the report to the client, but he didn't answer yet.",
@@ -6992,7 +6835,7 @@
           {
             "key": "en:grammar.verb_tense:past-simple-for-finished-past",
             "label": "past simple for finished past",
-            "masteredAt": "2026-10-19T01:29:29.034369227Z"
+            "masteredAt": "2026-10-19T20:49:33.289279946Z"
           }
         ],
         "suggestions": {
@@ -7019,14 +6862,13 @@
       {
         "language": "de",
         "languageName": "German",
-        "declaredLevel": "B1",
         "totals": {
           "texts": 53,
           "words": 1385,
           "ratedWords": 1385,
           "activeWeeks12": 9,
-          "firstAt": "2026-08-30T01:29:29.023261432Z",
-          "lastAt": "2026-10-23T01:29:29.034858522Z"
+          "firstAt": "2026-08-30T20:49:33.280224700Z",
+          "lastAt": "2026-10-23T20:49:33.289701115Z"
         },
         "errorRate": {
           "recent": 1.13,
@@ -7276,11 +7118,11 @@
             "category": "grammar.case",
             "kind": "rule",
             "state": "improving",
-            "since": "2026-10-20T01:29:29.034479431Z",
-            "firstSeen": "2026-08-31T01:29:29.023786896Z",
-            "lastErrorAt": "2026-10-14T01:29:29.033689472Z",
+            "since": "2026-10-20T20:49:33.289373476Z",
+            "firstSeen": "2026-08-31T20:49:33.280518175Z",
+            "lastErrorAt": "2026-10-14T20:49:33.288734090Z",
             "textsWithError": 17,
-            "daysWithError": 17,
+            "daysWithError": 14,
             "daysWithError30d": 2,
             "impedesMeaningShare": 0.0,
             "recentAccuracy": 1.0,
@@ -7288,7 +7130,7 @@
             "examples": [
               {
                 "entryId": "demo-078",
-                "at": "2026-10-14T01:29:29.033689472Z",
+                "at": "2026-10-14T20:49:33.288734090Z",
                 "original": "mit den Zug",
                 "correction": "mit dem Zug",
                 "sentence": "Ich fahre morgen früh mit den Zug nach Berlin und bleibe bis Sonntag.",
@@ -7296,7 +7138,7 @@
               },
               {
                 "entryId": "demo-047",
-                "at": "2026-09-25T05:29:29.031659238Z",
+                "at": "2026-09-26T00:49:33.286784826Z",
                 "original": "mit der Kunde",
                 "correction": "mit dem Kunden",
                 "sentence": "Hallo zusammen, ich habe gestern mit der Kunde gesprochen und er hat gesagt, dass er braucht mehr Zeit für die Tests.",
@@ -7304,7 +7146,7 @@
               },
               {
                 "entryId": "demo-042",
-                "at": "2026-09-23T01:29:29.030821853Z",
+                "at": "2026-09-23T20:49:33.285927707Z",
                 "original": "mit den Zug",
                 "correction": "mit dem Zug",
                 "sentence": "Ich fahre morgen früh mit den Zug nach Berlin und bleibe bis Sonntag.",
@@ -7313,7 +7155,7 @@
             ],
             "reminder": {
               "step": 5,
-              "nextDue": "2026-12-21T05:29:29.034801544Z",
+              "nextDue": "2026-12-22T00:49:33.289651868Z",
               "due": false
             },
             "onWatchList": true,
@@ -7326,9 +7168,9 @@
             "category": "lexis.collocation",
             "kind": "item",
             "state": "recurring",
-            "since": "2026-09-06T05:29:29.026196983Z",
-            "firstSeen": "2026-09-02T01:29:29.024641109Z",
-            "lastErrorAt": "2026-10-23T01:29:29.034858522Z",
+            "since": "2026-09-07T00:49:33.282102176Z",
+            "firstSeen": "2026-09-02T20:49:33.281111572Z",
+            "lastErrorAt": "2026-10-23T20:49:33.289701115Z",
             "textsWithError": 9,
             "daysWithError": 9,
             "daysWithError30d": 2,
@@ -7338,7 +7180,7 @@
             "examples": [
               {
                 "entryId": "demo-094",
-                "at": "2026-10-23T01:29:29.034858522Z",
+                "at": "2026-10-23T20:49:33.289701115Z",
                 "original": "machen wir eine Entscheidung",
                 "correction": "treffen wir eine Entscheidung",
                 "sentence": "Wir treffen uns um 15 Uhr mit dem ganzen Team und dann machen wir eine Entscheidung über das neue Feature.",
@@ -7346,7 +7188,7 @@
               },
               {
                 "entryId": "demo-046",
-                "at": "2026-09-25T01:29:29.031478358Z",
+                "at": "2026-09-25T20:49:33.286628771Z",
                 "original": "machen wir eine Entscheidung",
                 "correction": "treffen wir eine Entscheidung",
                 "sentence": "Wir treffen uns um 15 Uhr mit dem ganzen Team und dann machen wir eine Entscheidung über das neue Feature.",
@@ -7354,7 +7196,7 @@
               },
               {
                 "entryId": "demo-043",
-                "at": "2026-09-23T05:29:29.030958114Z",
+                "at": "2026-09-24T00:49:33.286064199Z",
                 "original": "machen wir eine Entscheidung",
                 "correction": "treffen wir eine Entscheidung",
                 "sentence": "Wir treffen uns um 15 Uhr mit dem ganzen Team und dann machen wir eine Entscheidung über das neue Feature.",
@@ -7363,7 +7205,7 @@
             ],
             "reminder": {
               "step": 0,
-              "nextDue": "2026-10-24T01:29:29.034858522Z",
+              "nextDue": "2026-10-24T20:49:33.289701115Z",
               "due": false
             },
             "onWatchList": true,
@@ -7376,9 +7218,9 @@
             "category": "register.address",
             "kind": "rule",
             "state": "new",
-            "since": "2026-10-15T05:29:29.033970275Z",
-            "firstSeen": "2026-10-15T05:29:29.033970275Z",
-            "lastErrorAt": "2026-10-15T05:29:29.033970275Z",
+            "since": "2026-10-16T00:49:33.288976119Z",
+            "firstSeen": "2026-10-16T00:49:33.288976119Z",
+            "lastErrorAt": "2026-10-16T00:49:33.288976119Z",
             "textsWithError": 1,
             "daysWithError": 1,
             "daysWithError30d": 1,
@@ -7388,41 +7230,11 @@
             "examples": [
               {
                 "entryId": "demo-081",
-                "at": "2026-10-15T05:29:29.033970275Z",
+                "at": "2026-10-16T00:49:33.288976119Z",
                 "original": "Kannst du mir",
                 "correction": "Können Sie mir",
                 "sentence": "Kannst du mir bitte die Rechnung noch einmal als PDF schicken?",
                 "explanation": "You started with 'Sie' (Ihre); keep it: 'Können Sie', not 'Kannst du'."
-              }
-            ],
-            "reminder": null,
-            "onWatchList": false,
-            "pinned": false,
-            "dismissed": false
-          },
-          {
-            "key": "de:grammar.gender:die-hilfe",
-            "label": "die Hilfe",
-            "category": "grammar.gender",
-            "kind": "item",
-            "state": "new",
-            "since": "2026-10-06T05:29:29.032897525Z",
-            "firstSeen": "2026-10-06T05:29:29.032897525Z",
-            "lastErrorAt": "2026-10-06T05:29:29.032897525Z",
-            "textsWithError": 1,
-            "daysWithError": 1,
-            "daysWithError30d": 1,
-            "impedesMeaningShare": 0.0,
-            "recentAccuracy": null,
-            "opportunitiesRecent": 0,
-            "examples": [
-              {
-                "entryId": "demo-065",
-                "at": "2026-10-06T05:29:29.032897525Z",
-                "original": "dein Hilfe",
-                "correction": "deine Hilfe",
-                "sentence": "Kannst du mir dein Hilfe bei der Präsentation geben?",
-                "explanation": "'Hilfe' is feminine (die Hilfe), so it's 'deine'."
               }
             ],
             "reminder": null,
@@ -7436,9 +7248,9 @@
             "category": "orthography.punctuation",
             "kind": "rule",
             "state": "new",
-            "since": "2026-10-06T05:29:29.032897525Z",
-            "firstSeen": "2026-10-06T05:29:29.032897525Z",
-            "lastErrorAt": "2026-10-06T05:29:29.032897525Z",
+            "since": "2026-10-07T00:49:33.287992013Z",
+            "firstSeen": "2026-10-07T00:49:33.287992013Z",
+            "lastErrorAt": "2026-10-07T00:49:33.287992013Z",
             "textsWithError": 1,
             "daysWithError": 1,
             "daysWithError30d": 1,
@@ -7448,11 +7260,41 @@
             "examples": [
               {
                 "entryId": "demo-065",
-                "at": "2026-10-06T05:29:29.032897525Z",
+                "at": "2026-10-07T00:49:33.287992013Z",
                 "original": "ich denke dass",
                 "correction": "ich denke, dass",
                 "sentence": "Das Meeting war gut, aber ich denke dass wir mehr Zeit für die Planung brauchen.",
                 "explanation": "German always puts a comma before 'dass'."
+              }
+            ],
+            "reminder": null,
+            "onWatchList": false,
+            "pinned": false,
+            "dismissed": false
+          },
+          {
+            "key": "de:grammar.gender:die-hilfe",
+            "label": "die Hilfe",
+            "category": "grammar.gender",
+            "kind": "item",
+            "state": "new",
+            "since": "2026-10-07T00:49:33.287992013Z",
+            "firstSeen": "2026-10-07T00:49:33.287992013Z",
+            "lastErrorAt": "2026-10-07T00:49:33.287992013Z",
+            "textsWithError": 1,
+            "daysWithError": 1,
+            "daysWithError30d": 1,
+            "impedesMeaningShare": 0.0,
+            "recentAccuracy": null,
+            "opportunitiesRecent": 0,
+            "examples": [
+              {
+                "entryId": "demo-065",
+                "at": "2026-10-07T00:49:33.287992013Z",
+                "original": "dein Hilfe",
+                "correction": "deine Hilfe",
+                "sentence": "Kannst du mir dein Hilfe bei der Präsentation geben?",
+                "explanation": "'Hilfe' is feminine (die Hilfe), so it's 'deine'."
               }
             ],
             "reminder": null,
@@ -7466,9 +7308,9 @@
             "category": "grammar.word_order",
             "kind": "rule",
             "state": "mastered",
-            "since": "2026-10-18T05:29:29.034326066Z",
-            "firstSeen": "2026-09-02T05:29:29.024778098Z",
-            "lastErrorAt": "2026-09-25T05:29:29.031659238Z",
+            "since": "2026-10-19T00:49:33.289236561Z",
+            "firstSeen": "2026-09-03T00:49:33.281243504Z",
+            "lastErrorAt": "2026-09-26T00:49:33.286784826Z",
             "textsWithError": 9,
             "daysWithError": 9,
             "daysWithError30d": 1,
@@ -7478,7 +7320,7 @@
             "examples": [
               {
                 "entryId": "demo-047",
-                "at": "2026-09-25T05:29:29.031659238Z",
+                "at": "2026-09-26T00:49:33.286784826Z",
                 "original": "dass er braucht mehr Zeit",
                 "correction": "dass er mehr Zeit braucht",
                 "sentence": "Hallo zusammen, ich habe gestern mit der Kunde gesprochen und er hat gesagt, dass er braucht mehr Zeit für die Tests.",
@@ -7486,7 +7328,7 @@
               },
               {
                 "entryId": "demo-040",
-                "at": "2026-09-22T01:29:29.030513321Z",
+                "at": "2026-09-22T20:49:33.285603428Z",
                 "original": "dass er braucht mehr Zeit",
                 "correction": "dass er mehr Zeit braucht",
                 "sentence": "Hallo zusammen, ich habe gestern mit der Kunde gesprochen und er hat gesagt, dass er braucht mehr Zeit für die Tests.",
@@ -7494,7 +7336,7 @@
               },
               {
                 "entryId": "demo-037",
-                "at": "2026-09-20T05:29:29.029937949Z",
+                "at": "2026-09-21T00:49:33.285149660Z",
                 "original": "dass er braucht mehr Zeit",
                 "correction": "dass er mehr Zeit braucht",
                 "sentence": "Hallo zusammen, ich habe gestern mit der Kunde gesprochen und er hat gesagt, dass er braucht mehr Zeit für die Tests.",
@@ -7515,7 +7357,7 @@
           {
             "key": "de:grammar.word_order:verb-last-in-subordinate-clauses",
             "label": "verb last in subordinate clauses",
-            "masteredAt": "2026-10-18T05:29:29.034326066Z"
+            "masteredAt": "2026-10-19T00:49:33.289236561Z"
           }
         ],
         "suggestions": {
@@ -7543,7 +7385,7 @@
   },
   "insights": {
     "schemaVersion": 1,
-    "generatedAt": "2026-10-23T05:29:29.041524795Z",
+    "generatedAt": "2026-10-24T00:49:33.295075036Z",
     "entryCount": 96,
     "model": {
       "providerId": "openrouter",

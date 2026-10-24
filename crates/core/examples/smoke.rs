@@ -112,7 +112,7 @@ async fn main() {
                     println!("      - {:?} → {:?}  [{}] {}  ({})", m.original, m.correction, m.category.id(), m.pattern, m.explanation);
                 }
                 for s in &e.suggestions {
-                    println!("      + {:?} → {:?}  [{:?}, {}]", s.original, s.replacement, s.kind, s.level.as_str());
+                    println!("      + {:?} → {:?}  [{:?}]", s.original, s.replacement, s.kind);
                 }
                 for w in &e.warnings {
                     println!("      ! {w}");

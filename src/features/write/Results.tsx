@@ -1,7 +1,7 @@
 import { motion, type Variants } from 'motion/react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Kbd, Segmented } from '../../components/controls';
-import { ArrowLeftIcon, CheckIcon, CopyIcon, PlusIcon, SparkleIcon } from '../../components/icons';
+import { CheckIcon, CopyIcon, SparkleIcon } from '../../components/icons';
 import { toast } from '../../components/Toaster';
 import ui from '../../components/ui.module.css';
 import type { DiffPart } from '../../bindings/DiffPart';
@@ -36,8 +36,30 @@ function partMatches(part: DiffPart, m: Mistake) {
   return false;
 }
 
-function FixedBlock({ entry, hovered }: { entry: Entry; hovered: Mistake | null }) {
-  const [mode, setMode] = useState<'changes' | 'clean'>(entry.mistakes.length ? 'changes' : 'clean');
+type ViewMode = 'changes' | 'clean';
+const VIEW_KEY = 'refine-fixed-view';
+
+function savedView(): ViewMode {
+  try {
+    return localStorage.getItem(VIEW_KEY) === 'changes' ? 'changes' : 'clean';
+  } catch {
+    return 'clean';
+  }
+}
+
+function FixedBlock({ entry, hovered, context }: { entry: Entry; hovered: Mistake | null; context: string }) {
+  // Clean by default (the text you'll copy); the choice sticks.
+  const [mode, setModeState] = useState<ViewMode>(savedView);
+  const setMode = (m: ViewMode) => {
+    setModeState(m);
+    try {
+      localStorage.setItem(VIEW_KEY, m);
+    } catch {
+      /* private mode */
+    }
+  };
+  // Hovering a mistake shows where it is, even in the clean view.
+  const showChanges = mode === 'changes' || hovered !== null;
   const [copied, setCopied] = useState(false);
   const clean = entry.mistakes.length === 0;
 
@@ -76,6 +98,7 @@ function FixedBlock({ entry, hovered }: { entry: Entry; hovered: Mistake | null 
               {entry.mistakes.length} {entry.mistakes.length === 1 ? 'change' : 'changes'}
             </span>
           )}
+          <span className={styles.context}>{context}</span>
         </div>
         <div className={styles.blockActions}>
           {!clean && (
@@ -97,7 +120,7 @@ function FixedBlock({ entry, hovered }: { entry: Entry; hovered: Mistake | null 
         </div>
       </header>
       <div className={styles.text} data-selectable>
-        {mode === 'clean'
+        {!showChanges || clean
           ? entry.fixedText
           : entry.diff.map((part, i) => {
               if (part.op === 'equal') return <span key={i}>{part.text}</span>;
@@ -164,31 +187,14 @@ function SuggestionCard({ s, i }: { s: Suggestion; i: number }) {
       </p>
       <div className={styles.meta}>
         <span className={`${ui.chip} ${styles.ideaChip}`}>{label}</span>
-        <span className={ui.chip}>{s.level}</span>
       </div>
     </motion.li>
   );
 }
 
 export function Results({ entry }: { entry: Entry }) {
-  const editAgain = useApp((s) => s.editAgain);
-  const newText = useApp((s) => s.newText);
   const [hovered, setHovered] = useState<Mistake | null>(null);
-  const tone = entry.tone.name;
   const language = useApp((s) => s.settings.languages.find((l) => l.code === entry.language)?.name ?? entry.language);
-
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') editAgain();
-      else if (hasMod(e) && e.key.toLowerCase() === 'n') {
-        e.preventDefault();
-        newText();
-      }
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [editAgain, newText]);
-
   const when = useMemo(
     () => new Date(entry.createdAt).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' }),
     [entry.createdAt],
@@ -196,19 +202,7 @@ export function Results({ entry }: { entry: Entry }) {
 
   return (
     <motion.div className={styles.results} initial="hidden" animate="shown">
-      <div className={styles.topBar}>
-        <button type="button" className={ui.ghost} onClick={editAgain}>
-          <ArrowLeftIcon size={16} /> Edit text <Kbd keys="esc" muted />
-        </button>
-        <span className={styles.context}>
-          {language} · {tone} · {when}
-        </span>
-        <button type="button" className={ui.secondary} onClick={newText}>
-          <PlusIcon size={16} /> New text
-        </button>
-      </div>
-
-      <FixedBlock entry={entry} hovered={hovered} />
+      <FixedBlock entry={entry} hovered={hovered} context={`${language} · ${entry.tone.name} · ${when}`} />
 
       <div className={styles.columns}>
         <motion.section className={styles.block} variants={block} custom={1} aria-label="Mistakes">

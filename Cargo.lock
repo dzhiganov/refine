@@ -3370,7 +3370,7 @@ dependencies = [
 
 [[package]]
 name = "refine-app"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "chrono",
  "refine-core",
@@ -3386,7 +3386,7 @@ dependencies = [
 
 [[package]]
 name = "refine-core"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "chrono",
  "jsonschema",

@@ -1,7 +1,6 @@
 use serde::{Deserialize, Serialize};
 use ts_rs::TS;
 
-use crate::model::Cefr;
 use crate::tone::DEFAULT_TONE_ID;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize, TS)]
@@ -54,7 +53,6 @@ pub struct LanguageProfile {
     pub code: String,
     /// English name, used in prompts: "English", "German".
     pub name: String,
-    pub level: Cefr,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, TS)]
@@ -124,8 +122,8 @@ impl Default for Settings {
                 provider("openai", ProviderKind::OpenAiCompatible, "OpenAI", "https://api.openai.com/v1", true),
             ],
             languages: vec![
-                LanguageProfile { code: "en".into(), name: "English".into(), level: Cefr::B2 },
-                LanguageProfile { code: "de".into(), name: "German".into(), level: Cefr::B1 },
+                LanguageProfile { code: "en".into(), name: "English".into() },
+                LanguageProfile { code: "de".into(), name: "German".into() },
             ],
             explanation_language: "en".into(),
             language_mode: "auto".into(),

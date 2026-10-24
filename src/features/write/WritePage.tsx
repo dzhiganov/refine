@@ -22,7 +22,7 @@ function Toolbar() {
 
   const languages = [
     { value: 'auto', label: 'Auto-detect', hint: settings.languages.map((l) => l.name).join(' · ') },
-    ...settings.languages.map((l) => ({ value: l.code, label: l.name, hint: `Level ${l.level}` })),
+    ...settings.languages.map((l) => ({ value: l.code, label: l.name })),
   ];
   const toneOptions = tones.map((t) => ({ value: t.id, label: t.name, hint: t.description }));
 
@@ -71,26 +71,34 @@ function WatchingChips() {
   );
 }
 
-function Composer() {
+function Composer({ stale }: { stale: string | null }) {
   const draft = useApp((s) => s.draft);
   const setDraft = useApp((s) => s.setDraft);
   const check = useApp((s) => s.check);
   const checking = useApp((s) => s.checking);
   const checkError = useApp((s) => s.checkError);
+  const hasResult = useApp((s) => s.entry !== null);
+  const newText = useApp((s) => s.newText);
   const setView = useApp((s) => s.setView);
   const ref = useRef<HTMLTextAreaElement>(null);
+  // Roomy while writing; once there's a result below, it hugs the text so both fit.
+  const minHeight = hasResult ? 120 : 240;
 
-  // Grow with the text.
   useLayoutEffect(() => {
     const el = ref.current;
     if (!el) return;
     el.style.height = 'auto';
-    el.style.height = `${Math.max(el.scrollHeight, 240)}px`;
-  }, [draft]);
+    el.style.height = `${Math.max(el.scrollHeight, minHeight)}px`;
+  }, [draft, minHeight]);
 
   useEffect(() => {
     ref.current?.focus();
   }, []);
+
+  const clear = () => {
+    newText();
+    ref.current?.focus();
+  };
 
   const words = wordCount(draft);
   return (
@@ -102,7 +110,7 @@ function Composer() {
         placeholder="Paste or type your text…"
         spellCheck={false}
         aria-label="Your text"
-        disabled={checking}
+        readOnly={checking}
         onChange={(e) => setDraft(e.target.value)}
         onKeyDown={(e) => {
           if (e.key === 'Enter' && hasMod(e)) {
@@ -112,23 +120,44 @@ function Composer() {
         }}
       />
       <div className={styles.composerFooter}>
-        <span className={styles.count}>{words > 0 ? `${words} ${words === 1 ? 'word' : 'words'}` : ''}</span>
-        <button
-          type="button"
-          className={ui.primary}
-          disabled={checking || !draft.trim()}
-          onClick={() => void check()}
-        >
-          {checking ? (
-            <>
-              <Spinner /> Checking
-            </>
-          ) : (
-            <>
-              Check <Kbd keys="mod+enter" />
-            </>
+        <span className={styles.count}>
+          {words > 0 ? `${words} ${words === 1 ? 'word' : 'words'}` : ''}
+          <AnimatePresence>
+            {stale && !checking && (
+              <motion.span
+                className={styles.stale}
+                initial={{ opacity: 0, x: -4 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0 }}
+              >
+                {stale}
+              </motion.span>
+            )}
+          </AnimatePresence>
+        </span>
+        <div className={styles.actions}>
+          {(draft || hasResult) && !checking && (
+            <button type="button" className={ui.ghost} onClick={clear} title="Clear the text and the result">
+              Clear
+            </button>
           )}
-        </button>
+          <button
+            type="button"
+            className={ui.primary}
+            disabled={checking || !draft.trim()}
+            onClick={() => void check()}
+          >
+            {checking ? (
+              <>
+                <Spinner /> Checking
+              </>
+            ) : (
+              <>
+                {hasResult ? 'Check again' : 'Check'} <Kbd keys="mod+enter" />
+              </>
+            )}
+          </button>
+        </div>
       </div>
       <AnimatePresence>
         {checkError && (
@@ -154,36 +183,65 @@ function Composer() {
 
 export function WritePage() {
   const entry = useApp((s) => s.entry);
+  const draft = useApp((s) => s.draft);
   const checking = useApp((s) => s.checking);
+  const newText = useApp((s) => s.newText);
+  const toneId = useApp((s) => s.settings.toneId);
+  const results = useRef<HTMLDivElement>(null);
+  // Why the result below no longer matches what a check would give now.
+  const stale =
+    entry === null
+      ? null
+      : draft.trimEnd() !== entry.input
+        ? 'Edited since the last check'
+        : toneId !== entry.tone.id
+          ? 'Tone changed since the last check'
+          : null;
+
+  // Ctrl/⌘+N: start over.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (hasMod(e) && e.key.toLowerCase() === 'n') {
+        e.preventDefault();
+        newText();
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [newText]);
+
+  // A fresh result below a long text: bring its top into view.
+  useEffect(() => {
+    const el = results.current;
+    if (!entry || !el) return;
+    const top = el.getBoundingClientRect().top;
+    if (top > window.innerHeight - 160) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, [entry?.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <h1 className={styles.title}>{entry ? 'Refined' : 'Write'}</h1>
-        {!entry && <Toolbar />}
+        <h1 className={styles.title}>Write</h1>
+        <Toolbar />
       </header>
-      <AnimatePresence mode="popLayout" initial={false}>
-        {entry ? (
-          <motion.div
-            key={`result-${entry.id}`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0, transition: { duration: 0.12 } }}
-          >
-            <Results entry={entry} />
-          </motion.div>
-        ) : (
-          <motion.div
-            key="compose"
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8, transition: { duration: 0.12 } }}
-          >
-            <Composer />
-            <AnimatePresence>{checking && <ResultsSkeleton />}</AnimatePresence>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <Composer stale={stale} />
+      <div ref={results} className={styles.results}>
+        <AnimatePresence mode="popLayout" initial={false}>
+          {checking ? (
+            <ResultsSkeleton key="skeleton" />
+          ) : entry ? (
+            <motion.div
+              key={`result-${entry.id}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: stale ? 0.45 : 1 }}
+              exit={{ opacity: 0, transition: { duration: 0.12 } }}
+              transition={{ duration: 0.25 }}
+            >
+              <Results entry={entry} />
+            </motion.div>
+          ) : null}
+        </AnimatePresence>
+      </div>
     </div>
   );
 }

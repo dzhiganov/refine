@@ -11,43 +11,6 @@ use crate::taxonomy::ErrorCategory;
 /// Bump when a stored/exported record changes shape. Old rows are upgraded on read.
 pub const SCHEMA_VERSION: u32 = 1;
 
-/// CEFR level. Used to pitch explanations and suggestions just above where the learner is.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize, TS)]
-#[ts(export)]
-pub enum Cefr {
-    A1,
-    A2,
-    B1,
-    B2,
-    C1,
-    C2,
-}
-
-impl Cefr {
-    pub const ALL: [Cefr; 6] = [Cefr::A1, Cefr::A2, Cefr::B1, Cefr::B2, Cefr::C1, Cefr::C2];
-
-    pub fn as_str(self) -> &'static str {
-        match self {
-            Cefr::A1 => "A1",
-            Cefr::A2 => "A2",
-            Cefr::B1 => "B1",
-            Cefr::B2 => "B2",
-            Cefr::C1 => "C1",
-            Cefr::C2 => "C2",
-        }
-    }
-
-    pub fn parse(s: &str) -> Option<Cefr> {
-        Cefr::ALL.into_iter().find(|c| c.as_str().eq_ignore_ascii_case(s.trim()))
-    }
-
-    /// One step up, capped at C2 ("i+1").
-    pub fn next(self) -> Cefr {
-        let i = Cefr::ALL.iter().position(|c| *c == self).unwrap_or(0);
-        Cefr::ALL[(i + 1).min(Cefr::ALL.len() - 1)]
-    }
-}
-
 /// What kind of improvement a suggestion offers (§3.6). Never counted as an error.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord, Serialize, Deserialize, TS)]
 #[ts(export)]
@@ -109,8 +72,6 @@ pub struct Suggestion {
     pub original: String,
     pub replacement: String,
     pub explanation: String,
-    /// Rough CEFR level of the replacement.
-    pub level: Cefr,
     /// Location of `original` in the fixed text.
     pub span: Option<TextSpan>,
 }
@@ -171,8 +132,6 @@ pub struct Entry {
     pub input: String,
     /// Language code of the text ("en", "de", ...).
     pub language: String,
-    /// The learner's level in that language when the text was checked.
-    pub level: Cefr,
     pub tone: ToneRef,
     pub model: ModelRef,
     pub fixed_text: String,

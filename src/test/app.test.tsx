@@ -38,11 +38,15 @@ describe('Write flow', () => {
     expect(within(mistakes).getByText('Case')).toBeTruthy();
     expect(screen.getByRole('region', { name: 'Suggestions' })).toBeTruthy();
 
-    // Esc goes back to editing with the text kept.
+    // Editor and result share the screen: the text stays editable, and editing marks the result stale.
+    const editor = screen.getByLabelText('Your text') as HTMLTextAreaElement;
+    expect(editor.value).toContain('mit der Kunde');
     act(() => {
-      fireEvent.keyDown(window, { key: 'Escape' });
+      fireEvent.change(editor, { target: { value: `${editor.value} Danke!` } });
     });
-    await waitFor(() => expect((screen.getByLabelText('Your text') as HTMLTextAreaElement).value).toContain('mit der Kunde'));
+    expect(screen.getByText('Edited since the last check')).toBeTruthy();
+    expect(screen.getByRole('region', { name: 'Mistakes' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: /check again/i })).toBeTruthy();
   });
 
   it('navigates between pages from the rail', async () => {
@@ -63,6 +67,9 @@ describe('Results', () => {
     await renderApp();
     const entry = entries.find((e) => e.mistakes.length === 2 && e.language === 'de')!;
     const { container } = render(<Results entry={entry} />);
+    // Clean by default: the text to copy, no markup.
+    expect(container.querySelectorAll('del').length).toBe(0);
+    fireEvent.click(screen.getByRole('button', { name: 'Changes' }));
     const dels = [...container.querySelectorAll('del')].map((d) => d.textContent);
     const ins = [...container.querySelectorAll('ins')].map((d) => d.textContent);
     expect(dels.join(' ')).toContain('der');

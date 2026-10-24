@@ -5,7 +5,6 @@ import { Segmented, Spinner, Switch } from '../../components/controls';
 import { CheckIcon, ChevronDownIcon, DownloadIcon, PlusIcon, SearchIcon, TrashIcon } from '../../components/icons';
 import { toast, toastError } from '../../components/Toaster';
 import ui from '../../components/ui.module.css';
-import type { Cefr } from '../../bindings/Cefr';
 import type { Formality } from '../../bindings/Formality';
 import type { ModelInfo } from '../../bindings/ModelInfo';
 import type { ProviderConfig } from '../../bindings/ProviderConfig';
@@ -19,8 +18,6 @@ import { platform } from '../../lib/platform';
 import { useApp } from '../../stores/app';
 import { useExport } from '../history/HistoryPage';
 import styles from './SettingsPage.module.css';
-
-const LEVELS: Cefr[] = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 
 function Section({ title, hint, children }: { title: string; hint?: string; children: ReactNode }) {
   return (
@@ -244,24 +241,16 @@ function LanguagesSection() {
   const add = () => {
     const c = code.trim().toLowerCase();
     if (!/^[a-z]{2,3}$/.test(c) || !name.trim() || settings.languages.some((l) => l.code === c)) return;
-    void save({ ...settings, languages: [...settings.languages, { code: c, name: name.trim(), level: 'B1' }] });
+    void save({ ...settings, languages: [...settings.languages, { code: c, name: name.trim() }] });
     setCode('');
     setName('');
   };
 
   return (
-    <Section title="Languages" hint="Your level shapes how explanations are written and how ambitious suggestions get.">
+    <Section title="Languages" hint="The languages you write in. Auto-detect picks between them.">
       {settings.languages.map((l) => (
         <Row key={l.code} label={l.name} hint={l.code}>
-          <div className={styles.inline}>
-            <Segmented
-              label={`${l.name} level`}
-              value={l.level}
-              onChange={(level) =>
-                void save({ ...settings, languages: settings.languages.map((x) => (x.code === l.code ? { ...x, level } : x)) })
-              }
-              options={LEVELS.map((v) => ({ value: v, label: v }))}
-            />
+          <div className={`${styles.inline} ${styles.end}`}>
             {settings.languages.length > 1 && (
               <button
                 type="button"

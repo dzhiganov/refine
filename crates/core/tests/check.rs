@@ -45,7 +45,7 @@ fn good_answer() -> Value {
         "fixedText": "Yesterday I went to the office and we discussed the deadline.",
         "review": "ok",
         "suggestions": [
-            { "kind": "phrase", "original": "went to the office", "replacement": "went into the office", "explanation": "Common for going to work.", "level": "B1" }
+            { "kind": "phrase", "original": "went to the office", "replacement": "went into the office", "explanation": "Common for going to work." }
         ]
     })
 }
@@ -221,19 +221,6 @@ async fn watched_patterns_report_opportunities() {
 
     let sent: Value = serde_json::from_slice(&server.received_requests().await.unwrap()[0].body).unwrap();
     assert!(sent["messages"][0]["content"].as_str().unwrap().contains("## Watched patterns"));
-}
-
-#[tokio::test]
-async fn suggestions_far_above_the_learner_are_dropped() {
-    let server = MockServer::start().await;
-    let mut answer = good_answer();
-    answer["suggestions"][0]["level"] = json!("C2");
-    Mock::given(method("POST")).respond_with(completion(&answer)).mount(&server).await;
-    let settings = Settings::default(); // English B2 → ceiling C1
-    let tone = builtin_tones().remove(0);
-    let ctx = CheckContext { settings: &settings, tone: &tone, language: None, known_patterns: &[], watched: &[] };
-    let e = run_check(&client(&server, ProviderKind::OpenAiCompatible), &ctx, INPUT, ModelCaps::default()).await.unwrap().entry;
-    assert!(e.suggestions.is_empty());
 }
 
 #[tokio::test]

@@ -1,7 +1,7 @@
 //! Lifecycle, rates and uptake on synthetic histories. Thresholds: docs/research/stats-system.md §4.
 
 use chrono::{DateTime, Duration, FixedOffset, TimeZone, Utc};
-use refine_core::model::{Cefr, Entry, Mistake, ModelRef, PatternCheck, SCHEMA_VERSION, Suggestion, SuggestionKind, ToneRef, pattern_key};
+use refine_core::model::{Entry, Mistake, ModelRef, PatternCheck, SCHEMA_VERSION, Suggestion, SuggestionKind, ToneRef, pattern_key};
 use refine_core::settings::{ProviderKind, Settings};
 use refine_core::stats::{PatternPrefs, PatternState, ReviewRecord, Stats, Trend, compute_stats};
 use refine_core::taxonomy::ErrorCategory;
@@ -79,7 +79,6 @@ impl E {
             created_at: self.at,
             input: self.input,
             language: "de".into(),
-            level: Cefr::B1,
             tone: ToneRef { id: "slack".into(), name: "Slack".into() },
             model: ModelRef { provider_id: "t".into(), provider_kind: ProviderKind::OpenRouter, model: "m".into() },
             fixed_text: String::new(),
@@ -94,7 +93,6 @@ impl E {
                     original: "x".into(),
                     replacement: s.to_string(),
                     explanation: String::new(),
-                    level: Cefr::B1,
                     span: None,
                 })
                 .collect(),

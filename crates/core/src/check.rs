@@ -7,7 +7,7 @@ use serde::Deserialize;
 
 use crate::error::{Error, Result};
 use crate::llm::{JsonRequest, LlmClient, Message, OutputMode, extract_json, is_unsupported_format, is_unsupported_reasoning};
-use crate::model::{Cefr, Entry, Mistake, ModelRef, PatternCheck, SCHEMA_VERSION, Suggestion, SuggestionKind, ToneRef, pattern_key};
+use crate::model::{Entry, Mistake, ModelRef, PatternCheck, SCHEMA_VERSION, Suggestion, SuggestionKind, ToneRef, pattern_key};
 use crate::prompt::{CHECK_SCHEMA_NAME, CheckContext, check_schema, check_system_prompt, check_user_prompt, schema_instructions};
 use crate::taxonomy::ErrorCategory;
 use crate::text::{expand_ellipsis, find_from, find_word_from, to_span, word_count, word_diff};
@@ -65,8 +65,6 @@ struct RawSuggestion {
     replacement: String,
     #[serde(default)]
     explanation: String,
-    #[serde(default)]
-    level: String,
 }
 
 /// What a model turned out to support, remembered per model so fallbacks aren't repeated.
@@ -271,18 +269,12 @@ fn validate(raw: RawOutput, input: &str, ctx: &CheckContext) -> Validated {
         ));
     }
 
-    // Suggestions at most one CEFR level above the learner (§3.7).
-    let ceiling = ctx.settings.language(&language).map(|l| l.level.next()).unwrap_or(Cefr::C2);
     let mut suggestions = Vec::new();
     for s in raw.suggestions.into_iter() {
         if suggestions.len() == 3 {
             break;
         }
         if s.original.trim().is_empty() || s.original == s.replacement {
-            continue;
-        }
-        let level = Cefr::parse(&s.level).unwrap_or(Cefr::B2);
-        if level > ceiling {
             continue;
         }
         let span = find_from(&fixed_text, &s.original, 0).map(|r| to_span(&fixed_text, r));
@@ -300,7 +292,6 @@ fn validate(raw: RawOutput, input: &str, ctx: &CheckContext) -> Validated {
             original: s.original,
             replacement: s.replacement,
             explanation: s.explanation.trim().to_string(),
-            level,
             span,
         });
     }
@@ -340,8 +331,6 @@ fn build_entry(
     warnings: Vec<String>,
     started: Instant,
 ) -> Entry {
-    let settings = ctx.settings;
-    let level = settings.language(&v.language).map(|l| l.level).unwrap_or(Cefr::B1);
     let fixed_text = v.fixed_text;
     let provider = client.provider();
     Entry {
@@ -350,7 +339,6 @@ fn build_entry(
         created_at: Utc::now(),
         input: input.to_string(),
         language: v.language,
-        level,
         tone: ToneRef { id: ctx.tone.id.clone(), name: ctx.tone.name.clone() },
         model: ModelRef { provider_id: provider.id.clone(), provider_kind: provider.kind, model: provider.model.clone() },
         diff: word_diff(input, &fixed_text),

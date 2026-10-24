@@ -7,7 +7,7 @@ use chrono::{DateTime, Datelike, Duration, FixedOffset, NaiveDate, Utc};
 use serde::{Deserialize, Serialize};
 use ts_rs::TS;
 
-use crate::model::{Cefr, Entry, SCHEMA_VERSION, SuggestionKind};
+use crate::model::{Entry, SCHEMA_VERSION, SuggestionKind};
 use crate::settings::Settings;
 use crate::taxonomy::{ErrorArea, ErrorCategory, ErrorKind};
 use crate::text::normalize;
@@ -264,7 +264,6 @@ pub struct Totals {
 pub struct LanguageStats {
     pub language: String,
     pub language_name: String,
-    pub declared_level: Cefr,
     pub totals: Totals,
     pub error_rate: RateTrend,
     /// Errors that impeded meaning ("global" errors), per 100 words. Kept apart, never weighted in.
@@ -900,11 +899,9 @@ fn language_stats(language: &str, entries: &[&Entry], ctx: &Ctx) -> LanguageStat
     });
     mastered_recently.sort_by_key(|m| std::cmp::Reverse(m.mastered_at));
 
-    let profile = settings.language(language);
     LanguageStats {
         language: language.to_string(),
         language_name: settings.language_name(language),
-        declared_level: profile.map(|l| l.level).unwrap_or(Cefr::B1),
         totals,
         error_rate,
         global_error_rate,

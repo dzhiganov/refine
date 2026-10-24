@@ -1,6 +1,8 @@
 // End-to-end run of the real Windows app with a real model, driven over WebView2's DevTools port.
-// Start the app with WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS=--remote-debugging-port=9223 (and
-// REFINE_DATA_DIR pointing at a scratch folder), then: node e2e-windows.mjs <outDir> <provider label> <model id>
+// Start the app with WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS=--remote-debugging-port=9223, plus
+// REFINE_DATA_DIR and WEBVIEW2_USER_DATA_FOLDER pointing at scratch folders (the second is needed
+// when an installed Refine is running: WebView2 won't share a profile across different options).
+// Then: node e2e-windows.mjs <outDir> <provider label> <model id>
 import { chromium } from 'playwright-core';
 
 const [out = '.', providerLabel = 'LM Studio', modelId = 'qwen'] = process.argv.slice(2);
@@ -31,10 +33,8 @@ await shot('1-settings');
 // 2. A German Slack message with real mistakes.
 const check = async (name, tone, text) => {
   await page.click('[aria-label="Write"]');
-  // Either the composer or a previous result (page transitions are animated).
-  await page.waitForSelector('textarea, button:has-text("New text")');
-  if (await page.isVisible('button:has-text("New text")')) await page.click('button:has-text("New text")');
   await page.waitForSelector('textarea');
+  if (await page.isVisible('button:has-text("Clear")')) await page.click('button:has-text("Clear")');
   await page.click('button[aria-label^="Tone"]');
   await page.click(`[role="option"]:has-text("${tone}")`);
   await page.fill('textarea', text);
