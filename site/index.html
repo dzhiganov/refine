@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Refine: fix the mistakes in your English and German</title>
+    <meta
+      name="description"
+      content="A desktop app for macOS and Windows. Paste what you wrote; Refine fixes what's actually wrong, explains each fix in a sentence, and leaves the rest alone. Free beta."
+    />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#14161c" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f2f3f6" media="(prefers-color-scheme: light)" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.png" sizes="64x64" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta property="og:title" content="Refine: fix the mistakes in your English and German" />
+    <meta property="og:description" content="Paste what you wrote. Refine fixes what's actually wrong and explains each fix in a sentence." />
+    <meta property="og:image" content="https://refine-writing.vercel.app/og.png" />
+    <meta property="og:url" content="https://refine-writing.vercel.app/" />
+    <link rel="canonical" href="https://refine-writing.vercel.app/" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="top">
+      <a class="wordmark" href="/" aria-label="Refine home">refine</a>
+      <a class="top-link" href="#download">Download</a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-text">
+          <h1>Fewer mistakes in your English and German.</h1>
+          <p class="lede">
+            Paste what you wrote. Refine fixes what's actually wrong, explains each fix in a sentence, and
+            leaves the rest of your text alone.
+          </p>
+          <div class="cta">
+            <a class="button" id="primary-download" href="#download">Download</a>
+            <a class="alt-link" id="secondary-download" href="#download"></a>
+          </div>
+          <p class="meta"><span id="version-line">Free beta for macOS and Windows</span></p>
+        </div>
+
+        <!-- The one animated moment: a real correction, played step by step. -->
+        <figure class="demo" aria-label="Example: a text being corrected">
+          <div class="demo-card">
+            <div class="demo-head">
+              <span class="demo-tone" id="demo-tone">Formal email</span>
+              <span class="demo-count" id="demo-count"></span>
+            </div>
+            <p class="demo-text" id="demo-text"></p>
+          </div>
+          <figcaption class="demo-why" id="demo-why" aria-live="polite"></figcaption>
+        </figure>
+      </section>
+
+      <section class="film" aria-label="The app in use">
+        <div class="frame">
+          <video
+            id="film"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            poster="/media/poster-dark.webp"
+            aria-label="Recording of Refine checking an email: four fixes and two suggestions"
+          >
+            <source src="/media/demo-dark.webm" type="video/webm" />
+            <source src="/media/demo-dark.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <p class="caption">
+          The real app checking an email with a local model (Qwen 3.6 in LM Studio). Hover a fix to see where it is.
+        </p>
+      </section>
+
+      <section class="points" aria-label="What Refine does">
+        <div class="point">
+          <h2>Fixes only what's wrong</h2>
+          <p>
+            Grammar mistakes and anything a reader could misread. If a sentence is understandable and correct, it
+            stays the way you wrote it.
+          </p>
+        </div>
+        <div class="point">
+          <h2>Knows where you're writing</h2>
+          <p>
+            Pick Slack, GitHub, a formal email or your own setting. "thx" is fine in Slack. In an email to a client,
+            it gets fixed.
+          </p>
+        </div>
+        <div class="point">
+          <h2>Keeps suggestions separate</h2>
+          <p>
+            Now and then it offers a more natural way to say something. Suggestions sit in their own column and never
+            count as mistakes.
+          </p>
+        </div>
+        <div class="point">
+          <h2>Uses the model you choose</h2>
+          <p>
+            An OpenRouter or OpenAI key, or a model on your own computer through LM Studio or Ollama. Your history
+            stays on your computer.
+          </p>
+        </div>
+        <div class="point">
+          <h2>Notices what keeps coming back</h2>
+          <p>
+            A mistake that shows up in different texts on different days goes on a short watch list, with a quick
+            "fix your own sentence" review. One-off typos don't count.
+          </p>
+        </div>
+      </section>
+
+      <section class="shot" aria-label="Progress page">
+        <div class="frame">
+          <picture>
+            <source media="(prefers-color-scheme: light)" srcset="/media/progress-light.webp" />
+            <img
+              src="/media/progress-dark.webp"
+              width="2400"
+              height="1520"
+              loading="lazy"
+              decoding="async"
+              alt="The Progress page: a written summary, mistakes per 100 words with a trend, and the three mistakes being watched"
+            />
+          </picture>
+        </div>
+        <p class="caption">
+          Progress counts mistakes per 100 words and only calls something a trend when the change is bigger than
+          chance.
+        </p>
+      </section>
+
+      <section class="download" id="download" aria-labelledby="download-title">
+        <h2 id="download-title">Download</h2>
+        <p class="download-meta" id="release-line">Latest version, free.</p>
+
+        <div class="platforms">
+          <div class="platform" data-os="mac">
+            <div>
+              <h3>macOS</h3>
+              <p>Apple Silicon and Intel, macOS 11 or later</p>
+            </div>
+            <a class="button" href="https://github.com/dzhiganov/refine/releases/latest/download/Refine-macOS.dmg"
+              >Download .dmg<span class="size" data-asset="Refine-macOS.dmg"></span
+            ></a>
+          </div>
+          <div class="platform" data-os="win">
+            <div>
+              <h3>Windows</h3>
+              <p>
+                Windows 10 or 11 (64-bit).
+                <a href="https://github.com/dzhiganov/refine/releases/latest/download/Refine-Windows.msi">.msi installer</a>
+              </p>
+            </div>
+            <a class="button" href="https://github.com/dzhiganov/refine/releases/latest/download/Refine-Windows-setup.exe"
+              >Download .exe<span class="size" data-asset="Refine-Windows-setup.exe"></span
+            ></a>
+          </div>
+        </div>
+
+        <p class="needs">
+          You'll need an API key (OpenRouter or OpenAI) or a local model running in LM Studio or Ollama.
+        </p>
+
+        <div class="beta" role="note">
+          <h3>Refine is in beta</h3>
+          <p>
+            It may not work as expected, may crash, and could cause problems on your computer, including lost data. It
+            comes as is, without any warranty. By downloading it, you agree that you use it at your own risk and that
+            we aren't responsible for any damage or loss.
+          </p>
+          <p>
+            The builds aren't signed yet. On a Mac, the first time you open Refine, right-click it and choose
+            <em>Open</em>. On Windows, if SmartScreen warns you, choose <em>More info</em>, then <em>Run anyway</em>.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <span class="wordmark small">refine</span>
+      <span>Beta · <a href="https://github.com/dzhiganov/refine/releases">All releases</a></span>
+    </footer>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>

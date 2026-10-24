@@ -80,6 +80,14 @@ jobs:
           path: installers
           merge-multiple: true
       - run: find installers -type f
+      # Fixed-name copies, so github.com/.../releases/latest/download/<name> always works.
+      - name: Add fixed-name copies
+        run: |
+          mkdir -p installers/latest
+          cp "$(find installers -name '*_universal.dmg' | head -1)" installers/latest/Refine-macOS.dmg
+          cp "$(find installers -name '*-setup.exe' | head -1)" installers/latest/Refine-Windows-setup.exe
+          cp "$(find installers -name '*.msi' | head -1)" installers/latest/Refine-Windows.msi
+          ls -la installers/latest
       - uses: softprops/action-gh-release@v2
         with:
           name: Refine ${{ github.ref_name }}
@@ -92,8 +100,8 @@ jobs:
           body: |
             ## Download
 
-            - **macOS** (Apple Silicon and Intel): `Refine_*_universal.dmg`
-            - **Windows**: `Refine_*_x64-setup.exe` (or the `.msi`)
+            - **macOS** (Apple Silicon and Intel): `Refine-macOS.dmg`
+            - **Windows**: `Refine-Windows-setup.exe` (or `Refine-Windows.msi`)
 
             The builds aren't signed with a paid certificate yet:
             - **macOS:** open the `.dmg`, drag Refine to Applications, then right-click it → **Open** the first time

@@ -1,0 +1,579 @@
+/* Refine landing page. Same palette and type as the app (dark by default, light on request). */
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Instrument Serif';
+  src: url('/fonts/instrument-serif.woff2') format('woff2');
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Instrument Serif';
+  src: url('/fonts/instrument-serif-italic.woff2') format('woff2');
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: dark;
+  --bg: #14161c;
+  --surface: #1c1f27;
+  --surface-2: #232733;
+  --border: #2b303c;
+  --text: #c9ccd6;
+  --text-strong: #eef0f5;
+  --muted: #8a8f9c;
+  --accent: #ff5a2c;
+  --accent-hover: #ff7047;
+  --on-accent: #ffffff;
+  --del: #ff8a7a;
+  --del-bg: rgb(255 92 92 / 13%);
+  --ins: #eef0f5;
+  --ins-bg: rgb(76 195 138 / 18%);
+  --ins-line: #4cc38a;
+  --shadow: 0 1px 0 rgb(255 255 255 / 3%) inset, 0 20px 60px rgb(0 0 0 / 35%);
+
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --page: 1080px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+    --bg: #f2f3f6;
+    --surface: #ffffff;
+    --surface-2: #eceef2;
+    --border: #dfe2e8;
+    --text: #2a2d34;
+    --text-strong: #0d0e11;
+    --muted: #686d7b;
+    --accent: #e8491d;
+    --accent-hover: #d43f15;
+    --del: #c8372d;
+    --del-bg: rgb(229 72 77 / 10%);
+    --ins: #0d0e11;
+    --ins-bg: rgb(47 158 107 / 15%);
+    --ins-line: #2f9e6b;
+    --shadow: 0 1px 2px rgb(20 22 28 / 4%), 0 20px 60px rgb(20 22 28 / 9%);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 400 17px/1.6 var(--sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+/* ---- header / footer ----------------------------------------------------------------- */
+
+.top,
+.foot,
+main > section {
+  width: min(var(--page), 100% - 48px);
+  margin-inline: auto;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 0;
+}
+
+.wordmark {
+  font: italic 400 30px/1 var(--serif);
+  color: var(--text-strong);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+
+.wordmark.small {
+  font-size: 22px;
+}
+
+.top-link {
+  color: var(--muted);
+  font-size: 15px;
+  text-decoration: none;
+  transition: color 0.15s var(--ease);
+}
+
+.top-link:hover {
+  color: var(--text-strong);
+}
+
+.foot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 48px 0 56px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.foot a {
+  text-underline-offset: 3px;
+}
+
+/* ---- hero ------------------------------------------------------------------------------ */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 64px;
+  align-items: center;
+  padding: 72px 0 96px;
+}
+
+h1 {
+  margin: 0;
+  font: 400 clamp(44px, 6vw, 72px) / 1.02 var(--serif);
+  color: var(--text-strong);
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.lede {
+  margin: 24px 0 0;
+  max-width: 30em;
+  font-size: 19px;
+  color: var(--text);
+  text-wrap: pretty;
+}
+
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 22px;
+  margin-top: 36px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color 0.15s var(--ease),
+    transform 0.15s var(--ease);
+}
+
+.button:hover {
+  background: var(--accent-hover);
+}
+
+.button:active {
+  transform: scale(0.98);
+}
+
+.button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.size {
+  font-weight: 400;
+  opacity: 0.8;
+  font-size: 14px;
+}
+
+.alt-link {
+  color: var(--muted);
+  font-size: 15px;
+  text-underline-offset: 3px;
+}
+
+.alt-link:hover {
+  color: var(--text-strong);
+}
+
+.meta {
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ---- the animated example ---------------------------------------------------------------- */
+
+.demo {
+  margin: 0;
+}
+
+.demo-card {
+  padding: 26px 30px 30px;
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.demo-head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.demo-count {
+  font-variant-numeric: tabular-nums;
+}
+
+.demo-text {
+  min-height: 7.6em;
+  margin: 0;
+  color: var(--text-strong);
+  font-size: 19px;
+  line-height: 1.75;
+}
+
+/* A fragment being corrected: the wrong part, then the fix. */
+.fix .was,
+.fix .now {
+  border-radius: 4px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition:
+    background-color 0.35s var(--ease),
+    color 0.35s var(--ease);
+}
+
+/* Not in the text until it's inserted, so it adds no stray space. */
+.fix .now {
+  display: none;
+  color: var(--ins);
+}
+
+.fix.marked .was,
+.fix.struck .now {
+  padding: 1px 2px;
+}
+
+.fix.marked .was {
+  background: var(--del-bg);
+  color: var(--del);
+}
+
+.fix.struck .was {
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+.fix.struck .now {
+  display: inline;
+  margin-left: 4px;
+  background: var(--ins-bg);
+  box-shadow: inset 0 -1.5px 0 var(--ins-line);
+  animation: appear 0.45s var(--ease) both;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    filter: blur(3px);
+  }
+}
+
+/* Final state: just the clean text, like the app's default view. */
+.fix.clean .was {
+  display: none;
+}
+
+.fix.clean .now {
+  margin-left: 0;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  animation: none;
+}
+
+.demo-text.fading {
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+}
+
+.demo-why {
+  min-height: 3.4em;
+  margin: 18px 4px 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.55;
+  transition: opacity 0.3s var(--ease);
+}
+
+.demo-why strong {
+  color: var(--text-strong);
+  font-weight: 600;
+}
+
+.demo-why.hidden {
+  opacity: 0;
+}
+
+/* ---- media ------------------------------------------------------------------------------- */
+
+.frame {
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.film video,
+.shot img {
+  width: 100%;
+}
+
+.caption {
+  margin: 16px 2px 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.film {
+  padding-bottom: 112px;
+}
+
+/* ---- points -------------------------------------------------------------------------------- */
+
+.points {
+  display: grid;
+  gap: 0;
+  padding-bottom: 112px;
+}
+
+.point {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: 48px;
+  padding: 26px 0;
+  border-top: 1px solid var(--border);
+}
+
+.point:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.point h2 {
+  margin: 0;
+  font: 400 30px/1.15 var(--serif);
+  color: var(--text-strong);
+}
+
+.point p {
+  margin: 4px 0 0;
+  max-width: 34em;
+}
+
+.shot {
+  padding-bottom: 120px;
+}
+
+/* ---- download -------------------------------------------------------------------------------- */
+
+.download h2 {
+  margin: 0;
+  font: 400 clamp(40px, 5vw, 56px) / 1.05 var(--serif);
+  color: var(--text-strong);
+}
+
+.download-meta {
+  margin: 12px 0 32px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.download-meta a {
+  text-underline-offset: 3px;
+}
+
+.platforms {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.platform {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 26px 28px 28px;
+  border-radius: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.platform h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-strong);
+}
+
+.platform p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.platform p a {
+  color: var(--muted);
+  text-underline-offset: 3px;
+}
+
+.platform .button {
+  align-self: flex-start;
+}
+
+/* The visitor's own OS goes first and keeps the accent; the other is quieter. */
+.platform.other .button {
+  background: transparent;
+  color: var(--text-strong);
+  box-shadow: inset 0 0 0 1px var(--border);
+}
+
+.platform.other .button:hover {
+  box-shadow: inset 0 0 0 1px var(--muted);
+}
+
+.needs {
+  margin: 24px 2px 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.beta {
+  margin-top: 40px;
+  padding: 24px 28px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+}
+
+.beta h3 {
+  margin: 0 0 8px;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-strong);
+}
+
+.beta p {
+  margin: 0;
+  font-size: 15px;
+  max-width: 46em;
+}
+
+.beta p + p {
+  margin-top: 12px;
+  color: var(--muted);
+}
+
+/* ---- small screens ------------------------------------------------------------------------------ */
+
+@media (max-width: 860px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 32px 0 72px;
+  }
+
+  .point {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .platforms {
+    grid-template-columns: 1fr;
+  }
+
+  .film,
+  .points,
+  .shot {
+    padding-bottom: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .top,
+  .foot,
+  main > section {
+    width: calc(100% - 32px);
+  }
+
+  .demo-card {
+    padding: 20px 20px 24px;
+  }
+
+  .demo-text {
+    font-size: 17px;
+  }
+
+  .foot {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0s !important;
+  }
+}

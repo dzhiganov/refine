@@ -29,6 +29,77 @@ const RULES: { re: RegExp; fix: string; category: Mistake['category']; pattern: 
   { re: /\bi\b/, fix: 'I', category: 'orthography.capitalization', pattern: 'capital I', why: "'I' is always a capital letter.", lang: 'en' },
 ];
 
+type Canned = {
+  language: string;
+  mistakes: Pick<Mistake, 'original' | 'correction' | 'category' | 'explanation' | 'pattern' | 'impedesMeaning'>[];
+  suggestions: Pick<Entry['suggestions'][number], 'kind' | 'original' | 'replacement' | 'explanation'>[];
+};
+
+/** Real answers from Qwen3.6-35B-A3B (LM Studio, thinking off), copied verbatim from test runs,
+ *  so demos and screenshots show what the model actually returns. */
+export const DEMO_TEXTS: Record<string, Canned> = {
+  'Dear Mr. Weber, thx for the quick reply. Yesterday I have sent the contract, pls let me know until Friday if everything is fine.': {
+    language: 'en',
+    mistakes: [
+      { original: 'thx for', correction: 'thank you for', category: 'register.formality', pattern: 'formal email abbreviations', impedesMeaning: false, explanation: "Use full words in formal emails. 'Thx' is a chat abbreviation." },
+      { original: 'I have sent', correction: 'I sent', category: 'grammar.verb_tense', pattern: 'past simple for finished past', impedesMeaning: false, explanation: "Use the simple past (sent) with specific past times like 'yesterday'." },
+      { original: 'pls let', correction: 'please let', category: 'register.formality', pattern: 'formal email abbreviations', impedesMeaning: false, explanation: "Use full words in formal emails. 'Pls' is a chat abbreviation." },
+      { original: 'know until Friday', correction: 'know by Friday', category: 'grammar.preposition', pattern: 'by for deadlines', impedesMeaning: true, explanation: "Use 'by' for deadlines (before or on that day). 'Until' means the action continues up to that time." },
+    ],
+    suggestions: [
+      { kind: 'phrase', original: 'if everything is fine', replacement: 'if everything is in order', explanation: 'This is a more professional way to ask for confirmation in business emails.' },
+      { kind: 'synonym', original: 'quick reply', replacement: 'prompt response', explanation: 'A common formal collocation for business correspondence.' },
+    ],
+  },
+  'Hallo zusammen, ich habe gestern mit der Kunde gesprochen und er hat gesagt, dass er braucht mehr Zeit für die Tests.': {
+    language: 'de',
+    mistakes: [
+      { original: 'mit der Kunde', correction: 'mit dem Kunden', category: 'grammar.case', pattern: 'dative after mit', impedesMeaning: false, explanation: "The noun 'Kunde' is masculine. After the preposition 'mit', you must use the dative case. The dative form is 'dem Kunden'." },
+      { original: 'dass er braucht mehr Zeit', correction: 'dass er mehr Zeit braucht', category: 'grammar.word_order', pattern: 'verb last in subordinate clauses', impedesMeaning: false, explanation: "In a subordinate clause starting with 'dass', the conjugated verb must go to the very end." },
+    ],
+    suggestions: [
+      { kind: 'phrase', original: 'dass er mehr Zeit braucht für die Tests', replacement: 'dass er für die Tests mehr Zeit braucht', explanation: "It is often more natural in German to place the context ('für die Tests') before the time ('mehr Zeit')." },
+    ],
+  },
+};
+
+function cannedCheck(text: string, c: Canned, tone: Tone): Entry {
+  let fixed = text;
+  const mistakes: Mistake[] = c.mistakes.map((m, i) => {
+    const start = text.indexOf(m.original);
+    fixed = fixed.replace(m.original, m.correction);
+    return {
+      ...m,
+      id: `m${i + 1}`,
+      patternKey: `${c.language}:${m.category}:${m.pattern.replace(/\W+/g, '-')}`,
+      span: start >= 0 ? { start, end: start + m.original.length } : null,
+    };
+  });
+  const base = simulateCheck(text, c.language, tone);
+  return {
+    ...base,
+    language: c.language,
+    fixedText: fixed,
+    mistakes,
+    suggestions: c.suggestions.map((s, i) => ({ ...s, id: `s${i + 1}`, span: null })),
+    diff: diffFor(text, mistakes),
+  };
+}
+
+function diffFor(text: string, mistakes: Mistake[]): Entry['diff'] {
+  const diff: Entry['diff'] = [];
+  let rest = text;
+  for (const m of mistakes) {
+    const i = rest.indexOf(m.original);
+    if (i < 0) continue;
+    if (i > 0) diff.push({ op: 'equal', text: rest.slice(0, i) });
+    diff.push({ op: 'delete', text: m.original }, { op: 'insert', text: m.correction });
+    rest = rest.slice(i + m.original.length);
+  }
+  if (rest) diff.push({ op: 'equal', text: rest });
+  return diff;
+}
+
 function simulateCheck(text: string, language: string | null, tone: Tone): Entry {
   const lang = language ?? (/\b(ich|und|nicht|der|die|das|mit)\b/i.test(text) ? 'de' : 'en');
   let fixed = text;
@@ -138,7 +209,8 @@ export function createMockApi(): Api {
     async checkText(req) {
       await wait(1400);
       const tone = tones.find((t) => t.id === req.toneId) ?? tones[0]!;
-      const entry = simulateCheck(req.text, req.language ?? null, tone);
+      const canned = DEMO_TEXTS[req.text.trim()];
+      const entry = canned ? cannedCheck(req.text.trim(), canned, tone) : simulateCheck(req.text, req.language ?? null, tone);
       entries.unshift(entry);
       return entry;
     },

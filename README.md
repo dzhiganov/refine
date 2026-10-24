@@ -24,13 +24,22 @@ coming back and helps you get rid of them.
 
 ## Download
 
-Installers for macOS (universal `.dmg`) and Windows (`.exe` / `.msi`) are on the
+Website: [refine-writing.vercel.app](https://refine-writing.vercel.app). Installers for macOS
+(universal `.dmg`) and Windows (`.exe` / `.msi`) are on the
 [latest release](https://github.com/dzhiganov/refine/releases/latest). They aren't signed with a paid
 certificate yet; the release notes say how to open them the first time.
 
 To publish a new version: bump `version` in `package.json`, `src-tauri/tauri.conf.json` and
 `Cargo.toml`, then push a tag (`git tag v0.2.0 && git push origin v0.2.0`). CI builds both
 installers and attaches them to a new release.
+
+## Website
+
+`site/` is the landing page: static HTML, CSS and a little JS, deployed to Vercel
+(`cd site && vercel deploy --prod`). Download buttons point at
+`releases/latest/download/Refine-macOS.dmg` (and the Windows files), which CI attaches to every
+release, so the site never needs a redeploy for a new version; it reads the version number from the
+GitHub API. Demo media is recorded from the real UI: `pnpm dev`, then `node scripts/media.mjs`.
 
 ## Stack
 
